@@ -1,0 +1,19 @@
+$breakpoints: (
+    'xs': 0,
+    'sm': 360,
+    'md': 768,
+    'lg': 1366,
+    'xl': 1536,
+    'xxl': 1920,
+);
+
+$drawerTransitionDuration: 0.3s;
+$modalTransitionDuration: 0.3s;
+
+:export {
+    @each $key, $value in $breakpoints {
+        breakpoints_#{unquote($key)}: $value;
+    }
+    drawerTransitionDuration: $drawerTransitionDuration;
+    modalTransitionDuration: $modalTransitionDuration;
+}
