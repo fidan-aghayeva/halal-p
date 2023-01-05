@@ -1,0 +1,44 @@
+@import 'styles/utils/responsive';
+
+.footer {
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--color-text-tertiary);
+    display: flex;
+    flex-direction: row;
+    font-size: 1.8rem;
+    font-weight: 400;
+    justify-content: space-between;
+    padding: 20px 16px;
+
+    @include sm {
+        padding: 20px 24px;
+    }
+
+    @include md {
+        padding: 20px 130px;
+    }
+}
+
+.socialMediaLinks {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.icon {
+    height: 20px;
+    width: 20px;
+
+    &:not(:last-of-type) {
+        margin-right: 16px;
+
+        @include sm {
+            margin-right: 24px;
+        }
+
+        @include lg {
+            margin-right: 34px;
+        }
+    }
+}
