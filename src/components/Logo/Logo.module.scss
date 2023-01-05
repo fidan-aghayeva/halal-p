@@ -1,0 +1,11 @@
+@import 'styles/utils/responsive';
+
+.logo {
+    height: 40px;
+    width: 122px;
+
+    @include md {
+        height: 58px;
+        width: 176px;
+    }
+}
