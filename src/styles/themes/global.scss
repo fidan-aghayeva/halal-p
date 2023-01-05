@@ -1,0 +1,19 @@
+@import 'styles/utils/responsive';
+
+:root {
+    --color-bg-primary: #c9c9c9;
+    --color-text-primary: #303030;
+    --color-text-secondary: #797979;
+    --color-text-tertiary: #fff;
+    --primary-color: #1ca29b;
+
+    --header-height: 80px;
+    --footer-height: 80px;
+    --width-scrollbar: 0;
+
+    @include md {
+        --header-height: 100px;
+        --footer-height: 100px;
+        --width-scrollbar: 10px;
+    }
+}

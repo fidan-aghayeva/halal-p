@@ -1,0 +1,30 @@
+@import './responsive';
+
+@mixin scrollbar {
+    scrollbar-color: var(--color-brand-secondary) transparent;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        width: var(--width-scrollbar);
+        height: var(--width-scrollbar);
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--color-brand-secondary);
+        border-radius: 8px;
+        border: 3px solid transparent;
+        background-clip: content-box;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: var(--color-brand-secondary);
+    }
+}
