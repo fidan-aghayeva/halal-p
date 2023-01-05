@@ -1,0 +1,18 @@
+import SCSS_VARIABLES from 'styles/variables.module.scss';
+
+export const LANGUAGES = {
+    az: 'az',
+    en: 'en',
+    ru: 'ri',
+};
+
+export const DEFAULT_LANGUAGE = LANGUAGES.en;
+
+export const BREAKPOINTS = {
+    xs: Number(SCSS_VARIABLES.breakpoints_xs),
+    sm: Number(SCSS_VARIABLES.breakpoints_sm),
+    md: Number(SCSS_VARIABLES.breakpoints_md),
+    lg: Number(SCSS_VARIABLES.breakpoints_lg),
+    xl: Number(SCSS_VARIABLES.breakpoints_xl),
+    xxl: Number(SCSS_VARIABLES.breakpoints_xxl),
+};
