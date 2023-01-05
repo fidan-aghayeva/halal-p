@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 400;
+}
+
+.main {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
+.content {
+    width: 100%;
+}
