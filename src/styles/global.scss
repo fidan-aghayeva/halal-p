@@ -1,0 +1,16 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Maven Pro', sans-serif;
+    font-size: 1.6rem;
+    background-color: var(--color-bg-primary);
+}
+
+.scrollbar-root {
+    overflow: scroll;
+    position: absolute;
+    top: -100px;
+    width: 100%;
+}

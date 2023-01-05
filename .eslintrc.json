@@ -1,3 +1,30 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "array-callback-return": "error",
+    "no-await-in-loop": "error",
+    "no-constructor-return": "error",
+    "no-duplicate-imports": "error",
+    "no-promise-executor-return": "error",
+    "no-self-compare": "error",
+    "no-template-curly-in-string": "error",
+    "no-unmodified-loop-condition": "error",
+    "no-unreachable-loop": "error",
+    "no-unsafe-negation": ["error", { "enforceForOrderingRelations": true }],
+    "require-atomic-updates": "error",
+    "accessor-pairs": "error",
+    "block-scoped-var": "error",
+    "consistent-return": "error",
+    "consistent-this": ["error", "that"],
+    "default-case": "error",
+    "default-case-last": "error",
+    "guard-for-in": "error",
+    "camelcase":  ["error", { "properties": "always" }],
+    "no-case-declarations":  "error",
+    "no-return-assign":  "error",
+    "require-await": "error",
+    "jsx-quotes": ["error", "prefer-single"],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "rest-spread-spacing": "error"
+  }
 }
