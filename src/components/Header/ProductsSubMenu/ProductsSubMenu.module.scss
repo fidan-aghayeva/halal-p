@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    justify-content: center;
+    padding: 32px 0 51px 0;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+
+    a {
+        color: var(--color-text-primary);
+        font-size: 1.6rem;
+    }
+
+    &:not(:last-of-type) {
+        margin-right: 85px;
+    }
+}
+
+.categoryLink {
+    border-bottom: 0.5px solid #d9d9d9;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+}
+
+.subCategoryLink {
+    font-weight: 500;
+    margin-bottom: 12px;
+}

@@ -1,0 +1,76 @@
+@import 'styles/utils/responsive';
+
+.selectContainer {
+    margin-left: 12px;
+    max-width: 60px;
+
+    & :global {
+        & .mantine-Select-input {
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            font-weight: 600;
+            height: auto;
+            padding-left: 10px;
+            padding-right: 5px;
+
+            &::placeholder {
+                color: var(--primary-color);
+                font-size: 1.6rem;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+        }
+
+        & .mantine-Input-rightSection {
+            color: var(--primary-color);
+            width: auto;
+        }
+
+        & .mantine-Select-dropdown {
+            border: none;
+            border-radius: 0;
+            box-shadow: 0px 3px 21px rgba(0, 0, 0, 0.1);
+        }
+
+        & .mantine-Select-itemsWrapper {
+            padding: 0;
+        }
+
+        & .mantine-Select-item {
+            color: var(--color-text-primary);
+            border-radius: 0;
+            font-size: 1.6rem;
+            font-weight: 600;
+            padding: 10px;
+
+            &[data-selected] {
+                background-color: var(--primary-color);
+                color: var(--color-text-tertiary);
+            }
+        }
+    }
+}
+
+.languages {
+    display: flex;
+    margin-right: 28px;
+
+    @include sm {
+        margin-right: 36px;
+    }
+}
+
+.language {
+    color: var(--color-text-primary);
+    font-size: 1.6rem;
+    font-weight: 600;
+
+    &:first-child {
+        margin-right: 16px;
+
+        @include sm {
+            margin-right: 24px;
+        }
+    }
+}

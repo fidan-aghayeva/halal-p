@@ -1,8 +1,64 @@
-.container {
-  align-items: center;
-  background-color: #0070f3;
-  color: #fff;
-  display: flex;
-  font-size: 25px;
-  justify-content: center;
+@import 'styles/utils/responsive';
+
+.header {
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0px 3px 21px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    color: var(--color-text-primary);
+    display: flex;
+    font-size: 16px;
+    font-weight: 500;
+    justify-content: space-between;
+    height: var(--header-height);
+    padding: 0 16px;
+
+    @include sm {
+        padding: 0 24px;
+    }
+
+    @include md {
+        font-size: 18px;
+        padding: 0 130px;
+    }
+}
+
+.content {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.linkItem {
+    padding-right: 45px;
+
+    span {
+        padding: 40px 0;
+
+        &:hover {
+            border-bottom: 3px solid var(--primary-color);
+        }
+    }
+}
+
+.eShopping {
+    color: var(--primary-color);
+    font-weight: 700;
+    padding: 0 40px 0 30px;
+}
+
+.searchIcon {
+    cursor: pointer;
+}
+
+.productsDropdown {
+    border: none;
+    border-radius: 0;
+    top: 110px !important;
+}
+
+.mobileMenu {
+    @include md {
+        margin-left: 25px;
+    }
 }

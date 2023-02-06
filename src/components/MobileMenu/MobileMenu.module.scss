@@ -1,0 +1,82 @@
+.container {
+    padding: 32px 24px 32px 18px;
+
+    & :global {
+        & .mantine-Drawer-body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+    }
+}
+
+.content {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+}
+
+.drawerHeader {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.closeIcon {
+    color: #25282b;
+    height: 16px;
+    width: 16px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.linkItem {
+    align-items: center;
+    color: var(--color-text-primary);
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+
+    &:not(:first-child) {
+        border-top: 1px solid #d9d9d9;
+    }
+}
+
+.subLinkItem {
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding: 6px 0;
+
+    &:last-child {
+        padding: 6px 0 0 0;
+    }
+}
+
+.eShopping {
+    border-bottom: 1px solid #d9d9d9;
+    border-top: 1px solid #d9d9d9;
+    color: var(--primary-color);
+    display: flex;
+    font-weight: 600;
+    padding: 8px 0;
+}
+
+.socialMediaLinks {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-top: 22px;
+}
+
+.icon {
+    color: var(--color-text-primary);
+    height: 20px;
+    margin-right: 24px;
+    width: 20px;
+}

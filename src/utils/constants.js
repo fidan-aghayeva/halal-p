@@ -2,11 +2,11 @@ import SCSS_VARIABLES from 'styles/variables.module.scss';
 
 export const LANGUAGES = {
     az: 'az',
-    en: 'en',
-    ru: 'ri',
+    eng: 'eng',
+    ru: 'ru',
 };
 
-export const DEFAULT_LANGUAGE = LANGUAGES.en;
+export const DEFAULT_LANGUAGE = LANGUAGES.az;
 
 export const BREAKPOINTS = {
     xs: Number(SCSS_VARIABLES.breakpoints_xs),
