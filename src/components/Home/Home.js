@@ -1,7 +1,40 @@
+import { useSelector } from 'react-redux';
+import { Carousel } from '@mantine/carousel';
+import Image from 'next/image';
+import { ArrowLeftIcon, ArrowRightIcon } from 'assets/icons';
+import slider from 'assets/slider/slider1.png';
+import { DEVICE_TYPES } from 'utils/device-detection';
+
 import styles from './Home.module.scss';
 
 const Home = () => {
-    return <div className={styles.container}>Home Page</div>;
+    const currentDevice = useSelector(state => state.global.currentDevice);
+
+    return (
+        <div className={styles.container}>
+            <div className={styles.carouselContainer}>
+                <Carousel
+                    className={styles.carousel}
+                    height='100%'
+                    controlsOffset='xl'
+                    nextControlIcon={<ArrowRightIcon />}
+                    previousControlIcon={<ArrowLeftIcon />}
+                    withIndicators={currentDevice.type !== DEVICE_TYPES.desktop}
+                >
+                    <Carousel.Slide>
+                        <Image src={slider} alt={'Slider'} layout={'fill'} />
+                    </Carousel.Slide>
+                    <Carousel.Slide>
+                        <Image src={slider} alt={'Slider'} layout={'fill'} />
+                    </Carousel.Slide>
+                </Carousel>
+            </div>
+            <div style={{ height: '300px' }}></div>
+            <div style={{ height: '300px' }}></div>
+            <div style={{ height: '300px' }}></div>
+            <div style={{ height: '300px' }}></div>
+        </div>
+    );
 };
 
 export default Home;

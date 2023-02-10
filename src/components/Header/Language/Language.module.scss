@@ -7,7 +7,6 @@
     & :global {
         & .mantine-Select-input {
             border: none;
-            color: var(--primary-color);
             font-size: 1.6rem;
             font-weight: 600;
             height: auto;
@@ -47,6 +46,24 @@
             &[data-selected] {
                 background-color: var(--primary-color);
                 color: var(--color-text-tertiary);
+            }
+        }
+    }
+
+    &:global {
+        &.homePage {
+            & :global {
+                & .mantine-Select-input {
+                    background-color: transparent;
+
+                    &::placeholder {
+                        color: var(--color-text-tertiary);
+                    }
+                }
+
+                & .mantine-Input-rightSection {
+                    color: var(--color-text-tertiary);
+                }
             }
         }
     }

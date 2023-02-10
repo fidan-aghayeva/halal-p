@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/carousel": "^5.10.3",
     "@mantine/core": "^5.10.1",
     "@mantine/hooks": "^5.10.1",
     "@mantine/next": "^5.10.1",
