@@ -6,7 +6,7 @@ const HomePage = () => {
 };
 
 HomePage.getLayout = page => {
-    return <AppLayout>{page}</AppLayout>;
+    return <AppLayout homePage={true}>{page}</AppLayout>;
 };
 
 export default HomePage;

@@ -9,7 +9,7 @@ import useWindowSize from 'hooks/use-window-size';
 import styles from './AppLayout.module.scss';
 
 const AppLayout = props => {
-    const { mainClassName } = props;
+    const { mainClassName, homePage } = props;
 
     const dispatch = useDispatch();
 
@@ -25,7 +25,7 @@ const AppLayout = props => {
 
     return (
         <div className={styles.container}>
-            <Header />
+            <Header homePage={homePage} />
             <main className={styles.main}>
                 <MobileMenu />
                 <div className={styles.content}>{props.children}</div>

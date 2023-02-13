@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import classNames from 'classnames';
 import { Select } from '@mantine/core';
 import DeviceDetector from '@shared/DeviceDetector';
 import { ArrowDownIcon } from 'assets/icons';
@@ -10,7 +11,9 @@ import { globalActions } from 'redux/slices/global';
 
 import styles from './Language.module.scss';
 
-const Language = () => {
+const Language = props => {
+    const { homePage } = props;
+
     const dispatch = useDispatch();
 
     const { language } = useSelector(state => state.global);
@@ -51,7 +54,7 @@ const Language = () => {
             </DeviceDetector>
             <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
                 <Select
-                    className={styles.selectContainer}
+                    className={classNames(styles.selectContainer, { homePage })}
                     data={languageOptions}
                     rightSection={<ArrowDownIcon />}
                     searchable={false}
