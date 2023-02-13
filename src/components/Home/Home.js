@@ -20,12 +20,13 @@ const Home = () => {
                     nextControlIcon={<ArrowRightIcon />}
                     previousControlIcon={<ArrowLeftIcon />}
                     withIndicators={currentDevice.type !== DEVICE_TYPES.desktop}
+                    withControls={currentDevice.type !== DEVICE_TYPES.mobile}
                 >
                     <Carousel.Slide>
-                        <Image src={slider} alt={'Slider'} layout={'fill'} />
+                        <Image src={slider} alt={'Slider'} fill />
                     </Carousel.Slide>
                     <Carousel.Slide>
-                        <Image src={slider} alt={'Slider'} layout={'fill'} />
+                        <Image src={slider} alt={'Slider'} fill />
                     </Carousel.Slide>
                 </Carousel>
             </div>

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
 import { HoverCard } from '@mantine/core';
@@ -27,6 +27,10 @@ const Header = props => {
     const currentDevice = useSelector(state => state.global.currentDevice);
     const { isVisible: isSearchVisible } = useSelector(state => state.global.headerSearchProps);
 
+    const isDesktop = useMemo(() => {
+        return currentDevice.type === DEVICE_TYPES.desktop;
+    }, [currentDevice.type]);
+
     const onSearchClick = () => {
         dispatch(globalActions.changeHeaderSearchProps({ isVisible: true }));
     };
@@ -42,20 +46,26 @@ const Header = props => {
     };
 
     const onScroll = () => {
-        if (window.scrollY > 200) {
-            setIsHomePage(false);
-        } else {
-            setIsHomePage(true);
+        if (isDesktop) {
+            if (isSearchVisible) {
+                setIsHomePage(false);
+            } else {
+                if (window.scrollY > 200) {
+                    setIsHomePage(false);
+                } else {
+                    setIsHomePage(true);
+                }
+            }
         }
     };
 
     useEffect(() => {
-        if (homePage && currentDevice.type === DEVICE_TYPES.desktop && !isSearchVisible) {
+        if (!isSearchVisible && isDesktop && homePage) {
             setIsHomePage(true);
         } else {
             setIsHomePage(false);
         }
-    }, [homePage, currentDevice.type, isSearchVisible]);
+    }, [homePage, isDesktop, isSearchVisible]);
 
     useEffect(() => {
         window.addEventListener('scroll', onScroll);
@@ -64,7 +74,7 @@ const Header = props => {
             setIsHomePage(false);
             window.removeEventListener('scroll', onScroll);
         };
-    }, []);
+    }, [isDesktop, isSearchVisible]);
 
     return (
         <header className={classNames(styles.header, { homePage: isHomePage })}>
