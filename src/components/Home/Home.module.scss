@@ -1,14 +1,14 @@
 @import 'styles/utils/responsive';
 
 .container {
+    height: 100%;
+    position: relative;
+    width: 100%;
 }
 
 .carouselContainer {
     display: flex;
     height: 100vh;
-    left: 0;
-    position: absolute;
-    top: 0;
     width: 100%;
 }
 
@@ -36,24 +36,13 @@
                 background-color: var(--primary-color);
             }
         }
+    }
+}
 
-        & .mantine-Carousel-indicators {
-            bottom: -30px;
-        }
+.productsContainer {
+    padding: 100px 24px;
 
-        & .mantine-Carousel-indicator {
-            background-color: #d9d9d9;
-            border-radius: 10px;
-            height: 2px;
-            width: 30px;
-
-            &[data-active='true'] {
-                background-color: var(--primary-color);
-            }
-
-            @include sm {
-                width: 50px;
-            }
-        }
+    @include md {
+        padding: 100px 130px;
     }
 }

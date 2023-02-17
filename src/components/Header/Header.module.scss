@@ -11,10 +11,11 @@
     font-weight: 500;
     justify-content: space-between;
     height: var(--header-height);
-    padding: 0 16px;
-    position: sticky;
-    top: 0;
     left: 0;
+    padding: 0 16px;
+    position: fixed;
+    top: 0;
+    width: 100%;
     z-index: 100;
 
     &:global {

@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
-import { Carousel } from '@mantine/carousel';
+import classNames from 'classnames';
 import Image from 'next/image';
+import { Carousel } from '@mantine/carousel';
+import ProductsCarousel from './ProductsCarousel';
 import { ArrowLeftIcon, ArrowRightIcon } from 'assets/icons';
-import slider from 'assets/slider/slider1.png';
 import { DEVICE_TYPES } from 'utils/device-detection';
 
 import styles from './Home.module.scss';
@@ -23,17 +24,17 @@ const Home = () => {
                     withControls={currentDevice.type !== DEVICE_TYPES.mobile}
                 >
                     <Carousel.Slide>
-                        <Image src={slider} alt={'Slider'} fill />
+                        <Image src={'/images/slider/slider1.png'} alt={'Slider'} fill />
                     </Carousel.Slide>
                     <Carousel.Slide>
-                        <Image src={slider} alt={'Slider'} fill />
+                        <Image src={'/images/slider/slider1.png'} alt={'Slider'} fill />
                     </Carousel.Slide>
                 </Carousel>
             </div>
-            <div style={{ height: '300px' }}></div>
-            <div style={{ height: '300px' }}></div>
-            <div style={{ height: '300px' }}></div>
-            <div style={{ height: '300px' }}></div>
+            <div className={classNames('flex align-center justify-center flex-column', styles.productsContainer)}>
+                <h2 className={'title'}>Məhsullar</h2>
+                <ProductsCarousel />
+            </div>
         </div>
     );
 };
