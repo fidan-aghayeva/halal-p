@@ -86,9 +86,9 @@ const Header = props => {
                     <div className={styles.content}>
                         <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
                             <nav>
-                                <Link className={classNames(styles.linkItem, { homePage: isHomePage })} href={'/about'}>
-                                    <span>Haqqımızda</span>
-                                </Link>
+                                <span className={classNames(styles.linkItem, { homePage: isHomePage })}>
+                                    Haqqımızda
+                                </span>
                                 <HoverCard
                                     width={windowWidth}
                                     onOpen={onMenuItemHover}
@@ -97,12 +97,9 @@ const Header = props => {
                                     transitionDuration={300}
                                 >
                                     <HoverCard.Target>
-                                        <Link
-                                            className={classNames(styles.linkItem, { homePage: isHomePage })}
-                                            href={'/products'}
-                                        >
-                                            <span>Məhsullar</span>
-                                        </Link>
+                                        <span className={classNames(styles.linkItem, { homePage: isHomePage })}>
+                                            Məhsullar
+                                        </span>
                                     </HoverCard.Target>
                                     <HoverCard.Dropdown className={styles.productsDropdown}>
                                         <ProductsSubMenu />

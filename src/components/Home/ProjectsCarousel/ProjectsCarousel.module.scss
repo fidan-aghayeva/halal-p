@@ -1,0 +1,43 @@
+@import 'styles/utils/responsive';
+
+.card {
+    color: var(--color-text-primary);
+    border: 1px solid #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    font-weight: 500;
+    height: 165px;
+    margin-bottom: 25px;
+    transition: all 0.3s ease-in-out;
+    padding: 20px 0 50px 0;
+    width: 156px;
+
+    &:hover {
+        border: 1px solid transparent;
+        box-shadow: 0 3px 21px rgba(0, 0, 0, 0.1);
+    }
+
+    @include sm {
+        height: 400px;
+        width: 280px;
+    }
+
+    @include md {
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    @include lg {
+        height: 400px;
+        width: 280px;
+    }
+}
+
+.createDate {
+    align-self: flex-start;
+    background-color: var;
+    color: var(--color-text-tertiary);
+    font-size: 1.4rem;
+    padding: 5px 10px;
+}
