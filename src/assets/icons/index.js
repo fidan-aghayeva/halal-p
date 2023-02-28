@@ -1,6 +1,7 @@
 import ArrowDown from './arrow-down.svg';
 import ArrowLeft from './arrow-left.svg';
 import ArrowRight from './arrow-right.svg';
+import ArrowRightLong from './arrow-right-long.svg';
 import Close from './close.svg';
 import Instagram from './instagram.svg';
 import Facebook from './facebook.svg';
@@ -13,6 +14,7 @@ import WhiteLogo from './logo-white.svg';
 export const ArrowDownIcon = ArrowDown;
 export const ArrowLeftIcon = ArrowLeft;
 export const ArrowRightIcon = ArrowRight;
+export const ArrowRightLongIcon = ArrowRightLong;
 export const CloseIcon = Close;
 export const InstagramIcon = Instagram;
 export const FacebookIcon = Facebook;

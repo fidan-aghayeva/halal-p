@@ -1,5 +1,10 @@
 @import '../variables.module';
 
+@mixin xs {
+    @media (min-width: map-get($breakpoints, 'xs') + px) {
+        @content;
+    }
+}
 
 @mixin sm {
     @media (min-width: map-get($breakpoints, 'sm') + px) {
@@ -15,6 +20,18 @@
 
 @mixin lg {
     @media (min-width: map-get($breakpoints, 'lg') + px) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media (min-width: map-get($breakpoints, 'xl') + px) {
+        @content;
+    }
+}
+
+@mixin xxl {
+    @media (min-width: map-get($breakpoints, 'xxl') + px) {
         @content;
     }
 }

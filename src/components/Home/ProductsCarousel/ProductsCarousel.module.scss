@@ -1,5 +1,29 @@
 @import 'styles/utils/responsive';
 
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.carousel {
+    width: auto;
+}
+
+.slide {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex: 0 0 25%;
+
+    @include sm {
+        flex: 0 0 33.33333%;
+    }
+
+    @include lg {
+        flex: 0 0 25%;
+    }
+}
+
 .productCard {
     color: var(--color-text-primary);
     border: 1px solid #f1f1f1;

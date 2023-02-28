@@ -11,22 +11,18 @@ const ProductsCarousel = () => {
     const currentDevice = useSelector(state => state.global.currentDevice);
 
     return (
-        <div className={'flex justify-center'}>
+        <div className={classNames('flex justify-center', styles.container)}>
             <Carousel
                 withIndicators={currentDevice.type === DEVICE_TYPES.tablet}
                 withControls={false}
                 slideSize={'25%'}
                 align={'start'}
                 slideGap={'20px'}
-                slidesToScroll={currentDevice.type === DEVICE_TYPES.tablet ? 3 : products.length}
-                breakpoints={[
-                    { minWidth: 'sm', maxWidth: 'xl', slideSize: '33.333333%' },
-                    { maxWidth: 'sm', slideSize: '25%' },
-                ]}
                 orientation={currentDevice.type === DEVICE_TYPES.mobile ? 'vertical' : 'horizontal'}
+                className={styles.carousel}
             >
                 {products.map(product => (
-                    <Carousel.Slide>
+                    <Carousel.Slide className={styles.slide}>
                         <Link
                             key={product.id}
                             href={'/'}

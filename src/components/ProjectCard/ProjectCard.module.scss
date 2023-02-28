@@ -1,0 +1,62 @@
+@import 'styles/utils/responsive';
+
+.container {
+    align-items: center;
+    border: 1px solid #f1f1f1;
+    color: var(--color-text-primary);
+    display: flex;
+    font-size: 1.6rem;
+    font-weight: 500;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 330px;
+    transition: all 0.3s ease-in-out;
+    padding: 20px 0 30px 0;
+    width: 230px;
+
+    &:hover {
+        border: 1px solid transparent;
+        box-shadow: 0 3px 21px rgba(0, 0, 0, 0.1);
+    }
+
+    @include md {
+        height: 400px;
+        font-size: 1.8rem;
+        padding: 20px 0 50px 0;
+        width: 280px;
+    }
+}
+
+.createDate {
+    align-self: flex-start;
+    background-color: var(--primary-color);
+    color: var(--color-text-tertiary);
+    font-size: 1.4rem;
+    padding: 5px 10px;
+}
+
+.image {
+    height: 124px;
+    width: 183px;
+}
+
+.content {
+    text-align: center;
+}
+
+.readMore {
+    align-items: center;
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: row;
+    font-weight: 600;
+    margin-top: 28px;
+
+    svg {
+        margin-left: 5px;
+    }
+
+    @include md {
+        margin-top: 40px;
+    }
+}
