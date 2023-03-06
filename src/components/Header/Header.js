@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
-import { HoverCard } from '@mantine/core';
+import { HoverCard, Popover } from '@mantine/core';
 import DeviceDetector from '@shared/DeviceDetector';
 import Logo from 'components/Logo';
 import Language from './Language';
@@ -14,6 +14,7 @@ import { globalActions } from 'redux/slices/global';
 import useWindowSize from 'hooks/use-window-size';
 
 import styles from './Header.module.scss';
+import AboutSubMenu from './AboutSubMenu';
 
 const Header = props => {
     const { homePage } = props;
@@ -32,7 +33,7 @@ const Header = props => {
     }, [currentDevice.type]);
 
     const onSearchClick = () => {
-        dispatch(globalActions.changeHeaderSearchProps({ isVisible: true }));
+        dispatch(globalActions.changeHeaderSearchProps({ isVisible: !isSearchVisible }));
     };
 
     const onMenuClick = () => {
@@ -41,34 +42,37 @@ const Header = props => {
 
     const onMenuItemHover = () => {
         if (window.scrollY <= 200) {
-            setIsHomePage(!isHomePage);
+            setIsHomePage(false);
+        }
+        dispatch(globalActions.changeHeaderSearchProps({ isVisible: false }));
+    };
+
+    const onMenuItemClose = () => {
+        if (window.scrollY <= 200) {
+            setIsHomePage(true);
         }
     };
 
     const onScroll = () => {
         if (isDesktop) {
-            if (isSearchVisible) {
-                setIsHomePage(false);
-            } else {
-                if (window.scrollY > 200) {
-                    setIsHomePage(false);
-                } else {
-                    setIsHomePage(true);
-                }
-            }
+            setIsHomePage(window.scrollY <= 200);
+        }
+
+        if (isSearchVisible) {
+            dispatch(globalActions.changeHeaderSearchProps({ isVisible: false }));
         }
     };
 
     useEffect(() => {
-        if (!isSearchVisible && isDesktop && homePage) {
-            setIsHomePage(true);
-        } else {
-            setIsHomePage(false);
-        }
-    }, [homePage, isDesktop, isSearchVisible]);
+        setIsHomePage(isDesktop && homePage);
+    }, [homePage, isDesktop]);
 
     useEffect(() => {
         window.addEventListener('scroll', onScroll);
+
+        if (isDesktop && window.scrollY <= 200) {
+            setIsHomePage(!isSearchVisible);
+        }
 
         return () => {
             setIsHomePage(false);
@@ -78,72 +82,82 @@ const Header = props => {
 
     return (
         <header className={classNames(styles.header, { homePage: isHomePage })}>
-            {isSearchVisible && windowWidth >= 768 ? (
-                <Search />
-            ) : (
-                <>
-                    <Logo whiteLogo={isHomePage} />
-                    <div className={styles.content}>
-                        <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
-                            <nav>
-                                <span className={classNames(styles.linkItem, { homePage: isHomePage })}>
-                                    Haqqımızda
-                                </span>
-                                <HoverCard
-                                    width={windowWidth}
-                                    onOpen={onMenuItemHover}
-                                    onClose={onMenuItemHover}
-                                    transition={'scale-y'}
-                                    transitionDuration={300}
-                                >
-                                    <HoverCard.Target>
-                                        <span className={classNames(styles.linkItem, { homePage: isHomePage })}>
-                                            Məhsullar
-                                        </span>
-                                    </HoverCard.Target>
-                                    <HoverCard.Dropdown className={styles.productsDropdown}>
-                                        <ProductsSubMenu />
-                                    </HoverCard.Dropdown>
-                                </HoverCard>
-                                <Link
-                                    className={classNames(styles.linkItem, { homePage: isHomePage })}
-                                    href={'/service'}
-                                >
-                                    <span>Servis</span>
-                                </Link>
-                                <Link className={classNames(styles.linkItem, { homePage: isHomePage })} href={'/blog'}>
-                                    <span>Bloq</span>
-                                </Link>
-                                <Link
-                                    className={classNames(styles.linkItem, { homePage: isHomePage })}
-                                    href={'/contact'}
-                                >
-                                    <span>Əlaqə</span>
-                                </Link>
-                            </nav>
-                            <a
-                                href={'https://shop.halal.az/'}
-                                target={'_blank'}
-                                className={classNames(styles.eShopping, { homePage: isHomePage })}
+            <>
+                <Logo whiteLogo={isHomePage} />
+                <div className={styles.content}>
+                    <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
+                        <nav>
+                            <HoverCard
+                                width={windowWidth}
+                                onOpen={onMenuItemHover}
+                                onClose={onMenuItemClose}
+                                transition={'scale-y'}
+                                transitionDuration={300}
                             >
-                                E-alışa keç
-                            </a>
-                        </DeviceDetector>
-                        <DeviceDetector hidden={[DEVICE_TYPES.desktop]}>
-                            <Language />
-                        </DeviceDetector>
-                        <DeviceDetector hidden={[DEVICE_TYPES.mobile]}>
-                            <SearchIcon onClick={onSearchClick} className={styles.searchIcon} />
-                        </DeviceDetector>
-                        <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
-                            <Language homePage={isHomePage} />
-                        </DeviceDetector>
-                        <DeviceDetector hidden={[DEVICE_TYPES.desktop]}>
-                            <MenuIcon className={styles.mobileMenu} onClick={onMenuClick} />
-                        </DeviceDetector>
-                    </div>
-                </>
-            )}
+                                <HoverCard.Target>
+                                    <span className={classNames(styles.linkItem, { homePage: isHomePage })}>
+                                        Haqqımızda
+                                    </span>
+                                </HoverCard.Target>
+                                <HoverCard.Dropdown className={styles.menuDropdown}>
+                                    <AboutSubMenu />
+                                </HoverCard.Dropdown>
+                            </HoverCard>
+                            <HoverCard
+                                width={windowWidth}
+                                onOpen={onMenuItemHover}
+                                onClose={onMenuItemHover}
+                                transition={'scale-y'}
+                                transitionDuration={300}
+                            >
+                                <HoverCard.Target>
+                                    <span className={classNames(styles.linkItem, { homePage: isHomePage })}>
+                                        Məhsullar
+                                    </span>
+                                </HoverCard.Target>
+                                <HoverCard.Dropdown className={styles.menuDropdown}>
+                                    <ProductsSubMenu />
+                                </HoverCard.Dropdown>
+                            </HoverCard>
+                            <Link className={classNames(styles.linkItem, { homePage: isHomePage })} href={'/service'}>
+                                <span>Servis</span>
+                            </Link>
+                            <Link className={classNames(styles.linkItem, { homePage: isHomePage })} href={'/blog'}>
+                                <span>Bloq</span>
+                            </Link>
+                            <Link className={classNames(styles.linkItem, { homePage: isHomePage })} href={'/contact'}>
+                                <span>Əlaqə</span>
+                            </Link>
+                        </nav>
+                        <a
+                            href={'https://shop.halal.az/'}
+                            target={'_blank'}
+                            className={classNames(styles.eShopping, { homePage: isHomePage })}
+                        >
+                            E-alışa keç
+                        </a>
+                    </DeviceDetector>
+                    <DeviceDetector hidden={[DEVICE_TYPES.desktop]}>
+                        <Language />
+                    </DeviceDetector>
+                    <DeviceDetector hidden={[DEVICE_TYPES.mobile]}>
+                        <Popover position='bottom' opened={isSearchVisible}>
+                            <Popover.Target>
+                                <SearchIcon onClick={onSearchClick} className={styles.searchIcon} />
+                            </Popover.Target>
+                            <Popover.Dropdown className={styles.searchDropdown}>
+                                <Search />
+                            </Popover.Dropdown>
+                        </Popover>
+                    </DeviceDetector>
+                    <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
+                        <Language homePage={isHomePage} />
+                    </DeviceDetector>
+                    <DeviceDetector hidden={[DEVICE_TYPES.desktop]}>
+                        <MenuIcon className={styles.mobileMenu} onClick={onMenuClick} />
+                    </DeviceDetector>
+                </div>
+            </>
         </header>
     );
 };

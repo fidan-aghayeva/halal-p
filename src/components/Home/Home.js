@@ -4,14 +4,18 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import Autoplay from 'embla-carousel-autoplay';
 import { Carousel } from '@mantine/carousel';
+import Map from 'Components/Map';
 import ProductsCarousel from './ProductsCarousel';
+import ProjectsCarousel from './ProjectsCarousel';
 import { ArrowLeftIcon, ArrowRightIcon } from 'assets/icons';
 import { DEVICE_TYPES } from 'utils/device-detection';
+import { useTranslation } from 'next-i18next';
 
 import styles from './Home.module.scss';
-import ProjectsCarousel from './ProjectsCarousel';
 
 const Home = () => {
+    const { t } = useTranslation('common');
+
     const currentDevice = useSelector(state => state.global.currentDevice);
 
     const autoplay = useRef(Autoplay({ delay: 10000 }));
@@ -38,12 +42,16 @@ const Home = () => {
                 </Carousel>
             </div>
             <div className={classNames('flex align-center justify-center flex-column', styles.products)}>
-                <h2 className={'title'}>Məhsullar</h2>
+                <h2 className={'title'}>{t('products')}</h2>
                 <ProductsCarousel />
             </div>
             <div className={classNames('flex align-center justify-center flex-column', styles.projects)}>
                 <h2 className={'title'}>Layihələrimiz</h2>
                 <ProjectsCarousel />
+            </div>
+            <div className={classNames('flex align-center justify-center flex-column')}>
+                <h2 className={'title'}>Əlaqə</h2>
+                <Map />
             </div>
         </div>
     );

@@ -84,7 +84,7 @@
     cursor: pointer;
 }
 
-.productsDropdown {
+.menuDropdown {
     border: none;
     border-radius: 0;
     top: 105px !important;
@@ -94,5 +94,21 @@
 .mobileMenu {
     @include md {
         margin-left: 25px;
+    }
+}
+
+.searchDropdown {
+    border: none;
+    border-radius: 0;
+    top: 100px !important;
+    padding: 5px 16px;
+    width: 100% !important;
+
+    @include sm {
+        padding: 10px 24px;
+    }
+
+    @include md {
+        padding: 20px 130px;
     }
 }

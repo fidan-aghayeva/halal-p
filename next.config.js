@@ -12,6 +12,14 @@ const nextConfig = {
     eslint: {
         ignoreDuringBuilds: true,
     },
+    i18n: {
+        locales: ['az', 'en', 'ar'],
+        defaultLocale: 'az',
+        localeDetection: false,
+        localePath: './public/locales',
+        defaultNS: 'common',
+        localeExtension: 'json',
+    },
 };
 
 module.exports = nextConfig;

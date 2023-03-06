@@ -2,6 +2,7 @@
 
 .container {
     align-items: center;
+    color: var(--color-text-primary);
     display: flex;
     justify-content: space-between;
     margin-bottom: 18px;
@@ -14,7 +15,7 @@
 
 .input {
     border: none;
-    color: var(--color-text-primary);
+
     display: flex;
     flex: auto;
     font-size: 1.4rem;

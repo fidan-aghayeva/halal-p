@@ -2,10 +2,15 @@ import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { DEFAULT_LANGUAGE } from 'utils/constants';
 
 class MyDocument extends Document {
+    static async getInitialProps(ctx) {
+        const initialProps = await Document.getInitialProps(ctx);
+
+        return { ...initialProps, locale: ctx?.locale || DEFAULT_LANGUAGE };
+    }
 
     render() {
         return (
-            <Html lang={DEFAULT_LANGUAGE}>
+            <Html lang={this.props.locale}>
                 <Head>
                     <link rel='preconnect' href='https://fonts.googleapis.com' />
                     <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='' />
@@ -17,9 +22,6 @@ class MyDocument extends Document {
                 <body>
                     <Main />
                     <NextScript />
-
-                    <div id='scrollbar-root' className='scrollbar-root' />
-                    <div id='tooltip-root' />
                 </body>
             </Html>
         );
