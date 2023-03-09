@@ -61,7 +61,7 @@ const MobileMenu = () => {
                     {showSubMenu.about && (
                         <>
                             <Link href={'/'} className={styles.subLinkItem}>
-                                Şirkət haqqında
+                                Şirkət Haqqında
                             </Link>
                             <Link href={'/'} className={styles.subLinkItem}>
                                 Layihələrimiz
