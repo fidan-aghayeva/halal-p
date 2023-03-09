@@ -42,7 +42,7 @@ const Home = () => {
                 </Carousel>
             </div>
             <div className={classNames('flex align-center justify-center flex-column', styles.products)}>
-                <h2 className={'title'}>{t('products')}</h2>
+                <h2 className={'title'}>Məhsullar</h2>
                 <ProductsCarousel />
             </div>
             <div className={classNames('flex align-center justify-center flex-column', styles.projects)}>

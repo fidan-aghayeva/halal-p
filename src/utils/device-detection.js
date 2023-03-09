@@ -9,7 +9,7 @@ export const DEVICE_TYPES = {
 
 const BREAKPOINT_DEVICES = {
     xs: DEVICE_TYPES.mobile,
-    sm: DEVICE_TYPES.mobile,
+    sm: DEVICE_TYPES.tablet,
     md: DEVICE_TYPES.tablet,
     lg: DEVICE_TYPES.desktop,
     xl: DEVICE_TYPES.desktop,

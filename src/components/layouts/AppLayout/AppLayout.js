@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import classNames from 'classnames';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import MobileMenu from 'components/MobileMenu';
@@ -9,7 +10,7 @@ import useWindowSize from 'hooks/use-window-size';
 import styles from './AppLayout.module.scss';
 
 const AppLayout = props => {
-    const { mainClassName, homePage } = props;
+    const { homePage = false } = props;
 
     const dispatch = useDispatch();
 
@@ -26,7 +27,7 @@ const AppLayout = props => {
     return (
         <div className={styles.container}>
             <Header homePage={homePage} />
-            <main className={styles.main}>
+            <main className={classNames(styles.main, { homePage })}>
                 <MobileMenu />
                 <div className={styles.content}>{props.children}</div>
             </main>

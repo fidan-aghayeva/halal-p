@@ -14,7 +14,7 @@ import styles from './MobileMenu.module.scss';
 const MobileMenu = () => {
     const dispatch = useDispatch();
 
-    const [showSubMenu, setShowSubMenu] = useState(false);
+    const [showSubMenu, setShowSubMenu] = useState({ about: false, products: false });
 
     const { isVisible: isSearchVisible } = useSelector(state => state.global.headerSearchProps);
     const { mobileMenuVisibility: isVisible } = useSelector(state => state.global);
@@ -22,16 +22,16 @@ const MobileMenu = () => {
     const onClose = () => {
         dispatch(globalActions.changeMobileMenuVisibility(false));
         dispatch(globalActions.changeHeaderSearchProps({ isVisible: false }));
-        setShowSubMenu(false);
+        setShowSubMenu({ about: false, products: false });
     };
 
     const onSearchClick = () => {
         dispatch(globalActions.changeHeaderSearchProps({ isVisible: true }));
     };
 
-    const onSubMenuClick = e => {
+    const onSubMenuClick = (e, key) => {
         e.preventDefault();
-        setShowSubMenu(!showSubMenu);
+        setShowSubMenu({ ...showSubMenu, [key]: !showSubMenu[key] });
     };
 
     return (
@@ -56,12 +56,29 @@ const MobileMenu = () => {
                 <nav className={styles.menu}>
                     <Link className={styles.linkItem} href={'/about'}>
                         <span>Haqqımızda</span>
+                        <ArrowDownIcon onClick={e => onSubMenuClick(e, 'about')} />
                     </Link>
+                    {showSubMenu.about && (
+                        <>
+                            <Link href={'/'} className={styles.subLinkItem}>
+                                Şirkət haqqında
+                            </Link>
+                            <Link href={'/'} className={styles.subLinkItem}>
+                                Layihələrimiz
+                            </Link>
+                            <Link href={'/'} className={styles.subLinkItem}>
+                                Tədbirlərimiz
+                            </Link>
+                            <Link href={'/'} className={styles.subLinkItem}>
+                                Vakansiyalar
+                            </Link>
+                        </>
+                    )}
                     <Link className={styles.linkItem} href={'/products'}>
                         <span>Məhsullar</span>
-                        <ArrowDownIcon onClick={e => onSubMenuClick(e)} />
+                        <ArrowDownIcon onClick={e => onSubMenuClick(e, 'products')} />
                     </Link>
-                    {showSubMenu &&
+                    {showSubMenu.products &&
                         productCategories.map(category => (
                             <Link key={category.id} href={'/'} className={styles.subLinkItem}>
                                 {category.name}

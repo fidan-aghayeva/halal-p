@@ -6,7 +6,7 @@ const AboutSubMenu = () => {
     return (
         <div className={styles.container}>
             <Link href={'/category'} className={styles.category}>
-                Şirkət Haqqında
+                Şirkət haqqında
             </Link>
             <Link href={'/category'} className={styles.category}>
                 Layihələrimiz

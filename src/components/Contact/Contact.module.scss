@@ -1,0 +1,10 @@
+@import 'styles/utils/responsive';
+
+.container {
+    padding-top: 50px;
+    text-align: center;
+
+    @include md {
+        padding-top: 100px;
+    }
+}

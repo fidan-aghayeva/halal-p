@@ -13,8 +13,6 @@ import styles from './ProjectsCarousel.module.scss';
 const ProjectsCarousel = () => {
     const currentDevice = useSelector(state => state.global.currentDevice);
 
-    console.log(currentDevice);
-
     return (
         <div className={classNames('flex justify-center flex-column', styles.container)}>
             <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
@@ -28,8 +26,8 @@ const ProjectsCarousel = () => {
                     className={styles.carousel}
                 >
                     {projects.map(project => (
-                        <Carousel.Slide className={styles.slide}>
-                            <ProjectCard key={project.id} project={project} />
+                        <Carousel.Slide className={styles.slide} key={project.id}>
+                            <ProjectCard project={project} />
                         </Carousel.Slide>
                     ))}
                 </Carousel>

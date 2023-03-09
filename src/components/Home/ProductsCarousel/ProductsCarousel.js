@@ -22,9 +22,8 @@ const ProductsCarousel = () => {
                 className={styles.carousel}
             >
                 {products.map(product => (
-                    <Carousel.Slide className={styles.slide}>
+                    <Carousel.Slide key={product.id} className={styles.slide}>
                         <Link
-                            key={product.id}
                             href={'/'}
                             className={classNames('flex align-center justify-center flex-column', styles.productCard)}
                         >

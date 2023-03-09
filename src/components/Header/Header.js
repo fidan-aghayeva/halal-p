@@ -4,6 +4,7 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import { HoverCard, Popover } from '@mantine/core';
 import DeviceDetector from '@shared/DeviceDetector';
+import AboutSubMenu from './AboutSubMenu';
 import Logo from 'components/Logo';
 import Language from './Language';
 import Search from './Search';
@@ -14,7 +15,6 @@ import { globalActions } from 'redux/slices/global';
 import useWindowSize from 'hooks/use-window-size';
 
 import styles from './Header.module.scss';
-import AboutSubMenu from './AboutSubMenu';
 
 const Header = props => {
     const { homePage } = props;
@@ -40,15 +40,14 @@ const Header = props => {
         dispatch(globalActions.changeMobileMenuVisibility(true));
     };
 
-    const onMenuItemHover = () => {
-        if (window.scrollY <= 200) {
+    const onMouseEnter = () => {
+        if (homePage && isDesktop && window.scrollY <= 200) {
             setIsHomePage(false);
         }
-        dispatch(globalActions.changeHeaderSearchProps({ isVisible: false }));
     };
 
-    const onMenuItemClose = () => {
-        if (window.scrollY <= 200) {
+    const onMouseLeave = () => {
+        if (homePage && isDesktop && window.scrollY <= 200) {
             setIsHomePage(true);
         }
     };
@@ -59,7 +58,7 @@ const Header = props => {
         }
 
         if (isSearchVisible) {
-            dispatch(globalActions.changeHeaderSearchProps({ isVisible: false }));
+            setIsHomePage(false);
         }
     };
 
@@ -68,32 +67,32 @@ const Header = props => {
     }, [homePage, isDesktop]);
 
     useEffect(() => {
-        window.addEventListener('scroll', onScroll);
+        if (homePage) {
+            window.addEventListener('scroll', onScroll);
 
-        if (isDesktop && window.scrollY <= 200) {
-            setIsHomePage(!isSearchVisible);
+            if (isDesktop && window.scrollY <= 200) {
+                setIsHomePage(!isSearchVisible);
+            }
+
+            return () => {
+                setIsHomePage(false);
+                window.removeEventListener('scroll', onScroll);
+            };
         }
-
-        return () => {
-            setIsHomePage(false);
-            window.removeEventListener('scroll', onScroll);
-        };
-    }, [isDesktop, isSearchVisible]);
+    }, [isDesktop, isSearchVisible, homePage]);
 
     return (
-        <header className={classNames(styles.header, { homePage: isHomePage })}>
+        <header
+            className={classNames(styles.header, { homePage: isHomePage })}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+        >
             <>
                 <Logo whiteLogo={isHomePage} />
                 <div className={styles.content}>
                     <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
                         <nav>
-                            <HoverCard
-                                width={windowWidth}
-                                onOpen={onMenuItemHover}
-                                onClose={onMenuItemClose}
-                                transition={'scale-y'}
-                                transitionDuration={300}
-                            >
+                            <HoverCard width={windowWidth} transition={'scale-y'} transitionDuration={300}>
                                 <HoverCard.Target>
                                     <span className={classNames(styles.linkItem, { homePage: isHomePage })}>
                                         Haqqımızda
@@ -103,13 +102,7 @@ const Header = props => {
                                     <AboutSubMenu />
                                 </HoverCard.Dropdown>
                             </HoverCard>
-                            <HoverCard
-                                width={windowWidth}
-                                onOpen={onMenuItemHover}
-                                onClose={onMenuItemHover}
-                                transition={'scale-y'}
-                                transitionDuration={300}
-                            >
+                            <HoverCard width={windowWidth} transition={'scale-y'} transitionDuration={300}>
                                 <HoverCard.Target>
                                     <span className={classNames(styles.linkItem, { homePage: isHomePage })}>
                                         Məhsullar

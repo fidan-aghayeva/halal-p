@@ -8,8 +8,24 @@
 
 .carouselContainer {
     display: flex;
-    height: 100vh;
+    height: 580px;
     width: 100%;
+
+    img {
+        object-fit: cover;
+    }
+
+    @include sm {
+        height: 740px;
+    }
+
+    @include md {
+        height: 100vh;
+
+        img {
+            object-fit: fill;
+        }
+    }
 }
 
 .carousel {
