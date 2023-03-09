@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import Autoplay from 'embla-carousel-autoplay';
 import { Carousel } from '@mantine/carousel';
-import Map from 'Components/Map';
+import Map from 'components/Map';
 import ProductsCarousel from './ProductsCarousel';
 import ProjectsCarousel from './ProjectsCarousel';
 import { ArrowLeftIcon, ArrowRightIcon } from 'assets/icons';

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { Carousel } from '@mantine/carousel';
 import Link from 'next/link';
 import DeviceDetector from '@shared/DeviceDetector';
-import ProjectCard from 'Components/ProjectCard';
+import ProjectCard from 'components/ProjectCard';
 import { ArrowLeftIcon, ArrowRightIcon } from 'assets/icons';
 import { DEVICE_TYPES } from 'utils/device-detection';
 import { projects } from './data';
