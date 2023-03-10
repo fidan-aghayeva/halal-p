@@ -31,7 +31,7 @@ const Home = () => {
                     previousControlIcon={<ArrowLeftIcon />}
                     withIndicators={currentDevice.type !== DEVICE_TYPES.desktop}
                     withControls={currentDevice.type !== DEVICE_TYPES.mobile}
-                    plugins={[autoplay.current]}
+                    // plugins={[autoplay.current]}
                 >
                     <Carousel.Slide>
                         <Image src={'/images/slider/slider1.png'} alt={'Slider'} fill />
