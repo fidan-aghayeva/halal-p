@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Carousel } from '@mantine/carousel';
 import DeviceDetector from '@shared/DeviceDetector';
 import { DEVICE_TYPES } from 'utils/device-detection';
-import { products } from './data';
+import { products } from 'utils/mock';
 
 import styles from './ProductsCarousel.module.scss';
 

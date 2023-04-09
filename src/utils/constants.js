@@ -2,7 +2,7 @@ import SCSS_VARIABLES from 'styles/variables.module.scss';
 
 export const LANGUAGES = {
     az: 'az',
-    eng: 'eng',
+    en: 'en',
     ru: 'ru',
 };
 

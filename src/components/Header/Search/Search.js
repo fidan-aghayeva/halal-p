@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { SearchIcon } from 'assets/icons';
 import { globalActions } from 'redux/slices/global';
+import useTranslations from 'hooks/use-translations';
 
 import styles from './Search.module.scss';
 
 const Search = () => {
     const dispatch = useDispatch();
+    const T = useTranslations();
 
     const { keyword } = useSelector(state => state.global.headerSearchProps);
 
@@ -33,7 +35,7 @@ const Search = () => {
                 onChange={onSearchChange}
                 onKeyPress={onKeyPress}
                 className={styles.input}
-                placeholder={'Məhsul üzrə axtarış...'}
+                placeholder={T.search_by_product}
             />
             <SearchIcon onClick={onSearchClick} className={styles.icon} />
         </div>

@@ -9,12 +9,12 @@ import ProductsCarousel from './ProductsCarousel';
 import ProjectsCarousel from './ProjectsCarousel';
 import { ArrowLeftIcon, ArrowRightIcon } from 'assets/icons';
 import { DEVICE_TYPES } from 'utils/device-detection';
-import { useTranslation } from 'next-i18next';
+import useTranslations from 'hooks/use-translations';
 
 import styles from './Home.module.scss';
 
 const Home = () => {
-    const { t } = useTranslation('common');
+    const T = useTranslations();
 
     const currentDevice = useSelector(state => state.global.currentDevice);
 
@@ -31,7 +31,7 @@ const Home = () => {
                     previousControlIcon={<ArrowLeftIcon />}
                     withIndicators={currentDevice.type !== DEVICE_TYPES.desktop}
                     withControls={currentDevice.type !== DEVICE_TYPES.mobile}
-                    // plugins={[autoplay.current]}
+                    plugins={[autoplay.current]}
                 >
                     <Carousel.Slide>
                         <Image src={'/images/slider/slider1.png'} alt={'Slider'} fill />
@@ -42,15 +42,15 @@ const Home = () => {
                 </Carousel>
             </div>
             <div className={classNames('flex align-center justify-center flex-column', styles.products)}>
-                <h2 className={'title'}>Məhsullar</h2>
+                <h2 className={'title'}>{T.products}</h2>
                 <ProductsCarousel />
             </div>
             <div className={classNames('flex align-center justify-center flex-column', styles.projects)}>
-                <h2 className={'title'}>Layihələrimiz</h2>
+                <h2 className={'title'}>{T.projects}</h2>
                 <ProjectsCarousel />
             </div>
             <div className={classNames('flex align-center justify-center flex-column')}>
-                <h2 className={'title'}>Əlaqə</h2>
+                <h2 className={'title'}>{T.contact}</h2>
                 <Map />
             </div>
         </div>

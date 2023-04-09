@@ -13,12 +13,9 @@ const nextConfig = {
         ignoreDuringBuilds: true,
     },
     i18n: {
-        locales: ['az', 'en', 'ar'],
+        locales: ['az', 'en', 'ru'],
         defaultLocale: 'az',
         localeDetection: false,
-        localePath: './public/locales',
-        defaultNS: 'common',
-        localeExtension: 'json',
     },
 };
 

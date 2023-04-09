@@ -2,7 +2,6 @@ import { Provider } from 'react-redux';
 import { enableES5 } from 'immer';
 import App from 'next/app';
 import GlobalContainer from 'components/GlobalContainer';
-import { appWithTranslation } from 'next-i18next';
 import Renderer from 'utils/Renderer';
 import { detectSSRDevice } from 'utils/device-detection';
 import { COOKIE_KEYS } from 'utils/cookie';
@@ -57,4 +56,4 @@ MyApp.getInitialProps = withRedux(
     { type: 'app' }
 );
 
-export default appWithTranslation(MyApp);
+export default MyApp;

@@ -7,16 +7,19 @@ import {
     InstagramIcon,
     LinkedinIcon,
 } from 'assets/icons';
+import useTranslations from 'hooks/use-translations';
 
 import styles from './Map.module.scss';
 
 const Map = () => {
+    const T = useTranslations();
+
     return (
         <div className={styles.container}>
             <div className={styles.contactInfo}>
                 <div className={styles.contactItem}>
                     <AddressIcon />
-                    S.S.Axundov 5f küç., 2-ci mərtəbə
+                    {T.address}
                 </div>
                 <div className={styles.contactItem}>
                     <PhoneIcon />
@@ -31,13 +34,13 @@ const Map = () => {
                     info@halal.az
                 </div>
                 <div className={styles.socialMediaLinks}>
-                    <a className={styles.icon} href={''} target={'_blank'}>
+                    <a className={styles.icon} href={''} target={'blank'}>
                         <FacebookIcon />
                     </a>
-                    <a className={styles.icon} href={''} target={'_blank'}>
+                    <a className={styles.icon} href={''} target={'blank'}>
                         <InstagramIcon />
                     </a>
-                    <a className={styles.icon} href={''} target={'_blank'}>
+                    <a className={styles.icon} href={''} target={'blank'}>
                         <LinkedinIcon />
                     </a>
                 </div>

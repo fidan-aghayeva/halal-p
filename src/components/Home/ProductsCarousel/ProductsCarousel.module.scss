@@ -19,10 +19,6 @@
     flex: 0 0 25%;
 
     @include s {
-        flex: 0 0 50%;
-    }
-
-    @include md {
         flex: 0 0 33.33333%;
     }
 

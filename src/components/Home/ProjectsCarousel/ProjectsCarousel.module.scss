@@ -45,14 +45,14 @@
     display: flex;
     justify-content: center;
     flex: 0 0 33.33333%;
-    padding: 20px 0;
+    padding: 20px 20px 20px 0;
 
     @include xl {
         flex: 0 0 25%;
     }
 }
 
-.showMore {
+.showAll {
     align-items: center;
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
@@ -75,18 +75,22 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 
     > div:not(:last-of-type) {
         margin-bottom: 25px;
     }
 
-    @include sm {
+    @include s {
         flex-direction: row;
 
         > div:not(:last-of-type) {
             margin-right: 16px;
             margin-bottom: 0;
         }
+    }
+
+    @include md {
+        justify-content: space-between;
     }
 }

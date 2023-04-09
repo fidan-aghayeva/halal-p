@@ -1,5 +1,7 @@
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import classNames from 'classnames';
 import { Select } from '@mantine/core';
 import DeviceDetector from '@shared/DeviceDetector';
@@ -15,6 +17,8 @@ const Language = props => {
     const { homePage } = props;
 
     const dispatch = useDispatch();
+    const router = useRouter();
+    const { pathname } = router;
 
     const { language } = useSelector(state => state.global);
 
@@ -29,14 +33,16 @@ const Language = props => {
                 label: 'RU',
             },
             {
-                value: LANGUAGES.eng,
-                label: 'ENG',
+                value: LANGUAGES.en,
+                label: 'EN',
             },
         ].filter(lang => lang.value !== language);
     }, [language]);
 
     const onChange = lang => {
         dispatch(globalActions.changeLanguage(lang));
+
+        router.push(pathname, router.asPath, { locale: lang, scroll: false });
 
         Cookie.setItem(COOKIE_KEYS.language, lang);
     };
@@ -46,9 +52,16 @@ const Language = props => {
             <DeviceDetector hidden={[DEVICE_TYPES.desktop]}>
                 <div className={styles.languages}>
                     {languageOptions.map(language => (
-                        <span className={styles.language} key={language.value} onClick={() => onChange(language.value)}>
+                        <Link
+                            href={pathname}
+                            className={styles.language}
+                            key={language.value}
+                            onClick={() => onChange(language.value)}
+                            locale={language.value}
+                            scroll={false}
+                        >
                             {language.label}
-                        </span>
+                        </Link>
                     ))}
                 </div>
             </DeviceDetector>

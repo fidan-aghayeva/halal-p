@@ -6,12 +6,15 @@ import DeviceDetector from '@shared/DeviceDetector';
 import ProjectCard from 'components/ProjectCard';
 import { ArrowLeftIcon, ArrowRightIcon } from 'assets/icons';
 import { DEVICE_TYPES } from 'utils/device-detection';
-import { projects } from './data';
+import { projects } from 'utils/mock';
+import useTranslations from 'hooks/use-translations';
 
 import styles from './ProjectsCarousel.module.scss';
 
 const ProjectsCarousel = () => {
-    const currentDevice = useSelector(state => state.global.currentDevice);
+    const T = useTranslations();
+
+    const { currentDevice, language } = useSelector(state => state.global);
 
     return (
         <div className={classNames('flex justify-center flex-column', styles.container)}>
@@ -39,8 +42,8 @@ const ProjectsCarousel = () => {
                         : projects.slice(0, 3).map(project => <ProjectCard key={project.id} project={project} />)}
                 </div>
             </DeviceDetector>
-            <Link href={'/'} className={styles.showMore}>
-                Hamısını göstərmək
+            <Link href={'/projects'} locale={language} className={styles.showAll}>
+                {T.show_all}
             </Link>
         </div>
     );

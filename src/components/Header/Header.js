@@ -12,6 +12,7 @@ import ProductsSubMenu from './ProductsSubMenu';
 import { MenuIcon, SearchIcon } from 'assets/icons';
 import { DEVICE_TYPES } from 'utils/device-detection';
 import { globalActions } from 'redux/slices/global';
+import useTranslations from 'hooks/use-translations';
 import useWindowSize from 'hooks/use-window-size';
 
 import styles from './Header.module.scss';
@@ -20,6 +21,7 @@ const Header = props => {
     const { homePage } = props;
 
     const dispatch = useDispatch();
+    const T = useTranslations();
 
     const [windowWidth] = useWindowSize();
 
@@ -95,7 +97,7 @@ const Header = props => {
                             <HoverCard width={windowWidth} transition={'scale-y'} transitionDuration={300}>
                                 <HoverCard.Target>
                                     <span className={classNames(styles.linkItem, { homePage: isHomePage })}>
-                                        Haqqımızda
+                                        {T.menu_item_1}
                                     </span>
                                 </HoverCard.Target>
                                 <HoverCard.Dropdown className={styles.menuDropdown}>
@@ -105,7 +107,7 @@ const Header = props => {
                             <HoverCard width={windowWidth} transition={'scale-y'} transitionDuration={300}>
                                 <HoverCard.Target>
                                     <span className={classNames(styles.linkItem, { homePage: isHomePage })}>
-                                        Məhsullar
+                                        {T.menu_item_2}
                                     </span>
                                 </HoverCard.Target>
                                 <HoverCard.Dropdown className={styles.menuDropdown}>
@@ -113,21 +115,21 @@ const Header = props => {
                                 </HoverCard.Dropdown>
                             </HoverCard>
                             <Link className={classNames(styles.linkItem, { homePage: isHomePage })} href={'/service'}>
-                                <span>Servis</span>
+                                <span>{T.menu_item_3}</span>
                             </Link>
                             <Link className={classNames(styles.linkItem, { homePage: isHomePage })} href={'/blog'}>
-                                <span>Bloq</span>
+                                <span>{T.menu_item_4}</span>
                             </Link>
                             <Link className={classNames(styles.linkItem, { homePage: isHomePage })} href={'/contact'}>
-                                <span>Əlaqə</span>
+                                <span>{T.menu_item_5}</span>
                             </Link>
                         </nav>
                         <a
                             href={'https://shop.halal.az/'}
-                            target={'_blank'}
+                            target={'blank'}
                             className={classNames(styles.eShopping, { homePage: isHomePage })}
                         >
-                            E-alışa keç
+                            {T.go_to_eShop}
                         </a>
                     </DeviceDetector>
                     <DeviceDetector hidden={[DEVICE_TYPES.desktop]}>
