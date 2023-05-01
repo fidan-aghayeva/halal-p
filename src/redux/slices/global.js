@@ -1,17 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { detectClientDevice } from 'utils/device-detection';
 import Renderer from 'utils/Renderer';
-import Cookie, { COOKIE_KEYS } from 'utils/cookie';
+import {DEFAULT_LANGUAGE} from "utils/constants";
 
 const initialCurrentDevice = Renderer.onClientSide()
     ? detectClientDevice(window.innerWidth)
     : { type: '', breakpoint: '' };
 
-const initialLanguage = Renderer.onClientSide() ? Cookie.getItem(COOKIE_KEYS.language) : '';
 
 const initialState = {
     currentDevice: initialCurrentDevice,
-    language: initialLanguage,
+    language: DEFAULT_LANGUAGE,
     headerSearchProps: { isVisible: false, keyword: null },
     mobileMenuVisibility: false,
 };

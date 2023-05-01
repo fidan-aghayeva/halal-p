@@ -7,7 +7,6 @@ import { Select } from '@mantine/core';
 import DeviceDetector from '@shared/DeviceDetector';
 import { ArrowDownIcon } from 'assets/icons';
 import { LANGUAGES } from 'utils/constants';
-import Cookie, { COOKIE_KEYS } from 'utils/cookie';
 import { DEVICE_TYPES } from 'utils/device-detection';
 import { globalActions } from 'redux/slices/global';
 
@@ -44,7 +43,6 @@ const Language = props => {
 
         router.push(pathname, router.asPath, { locale: lang, scroll: false });
 
-        Cookie.setItem(COOKIE_KEYS.language, lang);
     };
 
     return (
