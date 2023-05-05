@@ -1,5 +1,6 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import Image from 'next/image';
 import Autoplay from 'embla-carousel-autoplay';
@@ -15,10 +16,13 @@ import styles from './Home.module.scss';
 
 const Home = () => {
     const T = useTranslations();
+    const { locale } = useRouter();
 
     const currentDevice = useSelector(state => state.global.currentDevice);
 
     const autoplay = useRef(Autoplay({ delay: 10000 }));
+
+    useEffect(() => {}, [locale]);
 
     return (
         <div className={styles.container}>
