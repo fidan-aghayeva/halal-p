@@ -1,18 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { detectClientDevice } from 'utils/device-detection';
 import Renderer from 'utils/Renderer';
-import {DEFAULT_LANGUAGE} from "utils/constants";
+import Cookie, { COOKIE_KEYS } from 'utils/cookie';
 
 const initialCurrentDevice = Renderer.onClientSide()
     ? detectClientDevice(window.innerWidth)
     : { type: '', breakpoint: '' };
 
+const initialLanguage = Renderer.onClientSide() ? Cookie.getItem(COOKIE_KEYS.language) : '';
 
 const initialState = {
     currentDevice: initialCurrentDevice,
-    language: DEFAULT_LANGUAGE,
+    language: initialLanguage,
     headerSearchProps: { isVisible: false, keyword: null },
     mobileMenuVisibility: false,
+    pagination: {
+        isFetching: false,
+        totalPage: null,
+        page: 1,
+    },
 };
 
 export const globalSlice = createSlice({
@@ -30,6 +36,15 @@ export const globalSlice = createSlice({
         },
         changeMobileMenuVisibility: (state, { payload }) => {
             state.mobileMenuVisibility = payload;
+        },
+        setPagination: (state, { payload }) => {
+            state.pagination = {
+                ...state.pagination,
+                ...payload,
+            };
+        },
+        clearPagination: (state, { payload }) => {
+            delete state[payload];
         },
     },
 });

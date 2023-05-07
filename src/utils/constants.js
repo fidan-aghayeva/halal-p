@@ -16,3 +16,11 @@ export const BREAKPOINTS = {
     lg: Number(SCSS_VARIABLES.breakpoints_lg),
     xl: Number(SCSS_VARIABLES.breakpoints_xl),
 };
+
+export const SERVICE_URL = process.env.NEXT_PUBLIC_SERVICE_URL;
+
+export const PAGINATION_SIZE = 2;
+
+export const PAGE_TYPES = {
+    project: 'Project',
+};

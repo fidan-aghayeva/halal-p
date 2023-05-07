@@ -17,6 +17,14 @@ const nextConfig = {
         defaultLocale: 'az',
         localeDetection: false,
     },
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'halal-p.azurewebsites.net',
+            },
+        ],
+    },
 };
 
 module.exports = nextConfig;

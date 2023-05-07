@@ -36,24 +36,9 @@
     width: 156px;
 
     &:hover {
-        background-color: var(--primary-color);
+        box-shadow: 0px 3px 21px rgba(0, 0, 0, 0.1);
+
         border: 1px solid var(--primary-color);
-        color: var(--color-text-tertiary);
-
-        svg {
-            color: var(--color-text-tertiary);
-        }
-    }
-
-    svg {
-        color: var(--primary-color);
-        height: 90px;
-        width: 90px;
-
-        @include sm {
-            height: 118px;
-            width: 140px;
-        }
     }
 
     @include sm {
@@ -65,6 +50,17 @@
     @include lg {
         height: 300px;
         width: 280px;
+    }
+}
+
+.productImage {
+    height: 90px;
+    position: relative;
+    width: 90px;
+
+    @include sm {
+        height: 118px;
+        width: 140px;
     }
 }
 
