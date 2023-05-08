@@ -23,4 +23,5 @@ export const PAGINATION_SIZE = 2;
 
 export const PAGE_TYPES = {
     project: 'Project',
+    event: 'Event',
 };

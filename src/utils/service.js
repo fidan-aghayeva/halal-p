@@ -7,6 +7,12 @@ export const getHomeSliders = async lang => {
     return data.data;
 };
 
+export const getHomeBLogsByType = async ({ lang, type }) => {
+    const data = await axios.get(`${SERVICE_URL}/${lang}/blogs/${type}/main-page`);
+
+    return data.data;
+};
+
 export const getSections = async lang => {
     const data = await axios.get(`${SERVICE_URL}/${lang}/sections`);
 

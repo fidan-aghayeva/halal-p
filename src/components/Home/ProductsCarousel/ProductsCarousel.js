@@ -53,7 +53,7 @@ const ProductsCarousel = () => {
                                     )}
                                 >
                                     <div className={styles.productImage}>
-                                        <Image src={imageUrl} alt={product.name} layout={'fill'} />
+                                        <Image src={imageUrl} alt={product.name} fill />
                                     </div>
                                     <span className={styles.productName}>{product.name}</span>
                                 </Link>

@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import { Carousel } from '@mantine/carousel';
 import Link from 'next/link';
@@ -6,15 +8,30 @@ import DeviceDetector from '@shared/DeviceDetector';
 import ProjectCard from 'components/ProjectCard';
 import { ArrowLeftIcon, ArrowRightIcon } from 'assets/icons';
 import { DEVICE_TYPES } from 'utils/device-detection';
-import { projects } from 'utils/mock';
+import { getHomeBLogsByType } from 'utils/service';
+import { PAGE_TYPES } from 'utils/constants';
 import useTranslations from 'hooks/use-translations';
 
 import styles from './ProjectsCarousel.module.scss';
 
 const ProjectsCarousel = () => {
     const T = useTranslations();
+    const router = useRouter();
+    const { locale } = router;
 
     const { currentDevice, language } = useSelector(state => state.global);
+
+    const [projects, setProjects] = useState([]);
+
+    const getProjectsData = async lang => {
+        const data = await getHomeBLogsByType({ lang, type: PAGE_TYPES.project });
+
+        setProjects(data);
+    };
+
+    useEffect(() => {
+        getProjectsData(locale);
+    }, [locale]);
 
     return (
         <div className={classNames('flex justify-center flex-column', styles.container)}>
