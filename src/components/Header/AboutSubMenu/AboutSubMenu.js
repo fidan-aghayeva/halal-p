@@ -11,10 +11,10 @@ const AboutSubMenu = () => {
             <Link href={'/about'} className={styles.category}>
                 {T.sub_menu_item_1}
             </Link>
-            <Link href={'/projects'} className={styles.category}>
+            <Link href={'/projects/page=1'} className={styles.category}>
                 {T.sub_menu_item_2}
             </Link>
-            <Link href={'/events'} className={styles.category}>
+            <Link href={'/events/page=1'} className={styles.category}>
                 {T.sub_menu_item_3}
             </Link>
             <Link href={'/vacancies'} className={styles.category}>

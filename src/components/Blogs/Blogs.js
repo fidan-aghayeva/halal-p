@@ -3,31 +3,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { Loader } from '@mantine/core';
 import Pagination from '@shared/Pagination';
-import EventCard from './EventCard';
+import BlogCard from './BlogCard';
 import PageLayout from 'components/layouts/PageLayout';
 import { getBlogsDataByType } from 'utils/service';
 import { globalActions } from 'redux/slices/global';
 import { PAGE_TYPES, PAGINATION_SIZE } from 'utils/constants';
 import useTranslations from 'hooks/use-translations';
 
-import styles from './Events.module.scss';
+import styles from './Blogs.module.scss';
 
-const Events = () => {
+const Blogs = () => {
     const T = useTranslations();
     const dispatch = useDispatch();
     const router = useRouter();
     const {
-        query: { events: queryEvents },
+        query: { blog },
         locale,
     } = router;
-    const page = queryEvents[0].split('=')[1];
+    const page = blog[0].split('=')[1];
 
     const paginationProps = useSelector(state => state.global.pagination);
     const { isFetching } = paginationProps;
 
-    const [events, setEvents] = useState([]);
+    const [blogs, setBlogs] = useState([]);
 
-    const getEventsData = async params => {
+    const getBlogsData = async params => {
         dispatch(
             globalActions.setPagination({
                 isFetching: true,
@@ -44,7 +44,7 @@ const Events = () => {
             );
         }
 
-        setEvents(data.blogs);
+        setBlogs(data.blogs);
 
         dispatch(
             globalActions.setPagination({
@@ -57,17 +57,17 @@ const Events = () => {
     useEffect(() => {
         const params = {
             lang: locale,
-            type: PAGE_TYPES.event,
+            type: PAGE_TYPES.blog,
             page,
             pageSize: PAGINATION_SIZE,
         };
 
-        getEventsData(params);
+        getBlogsData(params);
     }, [locale, page]);
 
     return (
         <PageLayout
-            title={T.events}
+            title={T.blog}
             content={
                 '“HALAL-P” MMC olaraq Azərbaycan bazarında 1996-cı ildən etibarən fəaliyyət göstəririk və dünyaca məşhur ticarət markalarının Azərbaycanda rəsmi təmsilçisiyik. Mətbəə, bank, korporativ və arxiv həlləri üzrə böyük təcrübə və biliklərə, eləcə də böyük və professional servis mərkəzinə sahibik.'
             }
@@ -76,8 +76,8 @@ const Events = () => {
                 <Loader variant={'bars'} color={'#1ca29b'} />
             ) : (
                 <div className={styles.container}>
-                    {events.map(event => (
-                        <EventCard key={event.id} event={event} />
+                    {blogs.map(event => (
+                        <BlogCard key={event.id} event={event} />
                     ))}
                 </div>
             )}
@@ -86,4 +86,4 @@ const Events = () => {
     );
 };
 
-export default Events;
+export default Blogs;

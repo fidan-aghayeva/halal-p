@@ -5,7 +5,7 @@ import GlobalContainer from 'components/GlobalContainer';
 import Renderer from 'utils/Renderer';
 import { detectSSRDevice } from 'utils/device-detection';
 import { COOKIE_KEYS } from 'utils/cookie';
-import { DEFAULT_LANGUAGE } from 'utils/constants';
+import { DEFAULT_LANGUAGE, LANGUAGES } from 'utils/constants';
 import { globalActions } from 'redux/slices/global';
 import store from 'redux/store';
 import withRedux from 'utils/with-redux';
@@ -36,7 +36,7 @@ MyApp.getInitialProps = withRedux(
             const userAgent = req.headers['user-agent'];
             const currentDevice = detectSSRDevice(userAgent);
 
-            if (!cookies.language) {
+            if (!cookies.language || !Object.keys(LANGUAGES).some(lang => lang === cookies.language)) {
                 store.dispatch(globalActions.changeLanguage(DEFAULT_LANGUAGE));
 
                 res.setHeader('Set-Cookie', `${COOKIE_KEYS.language}=${DEFAULT_LANGUAGE};path=/;`);

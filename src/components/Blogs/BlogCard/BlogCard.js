@@ -6,9 +6,9 @@ import { ArrowRightLongIcon } from 'assets/icons';
 import { SERVICE_URL } from 'utils/constants';
 import useTranslations from 'hooks/use-translations';
 
-import styles from './EventCard.module.scss';
+import styles from './BlogCard.module.scss';
 
-const EventCard = props => {
+const BlogCard = props => {
     const { event } = props;
 
     const T = useTranslations();
@@ -37,4 +37,4 @@ const EventCard = props => {
     );
 };
 
-export default EventCard;
+export default BlogCard;

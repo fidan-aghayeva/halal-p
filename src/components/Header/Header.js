@@ -117,7 +117,10 @@ const Header = props => {
                             <Link className={classNames(styles.linkItem, { homePage: isHomePage })} href={'/service'}>
                                 <span>{T.menu_item_3}</span>
                             </Link>
-                            <Link className={classNames(styles.linkItem, { homePage: isHomePage })} href={'/blog'}>
+                            <Link
+                                className={classNames(styles.linkItem, { homePage: isHomePage })}
+                                href={'/blog/page=1'}
+                            >
                                 <span>{T.menu_item_4}</span>
                             </Link>
                             <Link className={classNames(styles.linkItem, { homePage: isHomePage })} href={'/contact'}>

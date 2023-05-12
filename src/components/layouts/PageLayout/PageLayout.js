@@ -8,7 +8,7 @@ const PageLayout = props => {
     const { title, content, children } = props;
 
     const router = useRouter();
-    const { pathname } = router;
+    const { asPath } = router;
 
     return (
         <div className={styles.container}>
@@ -18,7 +18,7 @@ const PageLayout = props => {
                     <p className={styles.text}>{content}</p>
                 </div>
                 <DeviceDetector hidden={[DEVICE_TYPES.mobile]}>
-                    <img src={`/images/pageImages${pathname}.png`} alt={''} className={styles.image} />
+                    <img src={`/images/pageImages/${asPath.split('/')[1]}.png`} alt={''} className={styles.image} />
                 </DeviceDetector>
             </div>
             <div className={styles.main}>{children}</div>

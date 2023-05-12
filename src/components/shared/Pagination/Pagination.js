@@ -1,23 +1,24 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import { Pagination as MantinePagination } from '@mantine/core';
-import { globalActions } from 'redux/slices/global';
 
 import styles from './Pagination.module.scss';
 
 const Pagination = () => {
-    const dispatch = useDispatch();
+    const router = useRouter();
+    const { asPath } = router;
 
     const paginationProps = useSelector(state => state.global.pagination);
-    const { page, totalPage } = paginationProps;
+    const { totalPage } = paginationProps;
 
     const onChange = value => {
-        dispatch(globalActions.setPagination({ page: value }));
+        router.push(`page=${value}`, `page=${value}`, { scroll: false });
     };
 
     return (
         <MantinePagination
             className={styles.pagination}
-            page={page}
+            page={asPath[asPath.length]}
             defaultValue={1}
             noWrap
             onChange={onChange}

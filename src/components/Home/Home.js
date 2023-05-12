@@ -39,26 +39,32 @@ const Home = () => {
 
     return (
         <div className={styles.container}>
-            {sliderData.length ? (
-                <div className={styles.carouselContainer}>
-                    <Carousel
-                        className={styles.carousel}
-                        height='100%'
-                        controlsOffset='xl'
-                        nextControlIcon={<ArrowRightIcon />}
-                        previousControlIcon={<ArrowLeftIcon />}
-                        withIndicators={currentDevice.type !== DEVICE_TYPES.desktop}
-                        withControls={currentDevice.type !== DEVICE_TYPES.mobile}
-                        plugins={[autoplay.current]}
-                    >
-                        {sliderData.map(slider => (
-                            <Carousel.Slide key={slider.id}>
-                                <Image src={SERVICE_URL + slider.imagePath} alt={'Slider'} fill />
-                            </Carousel.Slide>
-                        ))}
-                    </Carousel>
-                </div>
-            ) : null}
+            <div className={styles.carouselContainer}>
+                <Carousel
+                    className={styles.carousel}
+                    height='100%'
+                    controlsOffset='xl'
+                    nextControlIcon={<ArrowRightIcon />}
+                    previousControlIcon={<ArrowLeftIcon />}
+                    withIndicators={currentDevice.type !== DEVICE_TYPES.desktop}
+                    withControls={currentDevice.type !== DEVICE_TYPES.mobile}
+                    plugins={[autoplay.current]}
+                >
+                    {sliderData.length
+                        ? sliderData.map(slider => (
+                              <Carousel.Slide key={slider.id}>
+                                  <Image
+                                      src={SERVICE_URL + slider.imagePath}
+                                      alt={'Slider'}
+                                      fill
+                                      placeholder={'blur'}
+                                      blurDataURL={'/images/slider/slider1.png'}
+                                  />
+                              </Carousel.Slide>
+                          ))
+                        : null}
+                </Carousel>
+            </div>
 
             <div className={classNames('flex align-center justify-center flex-column', styles.products)}>
                 <h2 className={'title'}>{T.products}</h2>
