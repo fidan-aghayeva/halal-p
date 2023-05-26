@@ -1,0 +1,62 @@
+@import 'styles/utils/responsive';
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.carousel {
+    width: 100%;
+
+    & :global {
+        & .mantine-Carousel-control {
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            color: #d9d9d9;
+            height: 14px;
+            opacity: 1;
+            position: absolute;
+            top: calc(50% + 13px);
+            width: 24px;
+
+            svg {
+                height: 20px;
+                width: 30px;
+            }
+
+            &:hover {
+                color: var(--primary-color);
+            }
+
+            &:first-child {
+                left: -25px;
+            }
+
+            &:last-child {
+                right: -25px;
+            }
+        }
+    }
+}
+
+.slide {
+    display: grid;
+    column-gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include sm {
+        column-gap: 20px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include lg {
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 40px;
+    }
+}
+
+.slideItem {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,33 @@
+@import 'styles/utils/responsive';
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.imageContainer {
+    height: 165px;
+    position: relative;
+    width: 100%;
+
+    @include s {
+        height: 260px;
+    }
+
+    @include md {
+        width: 280px;
+    }
+}
+
+.name {
+    color: var(--color-text-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 16px 0 4px 0;
+}
+
+.position {
+    color: #a9a9a9;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
