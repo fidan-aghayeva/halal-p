@@ -7,7 +7,6 @@ import Search from '../Header/Search';
 import { ArrowDownIcon, CloseIcon, FacebookIcon, InstagramIcon, LinkedinIcon, SearchIcon } from 'assets/icons';
 import { DEVICE_TYPES } from 'utils/device-detection';
 import { globalActions } from 'redux/slices/global';
-import productCategories from '../Header/ProductsSubMenu/mock';
 import useTranslations from 'hooks/use-translations';
 
 import styles from './MobileMenu.module.scss';
@@ -19,7 +18,7 @@ const MobileMenu = () => {
     const [showSubMenu, setShowSubMenu] = useState({ about: false, products: false });
 
     const { isVisible: isSearchVisible } = useSelector(state => state.global.headerSearchProps);
-    const { mobileMenuVisibility: isVisible } = useSelector(state => state.global);
+    const { mobileMenuVisibility: isVisible, sections, siteData, contact } = useSelector(state => state.global);
 
     const onClose = () => {
         dispatch(globalActions.changeMobileMenuVisibility(false));
@@ -65,10 +64,10 @@ const MobileMenu = () => {
                             <Link href={'/about'} className={styles.subLinkItem} onClick={onClose}>
                                 {T.sub_menu_item_1}
                             </Link>
-                            <Link href={'/projects'} className={styles.subLinkItem} onClick={onClose}>
+                            <Link href={'/projects?page=1'} className={styles.subLinkItem} onClick={onClose}>
                                 {T.sub_menu_item_2}
                             </Link>
-                            <Link href={'/events'} className={styles.subLinkItem} onClick={onClose}>
+                            <Link href={'/events?page=1'} className={styles.subLinkItem} onClick={onClose}>
                                 {T.sub_menu_item_3}
                             </Link>
                             <Link href={'/vacancies'} className={styles.subLinkItem} onClick={onClose}>
@@ -81,33 +80,38 @@ const MobileMenu = () => {
                         <ArrowDownIcon onClick={e => onSubMenuClick(e, 'products')} />
                     </span>
                     {showSubMenu.products &&
-                        productCategories.map(category => (
-                            <Link key={category.id} href={'/'} className={styles.subLinkItem} onClick={onClose}>
-                                {category.name}
+                        sections.map(section => (
+                            <Link
+                                key={section.id}
+                                href={`/products/${section.slug}/${section.id}?page=1`}
+                                className={styles.subLinkItem}
+                                onClick={onClose}
+                            >
+                                {section.name}
                             </Link>
                         ))}
                     <Link className={styles.linkItem} href={'/service'}>
                         <span>{T.menu_item_3}</span>
                     </Link>
-                    <Link className={styles.linkItem} href={'/blog'}>
+                    <Link className={styles.linkItem} href={'/blog?page=1'}>
                         <span>{T.menu_item_4}</span>
                     </Link>
                     <Link className={styles.linkItem} href={'/contact'}>
                         <span>{T.menu_item_5}</span>
                     </Link>
                 </nav>
-                <a href={'https://shop.halal.az/'} target={'blank'} className={styles.eShopping}>
+                <a href={siteData?.shopUrl} target={'blank'} className={styles.eShopping}>
                     {T.go_to_eShop}
                 </a>
             </div>
             <div className={styles.socialMediaLinks}>
-                <a className={styles.icon} href={''} target={'blank'}>
+                <a className={styles.icon} href={contact?.Facebook} target={'blank'}>
                     <FacebookIcon />
                 </a>
-                <a className={styles.icon} href={''} target={'blank'}>
+                <a className={styles.icon} href={contact?.Instagram} target={'blank'}>
                     <InstagramIcon />
                 </a>
-                <a className={styles.icon} href={''} target={'blank'}>
+                <a className={styles.icon} href={contact?.Linkedin} target={'blank'}>
                     <LinkedinIcon />
                 </a>
             </div>

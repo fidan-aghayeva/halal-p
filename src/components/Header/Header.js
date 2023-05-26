@@ -27,7 +27,7 @@ const Header = props => {
 
     const [isHomePage, setIsHomePage] = useState(false);
 
-    const currentDevice = useSelector(state => state.global.currentDevice);
+    const { currentDevice, siteData } = useSelector(state => state.global);
     const { isVisible: isSearchVisible } = useSelector(state => state.global.headerSearchProps);
 
     const isDesktop = useMemo(() => {
@@ -90,7 +90,7 @@ const Header = props => {
             onMouseLeave={onMouseLeave}
         >
             <>
-                <Logo whiteLogo={isHomePage} />
+                {siteData && <Logo path={isHomePage ? siteData.logoDark.path : siteData.logoLight.path} />}
                 <div className={styles.content}>
                     <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
                         <nav>
@@ -119,7 +119,7 @@ const Header = props => {
                             </Link>
                             <Link
                                 className={classNames(styles.linkItem, { homePage: isHomePage })}
-                                href={'/blog/page=1'}
+                                href={'/blog?page=1'}
                             >
                                 <span>{T.menu_item_4}</span>
                             </Link>
@@ -128,7 +128,7 @@ const Header = props => {
                             </Link>
                         </nav>
                         <a
-                            href={'https://shop.halal.az/'}
+                            href={siteData?.shopUrl}
                             target={'blank'}
                             className={classNames(styles.eShopping, { homePage: isHomePage })}
                         >
