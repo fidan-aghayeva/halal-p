@@ -7,17 +7,18 @@ import Search from '../Header/Search';
 import { ArrowDownIcon, CloseIcon, FacebookIcon, InstagramIcon, LinkedinIcon, SearchIcon } from 'assets/icons';
 import { DEVICE_TYPES } from 'utils/device-detection';
 import { globalActions } from 'redux/slices/global';
-import productCategories from '../Header/ProductsSubMenu/mock';
+import useTranslations from 'hooks/use-translations';
 
 import styles from './MobileMenu.module.scss';
 
 const MobileMenu = () => {
     const dispatch = useDispatch();
+    const T = useTranslations();
 
     const [showSubMenu, setShowSubMenu] = useState({ about: false, products: false });
 
     const { isVisible: isSearchVisible } = useSelector(state => state.global.headerSearchProps);
-    const { mobileMenuVisibility: isVisible } = useSelector(state => state.global);
+    const { mobileMenuVisibility: isVisible, sections, siteData, contact } = useSelector(state => state.global);
 
     const onClose = () => {
         dispatch(globalActions.changeMobileMenuVisibility(false));
@@ -54,58 +55,63 @@ const MobileMenu = () => {
                     </div>
                 )}
                 <nav className={styles.menu}>
-                    <Link className={styles.linkItem} href={'/about'}>
-                        <span>Haqqımızda</span>
+                    <span className={styles.linkItem}>
+                        {T.menu_item_1}
                         <ArrowDownIcon onClick={e => onSubMenuClick(e, 'about')} />
-                    </Link>
+                    </span>
                     {showSubMenu.about && (
                         <>
-                            <Link href={'/'} className={styles.subLinkItem}>
-                                Şirkət haqqında
+                            <Link href={'/about'} className={styles.subLinkItem} onClick={onClose}>
+                                {T.sub_menu_item_1}
                             </Link>
-                            <Link href={'/'} className={styles.subLinkItem}>
-                                Layihələrimiz
+                            <Link href={'/projects?page=1'} className={styles.subLinkItem} onClick={onClose}>
+                                {T.sub_menu_item_2}
                             </Link>
-                            <Link href={'/'} className={styles.subLinkItem}>
-                                Tədbirlərimiz
+                            <Link href={'/events?page=1'} className={styles.subLinkItem} onClick={onClose}>
+                                {T.sub_menu_item_3}
                             </Link>
-                            <Link href={'/'} className={styles.subLinkItem}>
-                                Vakansiyalar
+                            <Link href={'/vacancies'} className={styles.subLinkItem} onClick={onClose}>
+                                {T.sub_menu_item_4}
                             </Link>
                         </>
                     )}
-                    <Link className={styles.linkItem} href={'/products'}>
-                        <span>Məhsullar</span>
+                    <span className={styles.linkItem}>
+                        {T.menu_item_2}
                         <ArrowDownIcon onClick={e => onSubMenuClick(e, 'products')} />
-                    </Link>
+                    </span>
                     {showSubMenu.products &&
-                        productCategories.map(category => (
-                            <Link key={category.id} href={'/'} className={styles.subLinkItem}>
-                                {category.name}
+                        sections.map(section => (
+                            <Link
+                                key={section.id}
+                                href={`/products/${section.slug}/${section.id}?page=1`}
+                                className={styles.subLinkItem}
+                                onClick={onClose}
+                            >
+                                {section.name}
                             </Link>
                         ))}
                     <Link className={styles.linkItem} href={'/service'}>
-                        <span>Servis</span>
+                        <span>{T.menu_item_3}</span>
                     </Link>
-                    <Link className={styles.linkItem} href={'/blog'}>
-                        <span>Bloq</span>
+                    <Link className={styles.linkItem} href={'/blog?page=1'}>
+                        <span>{T.menu_item_4}</span>
                     </Link>
                     <Link className={styles.linkItem} href={'/contact'}>
-                        <span>Əlaqə</span>
+                        <span>{T.menu_item_5}</span>
                     </Link>
                 </nav>
-                <a href={'https://shop.halal.az/'} target={'_blank'} className={styles.eShopping}>
-                    E-alışa keç
+                <a href={siteData?.shopUrl} target={'blank'} className={styles.eShopping}>
+                    {T.go_to_eShop}
                 </a>
             </div>
             <div className={styles.socialMediaLinks}>
-                <a className={styles.icon} href={''} target={'_blank'}>
+                <a className={styles.icon} href={contact?.Facebook} target={'blank'}>
                     <FacebookIcon />
                 </a>
-                <a className={styles.icon} href={''} target={'_blank'}>
+                <a className={styles.icon} href={contact?.Instagram} target={'blank'}>
                     <InstagramIcon />
                 </a>
-                <a className={styles.icon} href={''} target={'_blank'}>
+                <a className={styles.icon} href={contact?.Linkedin} target={'blank'}>
                     <LinkedinIcon />
                 </a>
             </div>

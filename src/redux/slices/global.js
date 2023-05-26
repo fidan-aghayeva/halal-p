@@ -14,6 +14,15 @@ const initialState = {
     language: initialLanguage,
     headerSearchProps: { isVisible: false, keyword: null },
     mobileMenuVisibility: false,
+    pagination: {
+        isFetching: false,
+        totalPage: null,
+        page: 1,
+    },
+    sections: [],
+    categories: [],
+    siteData: null,
+    contact: null,
 };
 
 export const globalSlice = createSlice({
@@ -31,6 +40,27 @@ export const globalSlice = createSlice({
         },
         changeMobileMenuVisibility: (state, { payload }) => {
             state.mobileMenuVisibility = payload;
+        },
+        setPagination: (state, { payload }) => {
+            state.pagination = {
+                ...state.pagination,
+                ...payload,
+            };
+        },
+        setSectionsData: (state, { payload }) => {
+            state.sections = payload;
+        },
+        setCategoriesData: (state, { payload }) => {
+            state.categories = payload;
+        },
+        setSiteData: (state, { payload }) => {
+            state.siteData = payload;
+        },
+        setContactData: (state, { payload }) => {
+            state.contact = payload;
+        },
+        clearPagination: (state, { payload }) => {
+            delete state[payload];
         },
     },
 });

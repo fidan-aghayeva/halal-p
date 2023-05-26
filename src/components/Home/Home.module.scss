@@ -8,28 +8,28 @@
 
 .carouselContainer {
     display: flex;
-    height: 580px;
+    height: calc(300px);
     width: 100%;
 
     img {
-        object-fit: cover;
+        @include md {
+            object-fit: fill;
+            height: 100vh;
+        }
     }
 
-    @include sm {
-        height: 740px;
+    @include s {
+        height: 450px;
     }
 
     @include md {
         height: 100vh;
-
-        img {
-            object-fit: fill;
-        }
     }
 }
 
 .carousel {
     flex: 1;
+    margin-top: var(--header-height);
 
     & :global {
         & .mantine-Carousel-control {
@@ -52,6 +52,10 @@
                 background-color: var(--primary-color);
             }
         }
+    }
+
+    @include md {
+        margin-top: 0;
     }
 }
 

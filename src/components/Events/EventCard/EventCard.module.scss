@@ -1,0 +1,84 @@
+@import 'styles/utils/responsive';
+
+.container {
+    color: var(--color-text-primary);
+    display: flex;
+    font-size: 1.6rem;
+    font-weight: 400;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 330px;
+
+    @include s {
+        max-width: 350px;
+    }
+
+    @include sm {
+        max-width: 380px;
+    }
+
+    @include xl {
+        width: 380px;
+    }
+}
+
+.date {
+    color: #797979;
+    font-size: 1.4rem;
+    margin-right: 12px;
+}
+
+.tag {
+    align-items: center;
+    background-color: #f1f1f1;
+    color: #797979;
+    display: inline-flex;
+    font-size: 1.2rem;
+    font-weight: 500;
+    justify-content: center;
+    padding: 8px 10px;
+}
+
+.title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 23px;
+    max-height: 48px;
+    overflow-y: hidden;
+    margin: 10px 0;
+}
+
+.imageContainer {
+    height: 180px;
+    margin-bottom: 6px;
+    position: relative;
+    width: 100%;
+
+    @include md {
+        height: 230px;
+    }
+}
+
+.content {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box !important;
+    max-width: 95%;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.readMore {
+    align-items: center;
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: row;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 16px;
+
+    svg {
+        margin-left: 5px;
+    }
+}

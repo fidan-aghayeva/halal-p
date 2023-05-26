@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import { Carousel } from '@mantine/carousel';
 import Link from 'next/link';
@@ -6,12 +8,30 @@ import DeviceDetector from '@shared/DeviceDetector';
 import ProjectCard from 'components/ProjectCard';
 import { ArrowLeftIcon, ArrowRightIcon } from 'assets/icons';
 import { DEVICE_TYPES } from 'utils/device-detection';
-import { projects } from './data';
+import { getHomeBlogsByType } from 'utils/service';
+import { PAGE_TYPES } from 'utils/constants';
+import useTranslations from 'hooks/use-translations';
 
 import styles from './ProjectsCarousel.module.scss';
 
 const ProjectsCarousel = () => {
-    const currentDevice = useSelector(state => state.global.currentDevice);
+    const T = useTranslations();
+    const router = useRouter();
+    const { locale } = router;
+
+    const { currentDevice, language } = useSelector(state => state.global);
+
+    const [projects, setProjects] = useState([]);
+
+    const getProjectsData = async lang => {
+        const data = await getHomeBlogsByType({ lang, type: PAGE_TYPES.projects });
+
+        setProjects(data);
+    };
+
+    useEffect(() => {
+        getProjectsData(locale);
+    }, [locale]);
 
     return (
         <div className={classNames('flex justify-center flex-column', styles.container)}>
@@ -39,8 +59,8 @@ const ProjectsCarousel = () => {
                         : projects.slice(0, 3).map(project => <ProjectCard key={project.id} project={project} />)}
                 </div>
             </DeviceDetector>
-            <Link href={'/'} className={styles.showMore}>
-                Hamısını göstərmək
+            <Link href={'/projects?page=1'} locale={language} className={styles.showAll}>
+                {T.show_all}
             </Link>
         </div>
     );

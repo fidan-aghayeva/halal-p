@@ -11,7 +11,8 @@
     justify-content: space-between;
     height: 330px;
     transition: all 0.3s ease-in-out;
-    padding: 20px 0 30px 0;
+    padding: 50px 30px 30px 30px;
+    position: relative;
     width: 230px;
 
     &:hover {
@@ -22,25 +23,29 @@
     @include md {
         height: 400px;
         font-size: 1.8rem;
-        padding: 20px 0 50px 0;
+        padding: 50px;
         width: 280px;
     }
 }
 
-.createDate {
+.date {
     align-self: flex-start;
     background-color: var(--primary-color);
     color: var(--color-text-tertiary);
     font-size: 1.4rem;
+    left: 0;
     padding: 5px 10px;
+    position: absolute;
+    top: 20px;
 }
 
-.image {
+.imageContainer {
     height: 124px;
+    position: relative;
     width: 183px;
 }
 
-.content {
+.title {
     text-align: center;
 }
 

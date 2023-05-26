@@ -1,0 +1,32 @@
+@import 'styles/utils/responsive';
+
+.container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 25px;
+
+    @include s {
+        grid-template-columns: repeat(2, auto);
+        grid-gap: 16px;
+    }
+
+    @include sm {
+        grid-template-columns: repeat(3, auto);
+        grid-gap: 16px;
+    }
+
+    @include lg {
+        grid-template-columns: repeat(4, auto);
+        grid-gap: 20px;
+    }
+}
+
+.projectCard {
+    @include md {
+        width: auto;
+    }
+
+    @include xl {
+        width: 280px;
+    }
+}

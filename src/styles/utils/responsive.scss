@@ -6,6 +6,12 @@
     }
 }
 
+@mixin s {
+    @media (min-width: map-get($breakpoints, 's') + px) {
+        @content;
+    }
+}
+
 @mixin sm {
     @media (min-width: map-get($breakpoints, 'sm') + px) {
         @content;
@@ -26,12 +32,6 @@
 
 @mixin xl {
     @media (min-width: map-get($breakpoints, 'xl') + px) {
-        @content;
-    }
-}
-
-@mixin xxl {
-    @media (min-width: map-get($breakpoints, 'xxl') + px) {
         @content;
     }
 }

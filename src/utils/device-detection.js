@@ -9,11 +9,11 @@ export const DEVICE_TYPES = {
 
 const BREAKPOINT_DEVICES = {
     xs: DEVICE_TYPES.mobile,
+    s: DEVICE_TYPES.mobile,
     sm: DEVICE_TYPES.tablet,
     md: DEVICE_TYPES.tablet,
     lg: DEVICE_TYPES.desktop,
     xl: DEVICE_TYPES.desktop,
-    xxl: DEVICE_TYPES.desktop,
 };
 
 export const detectSSRDevice = userAgent => {

@@ -1,5 +1,6 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import Image from 'next/image';
 import Autoplay from 'embla-carousel-autoplay';
@@ -9,16 +10,32 @@ import ProductsCarousel from './ProductsCarousel';
 import ProjectsCarousel from './ProjectsCarousel';
 import { ArrowLeftIcon, ArrowRightIcon } from 'assets/icons';
 import { DEVICE_TYPES } from 'utils/device-detection';
-import { useTranslation } from 'next-i18next';
+import { getHomeSliders } from 'utils/service';
+import { SERVICE_URL } from 'utils/constants';
+import useTranslations from 'hooks/use-translations';
 
 import styles from './Home.module.scss';
 
 const Home = () => {
-    const { t } = useTranslation('common');
+    const T = useTranslations();
+    const router = useRouter();
+    const { locale } = router;
 
     const currentDevice = useSelector(state => state.global.currentDevice);
 
-    const autoplay = useRef(Autoplay({ delay: 10000 }));
+    const autoplay = useRef(Autoplay({ delay: 5000 }));
+
+    const [sliderData, setSliderData] = useState([]);
+
+    const getSliderData = async lang => {
+        const data = await getHomeSliders(lang);
+
+        setSliderData(data);
+    };
+
+    useEffect(() => {
+        getSliderData(locale);
+    }, [locale]);
 
     return (
         <div className={styles.container}>
@@ -33,24 +50,32 @@ const Home = () => {
                     withControls={currentDevice.type !== DEVICE_TYPES.mobile}
                     plugins={[autoplay.current]}
                 >
-                    <Carousel.Slide>
-                        <Image src={'/images/slider/slider1.png'} alt={'Slider'} fill />
-                    </Carousel.Slide>
-                    <Carousel.Slide>
-                        <Image src={'/images/slider/slider1.png'} alt={'Slider'} fill />
-                    </Carousel.Slide>
+                    {sliderData.length
+                        ? sliderData.map(slider => (
+                              <Carousel.Slide key={slider.id}>
+                                  <Image
+                                      src={SERVICE_URL + slider.imagePath}
+                                      alt={'Slider'}
+                                      fill
+                                      placeholder={'blur'}
+                                      blurDataURL={'/images/slider/slider1.png'}
+                                  />
+                              </Carousel.Slide>
+                          ))
+                        : null}
                 </Carousel>
             </div>
+
             <div className={classNames('flex align-center justify-center flex-column', styles.products)}>
-                <h2 className={'title'}>Məhsullar</h2>
+                <h2 className={'title'}>{T.products}</h2>
                 <ProductsCarousel />
             </div>
             <div className={classNames('flex align-center justify-center flex-column', styles.projects)}>
-                <h2 className={'title'}>Layihələrimiz</h2>
+                <h2 className={'title'}>{T.projects}</h2>
                 <ProjectsCarousel />
             </div>
             <div className={classNames('flex align-center justify-center flex-column')}>
-                <h2 className={'title'}>Əlaqə</h2>
+                <h2 className={'title'}>{T.contact}</h2>
                 <Map />
             </div>
         </div>

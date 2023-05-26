@@ -13,6 +13,7 @@ import MapMarker from './map-marker.svg';
 import Menu from './menu.svg';
 import Search from './search.svg';
 import Phone from './phone.svg';
+import Plus from './plus.svg';
 import OfficePhone from './office-phone.svg';
 import WhiteLogo from './logo-white.svg';
 
@@ -31,5 +32,6 @@ export const MapMarkerIcon = MapMarker;
 export const MenuIcon = Menu;
 export const SearchIcon = Search;
 export const PhoneIcon = Phone;
+export const PlusIcon = Plus;
 export const OfficePhoneIcon = OfficePhone;
 export const WhiteLogoIcon = WhiteLogo;

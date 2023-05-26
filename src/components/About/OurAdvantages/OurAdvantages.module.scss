@@ -1,0 +1,39 @@
+@import 'styles/utils/responsive';
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 44px;
+    row-gap: 36px;
+
+    @include s {
+        column-gap: 140px;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 46px;
+    }
+
+    @include md {
+        column-gap: 250px;
+    }
+}
+
+.advantageItem {
+    color: var(--color-text-primary);
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.imageContainer {
+    background: #ffffff;
+    box-shadow: 0 3px 21px rgba(0, 0, 0, 0.1);
+    height: 100px;
+    margin-bottom: 20px;
+    padding: 14px 24px;
+    width: 100px;
+
+    img {
+        height: 95%;
+        width: 95%;
+    }
+}

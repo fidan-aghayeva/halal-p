@@ -1,0 +1,85 @@
+@import 'styles/utils/responsive';
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 16px 100px 16px;
+
+    @include s {
+        padding: 50px 24px 100px 24px;
+    }
+
+    @include sm {
+        padding: 50px 0 100px 24px;
+    }
+
+    @include md {
+        padding: 100px 130px;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    color: var(--primary-color);
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0 0 18px 0;
+
+    @include s {
+        font-size: 5.6rem;
+    }
+
+    @include lg {
+        font-size: 7.2rem;
+        margin: 36px 0;
+    }
+}
+
+.text {
+    color: var(--color-text-primary);
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin: 0;
+
+    @include md {
+        font-size: 2.4rem;
+    }
+
+    @include lg {
+        padding-right: 60px;
+    }
+}
+
+.image {
+    height: 350px;
+    width: 400px;
+
+    @include lg {
+        height: 450px;
+        width: 500px;
+    }
+}
+
+.main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px 100px 16px;
+
+    @include s {
+        padding: 0 24px 100px 24px;
+    }
+
+    @include md {
+        padding: 0 130px 100px 130px;
+    }
+}

@@ -1,0 +1,98 @@
+@import 'styles/utils/responsive';
+
+.accordionItem {
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.accordionHeader {
+    align-items: center;
+    background-color: var(--primary-color);
+    color: #fff;
+    display: flex;
+    font-size: 2rem;
+    font-weight: 700;
+    justify-content: space-between;
+    padding: 12px 18px 12px 24px;
+
+    svg {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+    }
+
+    &:global {
+        &.expanded svg {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.accordionPanel {
+    background: #fff;
+    box-shadow: 0 3px 21px rgba(0, 0, 0, 0.1);
+    transition: all 3s ease-in-out;
+}
+
+.categoryAccordionItem {
+    border-bottom: 0.5px solid #d9d9d9;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    :global {
+        .mantine-Radio-label {
+            font-family: 'Maven Pro', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+        }
+
+        .mantine-Radio-root {
+            cursor: pointer;
+            padding-bottom: 15px;
+        }
+
+        .mantine-Radio-radio {
+            height: 16px;
+            width: 16px;
+
+            &:checked {
+                background: #fff;
+                border-color: var(--primary-color);
+            }
+        }
+
+        .mantine-Radio-icon {
+            color: var(--primary-color);
+            height: 10px;
+            left: calc(50% - 5.2px);
+            top: calc(50% - 5.2px);
+            width: 10px;
+        }
+    }
+}
+
+.categoryAccordionHeader {
+    background-color: #fff;
+    color: var(--color-text-primary);
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 12px 18px 12px 24px;
+
+    svg {
+        height: 14px;
+        color: #d9d9d9;
+        width: 14px;
+    }
+
+    &:global {
+        &.expanded svg {
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.categoryAccordionPanel {
+    padding: 12px 24px;
+}
