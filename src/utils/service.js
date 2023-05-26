@@ -8,6 +8,7 @@ export const getHomeSliders = async lang => {
         return data.data;
     } catch (error) {
         console.log(error);
+        return error;
     }
 };
 
@@ -18,6 +19,7 @@ export const getHomeBlogsByType = async ({ lang, type }) => {
         return data.data;
     } catch (error) {
         console.log(error);
+        return error;
     }
 };
 
@@ -28,6 +30,7 @@ export const getSections = async lang => {
         return data.data;
     } catch (error) {
         console.log(error);
+        return error;
     }
 };
 
@@ -38,6 +41,7 @@ export const getBlogsDataByType = async ({ lang, type, ...queryParams }) => {
         return data.data;
     } catch (error) {
         console.log(error);
+        return error;
     }
 };
 
@@ -48,6 +52,7 @@ export const getBlogsDataByTypeAndId = async ({ lang, type, id }) => {
         return data.data;
     } catch (error) {
         console.log(error);
+        return error;
     }
 };
 
@@ -58,6 +63,7 @@ export const getEmployees = async lang => {
         return data.data;
     } catch (error) {
         console.log(error);
+        return error;
     }
 };
 
@@ -68,6 +74,7 @@ export const getCustomers = async type => {
         return data.data;
     } catch (error) {
         console.log(error);
+        return error;
     }
 };
 
@@ -78,6 +85,7 @@ export const getContacts = async lang => {
         return data.data;
     } catch (error) {
         console.log(error);
+        return error;
     }
 };
 
@@ -88,6 +96,7 @@ export const getPageDescriptionByType = async ({ lang, type }) => {
         return data.data;
     } catch (error) {
         console.log(error);
+        return error;
     }
 };
 
@@ -98,6 +107,7 @@ export const getMainSiteData = async lang => {
         return data.data;
     } catch (error) {
         console.log(error);
+        return error;
     }
 };
 
@@ -108,6 +118,7 @@ export const getCategories = async lang => {
         return data.data;
     } catch (error) {
         console.log(error);
+        return error;
     }
 };
 
@@ -118,6 +129,7 @@ export const getProducts = async ({ lang, ...params }) => {
         return data.data;
     } catch (error) {
         console.log(error);
+        return error;
     }
 };
 
@@ -128,5 +140,6 @@ export const getOurAdvantages = async lang => {
         return data.data;
     } catch (error) {
         console.log(error);
+        return error;
     }
 };
