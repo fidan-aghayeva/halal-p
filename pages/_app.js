@@ -13,6 +13,8 @@ import withRedux from 'utils/with-redux';
 enableES5();
 
 import 'styles/index.scss';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import 'react-image-gallery/styles/css/image-gallery.css';
 
 function MyApp({ Component, pageProps }) {
     const getLayout = Component.getLayout || (page => page);
