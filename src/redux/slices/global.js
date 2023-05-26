@@ -19,6 +19,10 @@ const initialState = {
         totalPage: null,
         page: 1,
     },
+    sections: [],
+    categories: [],
+    siteData: null,
+    contact: null,
 };
 
 export const globalSlice = createSlice({
@@ -42,6 +46,18 @@ export const globalSlice = createSlice({
                 ...state.pagination,
                 ...payload,
             };
+        },
+        setSectionsData: (state, { payload }) => {
+            state.sections = payload;
+        },
+        setCategoriesData: (state, { payload }) => {
+            state.categories = payload;
+        },
+        setSiteData: (state, { payload }) => {
+            state.siteData = payload;
+        },
+        setContactData: (state, { payload }) => {
+            state.contact = payload;
         },
         clearPagination: (state, { payload }) => {
             delete state[payload];

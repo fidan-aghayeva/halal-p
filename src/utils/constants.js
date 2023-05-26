@@ -22,7 +22,28 @@ export const SERVICE_URL = process.env.NEXT_PUBLIC_SERVICE_URL;
 export const PAGINATION_SIZE = 2;
 
 export const PAGE_TYPES = {
-    project: 'Project',
-    event: 'Event',
+    about: 'About',
+    projects: 'Project',
+    events: 'Event',
     blog: 'Blog',
+    vacancy: 'Vacancy',
 };
+
+export const PRODUCTS_FILTER_TYPES = {
+    name: 'Name',
+    section: 'Section',
+    category: 'Category',
+};
+
+export const EMPLOYEE_SLIDE_COUNT = {
+    desktop: 8,
+    tablet: 3,
+    mobile: 2,
+};
+
+export const CUSTOMER_TYPES = {
+    chooseUs: 'ChooseUs',
+    partner: 'Partner',
+};
+
+export const CUSTOMER_SLIDE_COUNT = { desktop: 12, tablet: 9, mobile: 12 };
