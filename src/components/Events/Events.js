@@ -17,12 +17,11 @@ const Events = () => {
     const dispatch = useDispatch();
     const router = useRouter();
     const {
-        query: { events: queryEvents },
+        query: { page, tag },
         locale,
     } = router;
-    const page = queryEvents[0].split('=')[1];
 
-    const paginationProps = useSelector(state => state.global.pagination);
+    const { pagination: paginationProps } = useSelector(state => state.global);
     const { isFetching } = paginationProps;
 
     const [events, setEvents] = useState([]);
@@ -55,15 +54,29 @@ const Events = () => {
     };
 
     useEffect(() => {
-        const params = {
-            lang: locale,
-            type: PAGE_TYPES.event,
-            page,
-            pageSize: PAGINATION_SIZE,
-        };
+        let params;
+
+        if (tag) {
+            const sectionId = tag.at(-1);
+
+            params = {
+                lang: locale,
+                type: PAGE_TYPES.events,
+                page,
+                sectionId,
+                pageSize: PAGINATION_SIZE,
+            };
+        } else {
+            params = {
+                lang: locale,
+                type: PAGE_TYPES.events,
+                page,
+                pageSize: PAGINATION_SIZE,
+            };
+        }
 
         getEventsData(params);
-    }, [locale, page]);
+    }, [locale, page, tag]);
 
     return (
         <PageLayout
@@ -75,13 +88,15 @@ const Events = () => {
             {isFetching ? (
                 <Loader variant={'bars'} color={'#1ca29b'} />
             ) : (
-                <div className={styles.container}>
-                    {events.map(event => (
-                        <EventCard key={event.id} event={event} />
-                    ))}
-                </div>
+                <>
+                    <div className={styles.container}>
+                        {events.map(event => (
+                            <EventCard key={event.id} event={event} />
+                        ))}
+                    </div>
+                    <Pagination />
+                </>
             )}
-            <Pagination />
         </PageLayout>
     );
 };
