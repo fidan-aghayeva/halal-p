@@ -17,12 +17,11 @@ const Blogs = () => {
     const dispatch = useDispatch();
     const router = useRouter();
     const {
-        query: { blog },
+        query: { page, tag },
         locale,
     } = router;
-    const page = blog[0].split('=')[1];
 
-    const paginationProps = useSelector(state => state.global.pagination);
+    const { pagination: paginationProps } = useSelector(state => state.global);
     const { isFetching } = paginationProps;
 
     const [blogs, setBlogs] = useState([]);
@@ -55,15 +54,29 @@ const Blogs = () => {
     };
 
     useEffect(() => {
-        const params = {
-            lang: locale,
-            type: PAGE_TYPES.blog,
-            page,
-            pageSize: PAGINATION_SIZE,
-        };
+        let params;
+
+        if (tag) {
+            const sectionId = tag.at(-1);
+
+            params = {
+                lang: locale,
+                type: PAGE_TYPES.blog,
+                page,
+                sectionId,
+                pageSize: PAGINATION_SIZE,
+            };
+        } else {
+            params = {
+                lang: locale,
+                type: PAGE_TYPES.blog,
+                page,
+                pageSize: PAGINATION_SIZE,
+            };
+        }
 
         getBlogsData(params);
-    }, [locale, page]);
+    }, [locale, page, tag]);
 
     return (
         <PageLayout
@@ -75,13 +88,15 @@ const Blogs = () => {
             {isFetching ? (
                 <Loader variant={'bars'} color={'#1ca29b'} />
             ) : (
-                <div className={styles.container}>
-                    {blogs.map(event => (
-                        <BlogCard key={event.id} event={event} />
-                    ))}
-                </div>
+                <>
+                    <div className={styles.container}>
+                        {blogs.map(blog => (
+                            <BlogCard key={blog.id} blog={blog} />
+                        ))}
+                    </div>
+                    <Pagination />
+                </>
             )}
-            <Pagination />
         </PageLayout>
     );
 };
