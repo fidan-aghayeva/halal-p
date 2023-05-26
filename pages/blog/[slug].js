@@ -27,7 +27,7 @@ const BlogDetailPage = () => {
         getBlogData({ lang: locale });
     }, [locale]);
 
-    return blog && <DetailPageLayout data={blog} />;
+    return blog ? <DetailPageLayout data={blog} /> : <div />;
 };
 
 BlogDetailPage.getLayout = page => {

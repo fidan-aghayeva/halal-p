@@ -27,7 +27,7 @@ const ProjectDetailPage = () => {
         getProjectData({ lang: locale });
     }, [locale]);
 
-    return project && <DetailPageLayout data={project} />;
+    return project ? <DetailPageLayout data={project} /> : <div />;
 };
 
 ProjectDetailPage.getLayout = page => {

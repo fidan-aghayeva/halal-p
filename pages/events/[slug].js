@@ -27,7 +27,7 @@ const EventDetailPage = () => {
         getEventData({ lang: locale });
     }, [locale]);
 
-    return event && <DetailPageLayout data={event} />;
+    return event ? <DetailPageLayout data={event} /> : <div />;
 };
 
 EventDetailPage.getLayout = page => {
