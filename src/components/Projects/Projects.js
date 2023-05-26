@@ -17,10 +17,9 @@ const Projects = () => {
     const dispatch = useDispatch();
     const router = useRouter();
     const {
-        query: { projects: queryProjects },
+        query: { page },
         locale,
     } = router;
-    const page = queryProjects[0].split('=')[1];
 
     const paginationProps = useSelector(state => state.global.pagination);
     const { isFetching } = paginationProps;
@@ -57,7 +56,7 @@ const Projects = () => {
     useEffect(() => {
         const params = {
             lang: locale,
-            type: PAGE_TYPES.project,
+            type: PAGE_TYPES.projects,
             page,
             pageSize: PAGINATION_SIZE,
         };
@@ -75,14 +74,15 @@ const Projects = () => {
             {isFetching ? (
                 <Loader variant={'bars'} color={'#1ca29b'} />
             ) : (
-                <div className={styles.container}>
-                    {projects.map(project => (
-                        <ProjectCard className={styles.projectCard} key={project.id} project={project} />
-                    ))}
-                </div>
+                <>
+                    <div className={styles.container}>
+                        {projects.map(project => (
+                            <ProjectCard className={styles.projectCard} key={project.id} project={project} />
+                        ))}
+                    </div>
+                    <Pagination />
+                </>
             )}
-
-            <Pagination />
         </PageLayout>
     );
 };
