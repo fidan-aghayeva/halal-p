@@ -23,7 +23,7 @@ const Home = () => {
 
     const currentDevice = useSelector(state => state.global.currentDevice);
 
-    const autoplay = useRef(Autoplay({ delay: 10000 }));
+    const autoplay = useRef(Autoplay({ delay: 5000 }));
 
     const [sliderData, setSliderData] = useState([]);
 
