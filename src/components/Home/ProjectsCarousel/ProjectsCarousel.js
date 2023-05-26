@@ -8,7 +8,7 @@ import DeviceDetector from '@shared/DeviceDetector';
 import ProjectCard from 'components/ProjectCard';
 import { ArrowLeftIcon, ArrowRightIcon } from 'assets/icons';
 import { DEVICE_TYPES } from 'utils/device-detection';
-import { getHomeBLogsByType } from 'utils/service';
+import { getHomeBlogsByType } from 'utils/service';
 import { PAGE_TYPES } from 'utils/constants';
 import useTranslations from 'hooks/use-translations';
 
@@ -24,7 +24,7 @@ const ProjectsCarousel = () => {
     const [projects, setProjects] = useState([]);
 
     const getProjectsData = async lang => {
-        const data = await getHomeBLogsByType({ lang, type: PAGE_TYPES.project });
+        const data = await getHomeBlogsByType({ lang, type: PAGE_TYPES.projects });
 
         setProjects(data);
     };
@@ -59,7 +59,7 @@ const ProjectsCarousel = () => {
                         : projects.slice(0, 3).map(project => <ProjectCard key={project.id} project={project} />)}
                 </div>
             </DeviceDetector>
-            <Link href={'/projects'} locale={language} className={styles.showAll}>
+            <Link href={'/projects?page=1'} locale={language} className={styles.showAll}>
                 {T.show_all}
             </Link>
         </div>
