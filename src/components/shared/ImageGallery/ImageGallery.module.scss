@@ -1,0 +1,159 @@
+@import 'styles/utils/responsive';
+
+.imageGallery {
+  margin-top: 25px;
+  width: 100%;
+
+  @include md {
+    margin-top: 50px;
+  }
+
+  :global {
+    .image-gallery-thumbnails {
+      padding: 18px 0 5px 0;
+
+      @include md {
+        padding: 25px 0 5px 0;
+      }
+    }
+
+    .image-gallery-thumbnail {
+      height: 132px;
+      border: 2px solid transparent;
+      width: 165px;
+
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+
+      @include md {
+        height: 144px;
+        width: 180px;
+      }
+    }
+
+    .image-gallery-thumbnail-inner {
+      display: flex;
+      height: 100%;
+    }
+
+    .image-gallery-thumbnail.active,
+    .image-gallery-thumbnail:focus,
+    .image-gallery-thumbnail:hover {
+      border: 2px solid var(--primary-color);
+    }
+
+    .image-gallery-slide {
+      cursor: pointer;
+      height: 155px;
+      max-height: 155px;
+      transition: none;
+
+      @include s {
+        height: 400px;
+        max-height: 400px;
+      }
+
+      @include md {
+        height: 440px;
+        max-height: 440px;
+      }
+    }
+
+    .image-gallery-slide .image-gallery-image {
+      object-fit: fill;
+      height: 100%;
+      max-height: 100%;
+    }
+
+    .image-gallery-icon:hover {
+      color: var(--primary-color);
+    }
+
+    .image-gallery-content.fullscreen {
+      .image-gallery-slide,
+      .image-gallery-image {
+        height: 100%;
+        max-height: calc(100vh - 170px);
+
+        @include md {
+          max-height: calc(100vh - 150px);
+        }
+      }
+
+      .image-gallery-slide {
+        transition: none !important;
+      }
+
+      .leftNav {
+        left: 15px;
+      }
+
+      .rightNav {
+        right: 15px;
+      }
+    }
+
+    .galleryNav {
+      align-items: center;
+      background-color: #f1f1f1;
+      border: none;
+      color: var(--color-text-primary);
+      cursor: pointer;
+      display: flex;
+      height: 30px;
+      justify-content: center;
+      position: absolute;
+      top: 40%;
+      padding: 0;
+      width: 30px;
+      z-index: 100;
+
+      &[disabled] {
+        opacity: 0.5;
+
+        &:hover {
+          background-color: #f1f1f1;
+          color: var(--color-text-primary);
+        }
+      }
+
+      svg {
+        height: 15px;
+        width: 15px;
+
+        @include md {
+          height: 20px;
+          width: 20px;
+        }
+      }
+
+      &:hover {
+        background-color: var(--primary-color);
+        color: #fff;
+      }
+
+      @include md {
+        height: 40px;
+        top: 45%;
+        width: 40px;
+      }
+    }
+
+    .leftNav {
+      left: 15px;
+
+      @include md {
+        left: -60px;
+      }
+    }
+
+    .rightNav {
+      right: 15px;
+
+      @include md {
+        right: -60px;
+      }
+    }
+  }
+}

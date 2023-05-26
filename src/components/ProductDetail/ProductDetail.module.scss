@@ -1,0 +1,234 @@
+@import 'styles/utils/responsive';
+
+.container {
+    align-items: flex-start;
+    color: var(--color-text-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 50px 16px;
+
+    @include s {
+        padding: 50px 24px;
+    }
+
+    @include md {
+        flex-direction: row;
+        padding: 100px 130px;
+    }
+}
+
+.galleryAndFrame {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    :global {
+        .image-gallery {
+            margin: 0 auto;
+            width: 100%;
+
+            @include s {
+                width: 480px;
+            }
+        }
+
+        .image-gallery-slide-wrapper {
+            border: 1px solid #f1f1f1;
+        }
+
+        .image-gallery-slide {
+            height: 280px;
+            max-height: 280px;
+            padding: 8px 40px;
+
+            @include s {
+                height: 400px;
+                max-height: 400px;
+                padding: 12px 48px;
+            }
+        }
+
+        .galleryNav {
+            color: #d9d9d9;
+        }
+
+        .galleryNav,
+        .galleryNav:hover,
+        .galleryNav[disabled]:hover {
+            background: transparent;
+        }
+
+        .galleryNav:hover {
+            color: var(--primary-color);
+        }
+
+        .leftNav {
+            left: 0;
+        }
+
+        .rightNav {
+            right: 0;
+        }
+
+        .image-gallery-thumbnails {
+            padding: 15px 0 5px 0;
+        }
+
+        .image-gallery-thumbnail {
+            border: 1px solid #f1f1f1;
+            height: 60px;
+            width: 60px;
+
+            &:global {
+                &.active {
+                    border: 1px solid var(--primary-color);
+                }
+            }
+
+            &:not(:last-child) {
+                margin-right: 12px;
+
+                @include s {
+                    margin-right: 16px;
+                }
+            }
+
+            @include s {
+                height: 100px;
+                width: 108px;
+            }
+        }
+
+        .image-gallery-content.fullscreen {
+            .image-gallery-slide-wrapper {
+                border: 1px solid transparent;
+            }
+
+            .galleryNav,
+            .galleryNav[disabled]:hover {
+                background: #f1f1f1;
+                color: var(--color-text-primary);
+            }
+            .galleryNav:hover {
+                background: var(--primary-color);
+                color: #fff;
+            }
+        }
+    }
+
+    @include md {
+        width: auto;
+    }
+}
+
+.frame {
+    margin-top: 30px;
+    width: 100%;
+
+    iframe {
+        height: 185px;
+        width: 100%;
+
+        @include s {
+            height: 275px;
+        }
+    }
+
+    @include s {
+        width: 485px;
+    }
+
+    @include md {
+        width: 100%;
+    }
+}
+
+.productDetails {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    width: 100%;
+
+    @include md {
+        padding-left: 40px;
+    }
+}
+
+.name {
+    color: var(--primary-color);
+    margin: 50px 0 12px 0;
+
+    @include s {
+        margin-bottom: 8px;
+    }
+
+    @include md {
+        margin-top: 0;
+    }
+}
+
+.description {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 25px;
+
+    @include s {
+        font-size: 1.6rem;
+    }
+}
+
+.attributesTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.attributesContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.attribute {
+    background-color: #f1f1f1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    font-weight: 400;
+    padding: 7px 20px;
+
+    span {
+        width: 50%;
+    }
+
+    &:nth-child(even) {
+        background-color: #fff;
+    }
+
+    @include s {
+        font-size: 1.6rem;
+    }
+}
+
+.attributeValue {
+    font-weight: 600;
+}
+
+.brochure {
+    align-items: center;
+    background-color: var(--primary-color);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 40px;
+    max-width: 150px;
+    padding: 14px 30px;
+
+    svg {
+        margin-right: 8px;
+        width: 16px;
+    }
+}

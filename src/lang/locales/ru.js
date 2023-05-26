@@ -31,4 +31,5 @@ module.exports = {
     product: 'товар',
     contact: 'Контакты',
     address: 'Ул. С.С.Ахундова 5ф',
+    attributes: 'Функции',
 };

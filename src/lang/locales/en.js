@@ -31,4 +31,5 @@ module.exports = {
     found_on_search: 'found on the basis of the search',
     product: 'product',
     address: 'St. S.S.Akhundova 5f',
+    attributes: 'Attributes',
 };

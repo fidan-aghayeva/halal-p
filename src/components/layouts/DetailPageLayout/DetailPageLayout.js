@@ -1,12 +1,10 @@
-import { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
-import ImageGallery from 'react-image-gallery';
-import { ArrowLeftIcon, ArrowRightIcon } from 'assets/icons';
+import ImageGallery from '@shared/ImageGallery';
 import dompurify from 'isomorphic-dompurify';
 import { getDate } from 'utils/helpers';
 import { SERVICE_URL } from 'utils/constants';
@@ -15,7 +13,7 @@ import { DEVICE_TYPES } from 'utils/device-detection';
 import styles from './DetailPageLayout.module.scss';
 
 const DetailPageLayout = props => {
-    const { data = {} } = props;
+    const { data } = props;
     const { section, title, content, mainImage, publishedDate, otherImages, seo } = data;
 
     const { pathname } = useRouter();
@@ -25,13 +23,7 @@ const DetailPageLayout = props => {
         currentDevice: { type },
     } = useSelector(state => state.global);
 
-    const ref = useRef();
     const sanitizer = dompurify.sanitize;
-
-    const reFormattedImages = otherImages?.map(image => ({
-        original: SERVICE_URL + image.path,
-        thumbnail: SERVICE_URL + image.path,
-    }));
 
     return (
         <>
@@ -62,25 +54,9 @@ const DetailPageLayout = props => {
                 />
                 {pageType !== 'blog' && otherImages.length > 0 && (
                     <ImageGallery
-                        showPlayButton={false}
-                        autoPlay={false}
-                        items={reFormattedImages}
-                        additionalClass={styles.imageGallery}
-                        onClick={() => ref.current.toggleFullScreen()}
-                        ref={ref}
-                        infinite={false}
+                        images={otherImages}
                         showFullscreenButton={type !== DEVICE_TYPES.mobile}
                         showThumbnails={type !== DEVICE_TYPES.mobile}
-                        renderLeftNav={(onClick, disabled) => (
-                            <button onClick={onClick} disabled={disabled} className={'galleryNav leftNav'}>
-                                <ArrowLeftIcon />
-                            </button>
-                        )}
-                        renderRightNav={(onClick, disabled) => (
-                            <button onClick={onClick} disabled={disabled} className={'galleryNav rightNav'}>
-                                <ArrowRightIcon />
-                            </button>
-                        )}
                     />
                 )}
             </div>

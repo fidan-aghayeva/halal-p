@@ -31,4 +31,5 @@ module.exports = {
     found_on_search: 'axtarış üzrə tapıldı',
     product: 'məhsul',
     address: 'S.S.Axundov 5f küç., 2-ci mərtəbə',
+    attributes: 'Xüsusiyyətlər',
 };
