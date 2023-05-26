@@ -18,7 +18,7 @@ const Language = props => {
 
     const dispatch = useDispatch();
     const router = useRouter();
-    const { pathname } = router;
+    const { asPath } = router;
 
     const { language } = useSelector(state => state.global);
 
@@ -42,7 +42,7 @@ const Language = props => {
     const onChange = lang => {
         dispatch(globalActions.changeLanguage(lang));
 
-        router.push(pathname, router.asPath, { locale: lang, scroll: false });
+        router.push(asPath, router.asPath, { locale: lang, scroll: false });
 
         Cookie.setItem(COOKIE_KEYS.language, lang);
     };
@@ -53,7 +53,7 @@ const Language = props => {
                 <div className={styles.languages}>
                     {languageOptions.map(language => (
                         <Link
-                            href={pathname}
+                            href={asPath}
                             className={styles.language}
                             key={language.value}
                             onClick={() => onChange(language.value)}

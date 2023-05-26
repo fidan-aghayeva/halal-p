@@ -1,14 +1,15 @@
 import Link from 'next/link';
-import { LogoIcon, WhiteLogoIcon } from 'assets/icons';
+import Image from 'next/image';
+import { SERVICE_URL } from 'utils/constants';
 
 import styles from './Logo.module.scss';
 
 const Logo = props => {
-    const { whiteLogo } = props;
+    const { path } = props;
 
     return (
-        <Link href={'/'}>
-            {whiteLogo ? <WhiteLogoIcon className={styles.logo} /> : <LogoIcon className={styles.logo} />}
+        <Link href={'/'} className={styles.logo}>
+            <Image src={SERVICE_URL + path} alt={'logo'} fill />
         </Link>
     );
 };

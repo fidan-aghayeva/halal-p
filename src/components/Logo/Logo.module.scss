@@ -3,6 +3,7 @@
 .logo {
     height: 40px;
     width: 122px;
+    position: relative;
 
     @include md {
         height: 58px;

@@ -6,19 +6,19 @@ import styles from './Pagination.module.scss';
 
 const Pagination = () => {
     const router = useRouter();
-    const { asPath } = router;
+    const { query } = router;
 
     const paginationProps = useSelector(state => state.global.pagination);
     const { totalPage } = paginationProps;
 
     const onChange = value => {
-        router.push(`page=${value}`, `page=${value}`, { scroll: false });
+        router.push({ href: router.pathname, query: { ...query, page: value } }, undefined, { scroll: false });
     };
 
     return (
         <MantinePagination
             className={styles.pagination}
-            page={asPath[asPath.length]}
+            page={Number(query.page)}
             defaultValue={1}
             noWrap
             onChange={onChange}
