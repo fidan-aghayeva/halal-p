@@ -3,7 +3,9 @@ import AppLayout from 'components/layouts/AppLayout';
 import { SERVICE_URL } from 'utils/constants';
 
 const ProductPage = props => {
-    return <ProductDetail product={props.product} />;
+    const { product } = props;
+
+    return product ? <ProductDetail product={props.product} /> : <div />;
 };
 
 export const getServerSideProps = async context => {

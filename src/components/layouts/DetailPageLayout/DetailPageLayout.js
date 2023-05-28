@@ -40,7 +40,7 @@ const DetailPageLayout = props => {
                 <div className={styles.dateAndTag}>
                     <span className={styles.date}>{getDate(publishedDate)}</span>
                     {pageType !== 'projects' && section && (
-                        <Link href={`/${pageType}/tag/${section.slug}-${section.id}?page=1`} className={styles.tag}>
+                        <Link href={`/${pageType}/tag/${section.slug}/${section.id}?page=1`} className={styles.tag}>
                             {section.name}
                         </Link>
                     )}

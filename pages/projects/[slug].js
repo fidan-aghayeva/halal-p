@@ -1,33 +1,29 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import AppLayout from 'components/layouts/AppLayout';
 import DetailPageLayout from 'components/layouts/DetailPageLayout';
-import { getBlogsDataByTypeAndId } from 'utils/service';
-import { PAGE_TYPES } from 'utils/constants';
+import { PAGE_TYPES, SERVICE_URL } from 'utils/constants';
 
-const ProjectDetailPage = () => {
-    const router = useRouter();
+const ProjectDetailPage = props => {
+    const { project } = props;
 
+    return project ? <DetailPageLayout data={project} /> : <div />;
+};
+
+export const getServerSideProps = async context => {
     const {
+        params: { slug },
         locale,
-        query: { slug },
-    } = router;
+    } = context;
 
     const id = slug.split('-').at(-1);
 
-    const [project, setProject] = useState(null);
+    const res = await fetch(`${SERVICE_URL}/${locale}/blogs/${PAGE_TYPES.projects}/${id}`);
+    const project = await res.json();
 
-    const getProjectData = async ({ lang }) => {
-        const data = await getBlogsDataByTypeAndId({ lang, type: PAGE_TYPES.projects, id });
+    if (project.Success === false) {
+        return { props: { project: {} } };
+    }
 
-        setProject(data);
-    };
-
-    useEffect(() => {
-        getProjectData({ lang: locale });
-    }, [locale]);
-
-    return project ? <DetailPageLayout data={project} /> : <div />;
+    return { props: { project } };
 };
 
 ProjectDetailPage.getLayout = page => {

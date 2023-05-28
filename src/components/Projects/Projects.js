@@ -7,7 +7,7 @@ import PageLayout from 'components/layouts/PageLayout';
 import ProjectCard from 'components/ProjectCard';
 import { getBlogsDataByType } from 'utils/service';
 import { globalActions } from 'redux/slices/global';
-import { PAGE_TYPES, PAGINATION_SIZE } from 'utils/constants';
+import { PAGE_TYPES, PAGINATION_SIZES } from 'utils/constants';
 import useTranslations from 'hooks/use-translations';
 
 import styles from './Projects.module.scss';
@@ -58,19 +58,14 @@ const Projects = () => {
             lang: locale,
             type: PAGE_TYPES.projects,
             page,
-            pageSize: PAGINATION_SIZE,
+            pageSize: PAGINATION_SIZES.projects,
         };
 
         getProjectsData(params);
     }, [locale, page]);
 
     return (
-        <PageLayout
-            title={T.projects}
-            content={
-                '“HALAL-P” MMC olaraq Azərbaycan bazarında 1996-cı ildən etibarən fəaliyyət göstəririk və dünyaca məşhur ticarət markalarının Azərbaycanda rəsmi təmsilçisiyik. Mətbəə, bank, korporativ və arxiv həlləri üzrə böyük təcrübə və biliklərə, eləcə də böyük və professional servis mərkəzinə sahibik.'
-            }
-        >
+        <PageLayout title={T.projects}>
             {isFetching ? (
                 <Loader variant={'bars'} color={'#1ca29b'} />
             ) : (

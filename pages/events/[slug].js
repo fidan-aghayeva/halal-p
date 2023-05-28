@@ -1,33 +1,29 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import AppLayout from 'components/layouts/AppLayout';
 import DetailPageLayout from 'components/layouts/DetailPageLayout';
-import { getBlogsDataByTypeAndId } from 'utils/service';
-import { PAGE_TYPES } from 'utils/constants';
+import { PAGE_TYPES, SERVICE_URL } from 'utils/constants';
 
-const EventDetailPage = () => {
-    const router = useRouter();
+const EventDetailPage = props => {
+    const { event } = props;
 
+    return event ? <DetailPageLayout data={event} /> : <div />;
+};
+
+export const getServerSideProps = async context => {
     const {
+        params: { slug },
         locale,
-        query: { slug },
-    } = router;
+    } = context;
 
     const id = slug.split('-').at(-1);
 
-    const [event, setEvent] = useState(null);
+    const res = await fetch(`${SERVICE_URL}/${locale}/blogs/${PAGE_TYPES.events}/${id}`);
+    const event = await res.json();
 
-    const getEventData = async ({ lang }) => {
-        const data = await getBlogsDataByTypeAndId({ lang, type: PAGE_TYPES.events, id });
+    if (event.Success === false) {
+        return { props: { event: {} } };
+    }
 
-        setEvent(data);
-    };
-
-    useEffect(() => {
-        getEventData({ lang: locale });
-    }, [locale]);
-
-    return event ? <DetailPageLayout data={event} /> : <div />;
+    return { props: { event } };
 };
 
 EventDetailPage.getLayout = page => {

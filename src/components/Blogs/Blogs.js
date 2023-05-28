@@ -7,7 +7,7 @@ import BlogCard from './BlogCard';
 import PageLayout from 'components/layouts/PageLayout';
 import { getBlogsDataByType } from 'utils/service';
 import { globalActions } from 'redux/slices/global';
-import { PAGE_TYPES, PAGINATION_SIZE } from 'utils/constants';
+import { PAGE_TYPES, PAGINATION_SIZES } from 'utils/constants';
 import useTranslations from 'hooks/use-translations';
 
 import styles from './Blogs.module.scss';
@@ -64,14 +64,14 @@ const Blogs = () => {
                 type: PAGE_TYPES.blog,
                 page,
                 sectionId,
-                pageSize: PAGINATION_SIZE,
+                pageSize: PAGINATION_SIZES.blog,
             };
         } else {
             params = {
                 lang: locale,
                 type: PAGE_TYPES.blog,
                 page,
-                pageSize: PAGINATION_SIZE,
+                pageSize: PAGINATION_SIZES.blog,
             };
         }
 
@@ -79,12 +79,7 @@ const Blogs = () => {
     }, [locale, page, tag]);
 
     return (
-        <PageLayout
-            title={T.blog}
-            content={
-                '“HALAL-P” MMC olaraq Azərbaycan bazarında 1996-cı ildən etibarən fəaliyyət göstəririk və dünyaca məşhur ticarət markalarının Azərbaycanda rəsmi təmsilçisiyik. Mətbəə, bank, korporativ və arxiv həlləri üzrə böyük təcrübə və biliklərə, eləcə də böyük və professional servis mərkəzinə sahibik.'
-            }
-        >
+        <PageLayout title={T.blog}>
             {isFetching ? (
                 <Loader variant={'bars'} color={'#1ca29b'} />
             ) : (

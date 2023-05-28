@@ -45,17 +45,6 @@ export const getBlogsDataByType = async ({ lang, type, ...queryParams }) => {
     }
 };
 
-export const getBlogsDataByTypeAndId = async ({ lang, type, id }) => {
-    try {
-        const data = await axios.get(`${SERVICE_URL}/${lang}/blogs/${type}/${id}`);
-
-        return data.data;
-    } catch (error) {
-        console.log(error);
-        return error;
-    }
-};
-
 export const getEmployees = async lang => {
     try {
         const data = await axios.get(`${SERVICE_URL}/${lang}/employees`);

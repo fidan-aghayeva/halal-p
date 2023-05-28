@@ -19,7 +19,7 @@ export const BREAKPOINTS = {
 
 export const SERVICE_URL = process.env.NEXT_PUBLIC_SERVICE_URL;
 
-export const PAGINATION_SIZE = 2;
+export const PAGINATION_SIZES = { projects: 12, blog: 15, products: 12, events: 6 };
 
 export const PAGE_TYPES = {
     about: 'About',

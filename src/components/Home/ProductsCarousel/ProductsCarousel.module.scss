@@ -36,9 +36,14 @@
     width: 156px;
 
     &:hover {
-        box-shadow: 0px 3px 21px rgba(0, 0, 0, 0.1);
+        background-color: var(--primary-color);
+        color: #fff;
 
-        border: 1px solid var(--primary-color);
+        svg {
+            color: #fff;
+        }
+        //box-shadow: 0 3px 21px rgba(0, 0, 0, 0.1);
+        //border: 1px solid var(--primary-color);
     }
 
     @include sm {

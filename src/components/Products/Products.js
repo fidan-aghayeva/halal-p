@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
+import { Loader } from '@mantine/core';
 import Pagination from '@shared/Pagination';
 import Filter from './Filter';
 import ProductCard from './ProductCard';
 import { globalActions } from 'redux/slices/global';
 import { getProducts } from 'utils/service';
-import { PAGINATION_SIZE, PRODUCTS_FILTER_TYPES } from 'utils/constants';
+import { PAGINATION_SIZES, PRODUCTS_FILTER_TYPES } from 'utils/constants';
 import useTranslations from 'hooks/use-translations';
 
 import styles from './Products.module.scss';
-import { Loader } from '@mantine/core';
 
 const Products = () => {
     const T = useTranslations();
@@ -65,7 +65,7 @@ const Products = () => {
             type,
             page,
             filterData: id,
-            pageSize: PAGINATION_SIZE,
+            pageSize: PAGINATION_SIZES.products,
         };
 
         getProductsData(params);

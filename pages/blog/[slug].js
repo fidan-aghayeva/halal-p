@@ -1,33 +1,29 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import AppLayout from 'components/layouts/AppLayout';
 import DetailPageLayout from 'components/layouts/DetailPageLayout';
-import { getBlogsDataByTypeAndId } from 'utils/service';
-import { PAGE_TYPES } from 'utils/constants';
+import { PAGE_TYPES, SERVICE_URL } from 'utils/constants';
 
-const BlogDetailPage = () => {
-    const router = useRouter();
+const BlogDetailPage = props => {
+    const { blog } = props;
 
+    return blog ? <DetailPageLayout data={blog} /> : <div />;
+};
+
+export const getServerSideProps = async context => {
     const {
+        params: { slug },
         locale,
-        query: { slug },
-    } = router;
+    } = context;
 
     const id = slug.split('-').at(-1);
 
-    const [blog, setBlog] = useState(null);
+    const res = await fetch(`${SERVICE_URL}/${locale}/blogs/${PAGE_TYPES.blog}/${id}`);
+    const blog = await res.json();
 
-    const getBlogData = async ({ lang }) => {
-        const data = await getBlogsDataByTypeAndId({ lang, type: PAGE_TYPES.blog, id });
+    if (blog.Success === false) {
+        return { props: { blog: {} } };
+    }
 
-        setBlog(data);
-    };
-
-    useEffect(() => {
-        getBlogData({ lang: locale });
-    }, [locale]);
-
-    return blog ? <DetailPageLayout data={blog} /> : <div />;
+    return { props: { blog } };
 };
 
 BlogDetailPage.getLayout = page => {
