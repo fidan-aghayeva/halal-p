@@ -26,7 +26,9 @@ const ProductDetail = props => {
             </Head>
             <div className={styles.container}>
                 <div className={styles.galleryAndFrame}>
-                    {product?.otherImages.length > 0 && <ImageGallery images={product.otherImages} />}
+                    {product?.otherImages.length > 0 && (
+                        <ImageGallery images={[{ path: product?.mainImage }, ...product.otherImages]} />
+                    )}
                     <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
                         <div className={styles.frame}>
                             <iframe src={product?.youtubeLink}></iframe>
