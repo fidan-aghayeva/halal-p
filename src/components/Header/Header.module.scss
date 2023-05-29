@@ -99,18 +99,20 @@
     }
 }
 
-.searchDropdown {
-    border: none;
-    border-radius: 0;
-    top: 100px !important;
+.searchContainer {
+    background-color: #fff;
+    left: 0;
+    top: 80px ;
     padding: 5px 16px;
-    width: 100% !important;
+    position: absolute;
+    width: 100% ;
 
     @include sm {
         padding: 10px 24px;
     }
 
     @include md {
+        top: 100px ;
         padding: 20px 130px;
     }
 }

@@ -1,43 +1,50 @@
+import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
+import DeviceDetector from '@shared/DeviceDetector';
 import { SearchIcon } from 'assets/icons';
+import { DEVICE_TYPES } from 'utils/device-detection';
 import { globalActions } from 'redux/slices/global';
 import useTranslations from 'hooks/use-translations';
 
 import styles from './Search.module.scss';
 
 const Search = () => {
-    const dispatch = useDispatch();
+    const router = useRouter();
     const T = useTranslations();
+    const dispatch = useDispatch();
 
-    const { keyword } = useSelector(state => state.global.headerSearchProps);
+    const { mobileMenuVisibility } = useSelector(state => state.global);
+
+    const ref = useRef();
 
     const onSearchClick = () => {
-        if (!keyword) {
-            dispatch(globalActions.changeHeaderSearchProps({ isVisible: false }));
-        } else {
-            console.log('route search page');
+        const keyword = ref.current.value;
+
+        if (keyword) {
+            router.push(`/search?name=${keyword}&page=1`);
+
+            if (mobileMenuVisibility) {
+                dispatch(globalActions.changeMobileMenuVisibility(false));
+            }
         }
     };
 
-    const onSearchChange = e => {
-        const { value } = e.target;
-
-        dispatch(globalActions.changeHeaderSearchProps({ keyword: value }));
-    };
-
-    const onKeyPress = () => {
-        console.log('route search page');
+    const onKeyPress = event => {
+        if (event.keyCode === 13) {
+            onSearchClick();
+        }
     };
 
     return (
         <div className={styles.container}>
-            <input
-                onChange={onSearchChange}
-                onKeyPress={onKeyPress}
-                className={styles.input}
-                placeholder={T.search_by_product}
-            />
-            <SearchIcon onClick={onSearchClick} className={styles.icon} />
+            <DeviceDetector visible={[DEVICE_TYPES.mobile]}>
+                <SearchIcon onClick={onSearchClick} className={styles.icon} />
+            </DeviceDetector>
+            <input ref={ref} className={styles.input} placeholder={T.search_by_product} onKeyDown={onKeyPress} />
+            <DeviceDetector hidden={[DEVICE_TYPES.mobile]}>
+                <SearchIcon onClick={onSearchClick} className={styles.icon} />
+            </DeviceDetector>
         </div>
     );
 };

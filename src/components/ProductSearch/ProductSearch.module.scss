@@ -1,0 +1,63 @@
+@import 'styles/utils/responsive';
+
+.container {
+    color: var(--color-text-primary);
+    display: flex;
+    flex-direction: column;
+    padding: 50px 16px;
+
+    @include s {
+        padding: 50px 24px;
+    }
+
+    @include md {
+        padding: 100px 130px;
+    }
+}
+
+.searchTitle {
+    font-size: 2.4rem;
+    font-weight: 700;
+
+    @include sm {
+        font-size: 4rem;
+    }
+}
+
+.productsCount {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-left: 10px;
+    white-space: nowrap;
+
+    @include sm {
+        font-size: 1.6rem;
+    }
+
+    @include md {
+        margin-left: 45px;
+    }
+}
+
+.loader {
+    margin: 60px auto 0  auto;
+}
+
+.productsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 16px;
+    margin-top: 50px;
+    width: 100%;
+
+    @include sm {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include md {
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px;
+        margin-top: 60px;
+        width: auto;
+    }
+}

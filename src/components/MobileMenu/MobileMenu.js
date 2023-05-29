@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Drawer } from '@mantine/core';
 import DeviceDetector from '@shared/DeviceDetector';
 import Search from '../Header/Search';
-import { ArrowDownIcon, CloseIcon, FacebookIcon, InstagramIcon, LinkedinIcon, SearchIcon } from 'assets/icons';
+import { ArrowDownIcon, CloseIcon, FacebookIcon, InstagramIcon, LinkedinIcon } from 'assets/icons';
 import { DEVICE_TYPES } from 'utils/device-detection';
 import { globalActions } from 'redux/slices/global';
 import useTranslations from 'hooks/use-translations';
@@ -17,17 +17,11 @@ const MobileMenu = () => {
 
     const [showSubMenu, setShowSubMenu] = useState({ about: false, products: false });
 
-    const { isVisible: isSearchVisible } = useSelector(state => state.global.headerSearchProps);
     const { mobileMenuVisibility: isVisible, sections, siteData, contact } = useSelector(state => state.global);
 
     const onClose = () => {
         dispatch(globalActions.changeMobileMenuVisibility(false));
-        dispatch(globalActions.changeHeaderSearchProps({ isVisible: false }));
         setShowSubMenu({ about: false, products: false });
-    };
-
-    const onSearchClick = () => {
-        dispatch(globalActions.changeHeaderSearchProps({ isVisible: true }));
     };
 
     const onSubMenuClick = (e, key) => {
@@ -44,16 +38,12 @@ const MobileMenu = () => {
             overlayOpacity={0.5}
         >
             <div className={styles.content}>
-                {isSearchVisible ? (
-                    <Search />
-                ) : (
-                    <div className={styles.drawerHeader}>
-                        <DeviceDetector visible={[DEVICE_TYPES.mobile]}>
-                            <SearchIcon onClick={onSearchClick} />
-                        </DeviceDetector>
-                        <CloseIcon onClick={onClose} className={styles.closeIcon} />
-                    </div>
-                )}
+                <div className={styles.drawerHeader}>
+                    <DeviceDetector visible={[DEVICE_TYPES.mobile]}>
+                        <Search />
+                    </DeviceDetector>
+                    <CloseIcon onClick={onClose} className={styles.closeIcon} />
+                </div>
                 <nav className={styles.menu}>
                     <span className={styles.linkItem}>
                         {T.menu_item_1}

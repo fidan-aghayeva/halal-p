@@ -12,7 +12,6 @@ const initialLanguage = Renderer.onClientSide() ? Cookie.getItem(COOKIE_KEYS.lan
 const initialState = {
     currentDevice: initialCurrentDevice,
     language: initialLanguage,
-    headerSearchProps: { isVisible: false, keyword: null },
     mobileMenuVisibility: false,
     pagination: {
         isFetching: false,
@@ -34,9 +33,6 @@ export const globalSlice = createSlice({
         },
         changeLanguage: (state, { payload }) => {
             state.language = payload;
-        },
-        changeHeaderSearchProps: (state, { payload }) => {
-            state.headerSearchProps = { ...state.headerSearchProps, ...payload };
         },
         changeMobileMenuVisibility: (state, { payload }) => {
             state.mobileMenuVisibility = payload;

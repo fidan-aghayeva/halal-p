@@ -50,6 +50,10 @@
     &:focus-visible {
         outline: none;
     }
+
+    svg {
+        width: 15px;
+    }
 }
 
 .subLinkItem {

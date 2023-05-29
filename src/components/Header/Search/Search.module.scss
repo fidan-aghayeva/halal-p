@@ -5,12 +5,7 @@
     color: var(--color-text-primary);
     display: flex;
     justify-content: space-between;
-    margin-bottom: 18px;
     width: 100%;
-
-    @include md {
-        margin-bottom: 0;
-    }
 }
 
 .input {
@@ -36,4 +31,9 @@
 
 .icon {
     cursor: pointer;
+    margin-right: 5px;
+
+    @include md {
+        margin-right: 0;
+    }
 }
