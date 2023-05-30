@@ -7,6 +7,7 @@ import Head from 'next/head';
 import Autoplay from 'embla-carousel-autoplay';
 import { Carousel } from '@mantine/carousel';
 import Map from 'components/Map';
+import BlogCarousel from './BlogCarousel';
 import ProductsCarousel from './ProductsCarousel';
 import ProjectsCarousel from './ProjectsCarousel';
 import { ArrowLeftIcon, ArrowRightIcon } from 'assets/icons';
@@ -84,6 +85,10 @@ const Home = props => {
                 <div className={classNames('flex align-center justify-center flex-column', styles.projects)}>
                     <h2 className={'title'}>{T.projects}</h2>
                     <ProjectsCarousel />
+                </div>
+                <div className={classNames('flex align-center justify-center flex-column', styles.projects)}>
+                    <h2 className={'title'}>{T.blog}</h2>
+                    <BlogCarousel />
                 </div>
                 <div className={classNames('flex align-center justify-center flex-column')}>
                     <h2 className={'title'}>{T.contact}</h2>

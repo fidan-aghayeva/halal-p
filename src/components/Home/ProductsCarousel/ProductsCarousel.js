@@ -21,7 +21,6 @@ const ProductsCarousel = () => {
                     withControls={false}
                     slideSize={'25%'}
                     align={'start'}
-                    slideGap={'20px'}
                     className={styles.carousel}
                 >
                     {products.map(product => {
@@ -54,8 +53,10 @@ const ProductsCarousel = () => {
                         href={`/products/${product.slug}/${product.id}?page=1`}
                         className={classNames('flex align-center justify-center flex-column', styles.productCard)}
                     >
-                        {product.image}
-                        <span className={styles.productName}>{product.title}</span>
+                        <div className={styles.productImage}>
+                            <ReactSVG src={SERVICE_URL + product.image} />
+                        </div>
+                        <span className={styles.productName}>{product.name}</span>
                     </Link>
                 ))}
             </DeviceDetector>
