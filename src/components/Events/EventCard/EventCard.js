@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import dompurify from 'isomorphic-dompurify';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,6 +13,7 @@ const EventCard = props => {
     const { event } = props;
 
     const T = useTranslations();
+    const { language } = useSelector(state => state.global);
 
     const sanitizer = dompurify.sanitize;
 
@@ -26,13 +28,14 @@ const EventCard = props => {
                     scroll={false}
                     href={`/events/tag/${event.section.slug}/${event.section.id}?page=1`}
                     className={styles.tag}
+                    locale={language}
                 >
                     {event.section.name}
                 </Link>
             </div>
             <h3 className={styles.title}>{event.title}</h3>
             <div className={styles.content} dangerouslySetInnerHTML={{ __html: sanitizer(event.content) }} />
-            <Link href={`/events/${event.slug}-${event.id}`} className={styles.readMore}>
+            <Link href={`/events/${event.slug}-${event.id}`} className={styles.readMore} locale={language}>
                 {T.read_more} <ArrowRightLongIcon />
             </Link>
         </div>

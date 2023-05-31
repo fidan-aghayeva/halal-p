@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import dompurify from 'isomorphic-dompurify';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,6 +14,8 @@ const BlogCard = props => {
 
     const T = useTranslations();
 
+    const { language } = useSelector(state => state.global);
+
     const sanitizer = dompurify.sanitize;
 
     return (
@@ -26,13 +29,14 @@ const BlogCard = props => {
                     scroll={false}
                     className={styles.tag}
                     href={`/blog/tag/${blog.section.slug}/${blog.section.id}?page=1`}
+                    locale={language}
                 >
                     {blog.section.name}
                 </Link>
             </div>
             <h3 className={styles.title}>{blog.title}</h3>
             <div className={styles.content} dangerouslySetInnerHTML={{ __html: sanitizer(blog.content) }} />
-            <Link href={`/blog/${blog.slug}-${blog.id}`} className={styles.readMore}>
+            <Link href={`/blog/${blog.slug}-${blog.id}`} className={styles.readMore} locale={language}>
                 {T.read_more} <ArrowRightLongIcon />
             </Link>
         </div>

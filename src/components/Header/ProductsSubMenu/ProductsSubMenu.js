@@ -4,13 +4,17 @@ import Link from 'next/link';
 import styles from './ProductsSubMenu.module.scss';
 
 const ProductsSubMenu = () => {
-    const { sections, categories } = useSelector(state => state.global);
+    const { sections, categories, language } = useSelector(state => state.global);
 
     return (
         <div className={styles.container}>
             {sections.map(section => (
                 <div key={section.id} className={styles.category}>
-                    <Link href={`/products/${section.slug}/${section.id}?page=1`} className={styles.categoryLink}>
+                    <Link
+                        href={`/products/${section.slug}/${section.id}?page=1`}
+                        className={styles.categoryLink}
+                        locale={language}
+                    >
                         {section.name}
                     </Link>
                     {categories
@@ -20,6 +24,7 @@ const ProductsSubMenu = () => {
                                 href={`/products/${subCategory.slug}/${subCategory.id}?page=1`}
                                 key={subCategory.id}
                                 className={styles.subCategoryLink}
+                                locale={language}
                             >
                                 {subCategory.name}
                             </Link>

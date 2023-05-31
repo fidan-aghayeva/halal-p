@@ -16,7 +16,7 @@ export const getServerSideProps = async context => {
 
     const id = category.at(-1);
 
-    const res = await fetch(`${SERVICE_URL}/${locale}/categories/${id}/seo`);
+    const res = await fetch(`${SERVICE_URL}/${locale}/categories/${id}/seo?isOld=true`);
     const serverData = await res.json();
 
     if (serverData.Success === false) {

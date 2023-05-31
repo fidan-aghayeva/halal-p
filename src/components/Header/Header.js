@@ -30,7 +30,7 @@ const Header = props => {
     const [isHomePage, setIsHomePage] = useState(false);
     const [showSearchBar, setShowSearchBar] = useState(false);
 
-    const { currentDevice, siteData } = useSelector(state => state.global);
+    const { currentDevice, siteData, language } = useSelector(state => state.global);
 
     const isDesktop = useMemo(() => {
         return currentDevice.type === DEVICE_TYPES.desktop;
@@ -122,18 +122,21 @@ const Header = props => {
                                 <Link
                                     className={classNames(styles.linkItem, { homePage: isHomePage })}
                                     href={'/service'}
+                                    locale={language}
                                 >
                                     <span>{T.menu_item_3}</span>
                                 </Link>
                                 <Link
                                     className={classNames(styles.linkItem, { homePage: isHomePage })}
                                     href={'/blog?page=1'}
+                                    locale={language}
                                 >
                                     <span>{T.menu_item_4}</span>
                                 </Link>
                                 <Link
                                     className={classNames(styles.linkItem, { homePage: isHomePage })}
                                     href={'/contact'}
+                                    locale={language}
                                 >
                                     <span>{T.menu_item_5}</span>
                                 </Link>

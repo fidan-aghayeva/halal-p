@@ -1,9 +1,16 @@
+import { useRouter } from 'next/router';
 import AppLayout from 'components/layouts/AppLayout';
 import DetailPageLayout from 'components/layouts/DetailPageLayout';
 import { PAGE_TYPES, SERVICE_URL } from 'utils/constants';
 
 const ProjectDetailPage = props => {
     const { project } = props;
+
+    const router = useRouter();
+
+    if (!project) {
+        router.push('/404');
+    }
 
     return project ? <DetailPageLayout data={project} /> : <div />;
 };
@@ -20,7 +27,7 @@ export const getServerSideProps = async context => {
     const project = await res.json();
 
     if (project.Success === false) {
-        return { props: { project: {} } };
+        return { props: { project: null } };
     }
 
     return { props: { project } };

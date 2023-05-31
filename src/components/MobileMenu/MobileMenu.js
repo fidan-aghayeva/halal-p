@@ -17,7 +17,13 @@ const MobileMenu = () => {
 
     const [showSubMenu, setShowSubMenu] = useState({ about: false, products: false });
 
-    const { mobileMenuVisibility: isVisible, sections, siteData, contact } = useSelector(state => state.global);
+    const {
+        mobileMenuVisibility: isVisible,
+        sections,
+        siteData,
+        contact,
+        language,
+    } = useSelector(state => state.global);
 
     const onClose = () => {
         dispatch(globalActions.changeMobileMenuVisibility(false));
@@ -51,16 +57,31 @@ const MobileMenu = () => {
                     </span>
                     {showSubMenu.about && (
                         <>
-                            <Link href={'/about'} className={styles.subLinkItem} onClick={onClose}>
+                            <Link href={'/about'} className={styles.subLinkItem} onClick={onClose} locale={language}>
                                 {T.sub_menu_item_1}
                             </Link>
-                            <Link href={'/projects?page=1'} className={styles.subLinkItem} onClick={onClose}>
+                            <Link
+                                href={'/projects?page=1'}
+                                className={styles.subLinkItem}
+                                onClick={onClose}
+                                locale={language}
+                            >
                                 {T.sub_menu_item_2}
                             </Link>
-                            <Link href={'/events?page=1'} className={styles.subLinkItem} onClick={onClose}>
+                            <Link
+                                href={'/events?page=1'}
+                                className={styles.subLinkItem}
+                                onClick={onClose}
+                                locale={language}
+                            >
                                 {T.sub_menu_item_3}
                             </Link>
-                            <Link href={'/vacancies'} className={styles.subLinkItem} onClick={onClose}>
+                            <Link
+                                href={'/vacancies'}
+                                className={styles.subLinkItem}
+                                onClick={onClose}
+                                locale={language}
+                            >
                                 {T.sub_menu_item_4}
                             </Link>
                         </>
@@ -76,17 +97,18 @@ const MobileMenu = () => {
                                 href={`/products/${section.slug}/${section.id}?page=1`}
                                 className={styles.subLinkItem}
                                 onClick={onClose}
+                                locale={language}
                             >
                                 {section.name}
                             </Link>
                         ))}
-                    <Link className={styles.linkItem} href={'/service'}>
+                    <Link className={styles.linkItem} href={'/service'} locale={language}>
                         <span>{T.menu_item_3}</span>
                     </Link>
-                    <Link className={styles.linkItem} href={'/blog?page=1'}>
+                    <Link className={styles.linkItem} href={'/blog?page=1'} locale={language}>
                         <span>{T.menu_item_4}</span>
                     </Link>
-                    <Link className={styles.linkItem} href={'/contact'}>
+                    <Link className={styles.linkItem} href={'/contact'} locale={language}>
                         <span>{T.menu_item_5}</span>
                     </Link>
                 </nav>

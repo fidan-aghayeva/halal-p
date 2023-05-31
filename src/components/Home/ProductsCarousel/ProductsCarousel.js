@@ -11,7 +11,7 @@ import { SERVICE_URL } from 'utils/constants';
 import styles from './ProductsCarousel.module.scss';
 
 const ProductsCarousel = () => {
-    const { currentDevice, sections: products } = useSelector(state => state.global);
+    const { currentDevice, sections: products, language } = useSelector(state => state.global);
 
     return products.length ? (
         <div className={classNames('flex justify-center', styles.container)}>
@@ -34,6 +34,7 @@ const ProductsCarousel = () => {
                                         'flex align-center justify-center flex-column',
                                         styles.productCard
                                     )}
+                                    locale={language}
                                 >
                                     <div className={styles.productImage}>
                                         <ReactSVG src={imageUrl} />
@@ -52,6 +53,7 @@ const ProductsCarousel = () => {
                         key={product.id}
                         href={`/products/${product.slug}/${product.id}?page=1`}
                         className={classNames('flex align-center justify-center flex-column', styles.productCard)}
+                        locale={language}
                     >
                         <div className={styles.productImage}>
                             <ReactSVG src={SERVICE_URL + product.image} />

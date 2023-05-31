@@ -21,6 +21,7 @@ const DetailPageLayout = props => {
 
     const {
         currentDevice: { type },
+        language,
     } = useSelector(state => state.global);
 
     const sanitizer = dompurify.sanitize;
@@ -40,7 +41,11 @@ const DetailPageLayout = props => {
                 <div className={styles.dateAndTag}>
                     <span className={styles.date}>{getDate(publishedDate)}</span>
                     {pageType !== 'projects' && section && (
-                        <Link href={`/${pageType}/tag/${section.slug}/${section.id}?page=1`} className={styles.tag}>
+                        <Link
+                            href={`/${pageType}/tag/${section.slug}/${section.id}?page=1`}
+                            className={styles.tag}
+                            locale={language}
+                        >
                             {section.name}
                         </Link>
                     )}
