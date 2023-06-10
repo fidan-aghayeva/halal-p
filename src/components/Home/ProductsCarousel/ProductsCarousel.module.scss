@@ -43,8 +43,6 @@
         svg {
             color: #fff;
         }
-        //box-shadow: 0 3px 21px rgba(0, 0, 0, 0.1);
-        //border: 1px solid var(--primary-color);
     }
 
     @include sm {
@@ -55,11 +53,12 @@
 
     @include lg {
         height: 300px;
-        width: 280px;
+        max-width: 280px;
     }
 }
 
 .productImage {
+    color: var(--primary-color);
     height: 90px;
     position: relative;
     width: 90px;

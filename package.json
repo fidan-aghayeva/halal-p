@@ -28,7 +28,6 @@
     "react-dom": "18.2.0",
     "react-image-gallery": "^1.2.11",
     "react-redux": "^8.0.5",
-    "react-svg": "^16.1.12",
     "sass": "^1.57.1",
     "ua-parser-js": "^1.0.32"
   },

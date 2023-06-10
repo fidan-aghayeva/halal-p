@@ -1,12 +1,10 @@
 import { useSelector } from 'react-redux';
-import { ReactSVG } from 'react-svg';
-import Image from 'next/image';
 import Link from 'next/link';
 import classNames from 'classnames';
 import { Carousel } from '@mantine/carousel';
 import DeviceDetector from '@shared/DeviceDetector';
 import { DEVICE_TYPES } from 'utils/device-detection';
-import { SERVICE_URL } from 'utils/constants';
+import sectionImages from 'assets/products';
 
 import styles from './ProductsCarousel.module.scss';
 
@@ -24,7 +22,7 @@ const ProductsCarousel = () => {
                     className={styles.carousel}
                 >
                     {products.map(product => {
-                        const imageUrl = SERVICE_URL + product.image;
+                        const SectionImage = sectionImages[`SectionImage${product.id}`];
 
                         return (
                             <Carousel.Slide key={product.id} className={styles.slide}>
@@ -37,8 +35,7 @@ const ProductsCarousel = () => {
                                     locale={language}
                                 >
                                     <div className={styles.productImage}>
-                                        <ReactSVG src={imageUrl} />
-                                        {/*<Image src={imageUrl} alt={product.name} fill />*/}
+                                        <SectionImage />
                                     </div>
                                     <span className={styles.productName}>{product.name}</span>
                                 </Link>
@@ -48,19 +45,23 @@ const ProductsCarousel = () => {
                 </Carousel>
             </DeviceDetector>
             <DeviceDetector visible={[DEVICE_TYPES.mobile]}>
-                {products.map(product => (
-                    <Link
-                        key={product.id}
-                        href={`/products/${product.slug}/${product.id}?page=1`}
-                        className={classNames('flex align-center justify-center flex-column', styles.productCard)}
-                        locale={language}
-                    >
-                        <div className={styles.productImage}>
-                            <ReactSVG src={SERVICE_URL + product.image} />
-                        </div>
-                        <span className={styles.productName}>{product.name}</span>
-                    </Link>
-                ))}
+                {products.map(product => {
+                    const SectionImage = sectionImages[`SectionImage${product.id}`];
+
+                    return (
+                        <Link
+                            key={product.id}
+                            href={`/products/${product.slug}/${product.id}?page=1`}
+                            className={classNames('flex align-center justify-center flex-column', styles.productCard)}
+                            locale={language}
+                        >
+                            <div className={styles.productImage}>
+                                <SectionImage />
+                            </div>
+                            <span className={styles.productName}>{product.name}</span>
+                        </Link>
+                    );
+                })}
             </DeviceDetector>
         </div>
     ) : null;
