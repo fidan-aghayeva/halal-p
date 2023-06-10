@@ -102,13 +102,13 @@ const MobileMenu = () => {
                                 {section.name}
                             </Link>
                         ))}
-                    <Link className={styles.linkItem} href={'/service'} locale={language}>
+                    <Link className={styles.linkItem} href={'/service'} locale={language} onClick={onClose}>
                         <span>{T.menu_item_3}</span>
                     </Link>
-                    <Link className={styles.linkItem} href={'/blog?page=1'} locale={language}>
+                    <Link className={styles.linkItem} href={'/blog?page=1'} locale={language} onClick={onClose}>
                         <span>{T.menu_item_4}</span>
                     </Link>
-                    <Link className={styles.linkItem} href={'/contact'} locale={language}>
+                    <Link className={styles.linkItem} href={'/contact'} locale={language} onClick={onClose}>
                         <span>{T.menu_item_5}</span>
                     </Link>
                 </nav>

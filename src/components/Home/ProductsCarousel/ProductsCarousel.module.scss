@@ -70,15 +70,17 @@
 }
 
 .productName {
-    font-size: 2.6rem;
+    font-size: 2rem;
     font-weight: 500;
     margin-top: 15px;
+    text-align: center;
 
     @include sm {
         margin-top: 30px;
     }
 
     @include md {
+        font-size: 2.6rem;
         margin-top: 60px;
     }
 }
