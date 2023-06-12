@@ -51,7 +51,7 @@ const DetailPageLayout = props => {
                     )}
                 </div>
                 <div className={styles.mainImageContainer}>
-                    <Image src={SERVICE_URL + mainImage} alt={title} fill />
+                    {mainImage && <Image src={SERVICE_URL + mainImage} alt={title} fill sizes='100vw' />}
                 </div>
                 <div
                     className={classNames(styles.content, { withoutImages: pageType !== 'blog' })}

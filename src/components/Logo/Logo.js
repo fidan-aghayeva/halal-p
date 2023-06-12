@@ -9,7 +9,7 @@ const Logo = props => {
 
     return (
         <Link href={'/'} className={styles.logo}>
-            <Image src={SERVICE_URL + path} alt={'logo'} fill />
+            {path && <Image src={SERVICE_URL + path} alt={'logo'} fill sizes='(max-width: 1024px) 122px,  176px' />}
         </Link>
     );
 };

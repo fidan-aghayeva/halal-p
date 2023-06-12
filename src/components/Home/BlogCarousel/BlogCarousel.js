@@ -9,10 +9,12 @@ import { ArrowLeftIcon, ArrowRightIcon } from 'assets/icons';
 import { DEVICE_TYPES } from 'utils/device-detection';
 import { getHomeBlogsByType } from 'utils/service';
 import { PAGE_TYPES } from 'utils/constants';
+import useTranslations from 'hooks/use-translations';
 
 import styles from './BlogCarousel.module.scss';
 
 const BlogCarousel = () => {
+    const T = useTranslations();
     const router = useRouter();
     const { locale } = router;
 
@@ -31,30 +33,35 @@ const BlogCarousel = () => {
     }, [locale]);
 
     return (
-        <div className={classNames('flex justify-center flex-column', styles.container)}>
-            <DeviceDetector hidden={[DEVICE_TYPES.mobile]}>
-                <Carousel
-                    withIndicators={true}
-                    align={'start'}
-                    slideSize={'100%'}
-                    nextControlIcon={<ArrowRightIcon />}
-                    previousControlIcon={<ArrowLeftIcon />}
-                    className={styles.carousel}
-                    withControls={currentDevice.type === DEVICE_TYPES.desktop}
-                >
-                    {blogs.map(blog => (
-                        <Carousel.Slide className={styles.slide} key={blog.id}>
-                            <BlogCard blog={blog} />
-                        </Carousel.Slide>
-                    ))}
-                </Carousel>
-            </DeviceDetector>
-            <DeviceDetector visible={[DEVICE_TYPES.mobile]}>
-                {blogs.slice(0, 2).map(blog => (
-                    <BlogCard key={blog.id} blog={blog} />
-                ))}
-            </DeviceDetector>
-        </div>
+        blogs.length > 0 && (
+            <div className={classNames('flex align-center justify-center flex-column', styles.blogs)}>
+                <h2 className={'title'}>{T.blog}</h2>
+                <div className={classNames('flex justify-center flex-column', styles.container)}>
+                    <DeviceDetector hidden={[DEVICE_TYPES.mobile]}>
+                        <Carousel
+                            withIndicators={true}
+                            align={'start'}
+                            slideSize={'100%'}
+                            nextControlIcon={<ArrowRightIcon />}
+                            previousControlIcon={<ArrowLeftIcon />}
+                            className={styles.carousel}
+                            withControls={currentDevice.type === DEVICE_TYPES.desktop}
+                        >
+                            {blogs.map(blog => (
+                                <Carousel.Slide className={styles.slide} key={blog.id}>
+                                    <BlogCard blog={blog} />
+                                </Carousel.Slide>
+                            ))}
+                        </Carousel>
+                    </DeviceDetector>
+                    <DeviceDetector visible={[DEVICE_TYPES.mobile]}>
+                        {blogs.slice(0, 2).map(blog => (
+                            <BlogCard key={blog.id} blog={blog} />
+                        ))}
+                    </DeviceDetector>
+                </div>
+            </div>
+        )
     );
 };
 

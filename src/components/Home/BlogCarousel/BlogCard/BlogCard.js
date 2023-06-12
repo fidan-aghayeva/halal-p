@@ -19,7 +19,14 @@ const BlogCard = props => {
     return (
         <div className={styles.container}>
             <div className={styles.imageContainer}>
-                <Image src={SERVICE_URL + blog.mainImage} alt={blog.title} fill />
+                {blog.mainImage && (
+                    <Image
+                        src={SERVICE_URL + blog.mainImage}
+                        alt={blog.title}
+                        fill
+                        sizes='(max-width: 768px) 100vw,  50vw'
+                    />
+                )}
             </div>
             <div className={styles.content}>
                 <div>

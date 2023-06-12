@@ -13,7 +13,9 @@ const ProductCard = props => {
     return (
         <Link href={`/product/${product.slug}/${product.id}`} className={styles.container} locale={language}>
             <div className={styles.imageContainer}>
-                <Image src={SERVICE_URL + product.mainImage} alt={product.name} fill />
+                {product.mainImage && (
+                    <Image src={SERVICE_URL + product.mainImage} alt={product.name} fill sizes='90%' />
+                )}
             </div>
             <span className={styles.name}>{product.name}</span>
         </Link>

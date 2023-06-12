@@ -65,31 +65,24 @@ const Home = props => {
                         {sliderData.length
                             ? sliderData.map(slider => (
                                   <Carousel.Slide key={slider.id}>
-                                      <Image
-                                          src={SERVICE_URL + slider.imagePath}
-                                          alt={'Slider'}
-                                          fill
-                                          placeholder={'blur'}
-                                          blurDataURL={'/images/slider/slider1.png'}
-                                      />
+                                      <a href={slider.redirectUrl} target={'blank'} className={styles.slider}>
+                                          <Image
+                                              src={SERVICE_URL + slider.imagePath}
+                                              alt={'Slider'}
+                                              fill
+                                              sizes='100vw'
+                                              placeholder={'blur'}
+                                              blurDataURL={'/images/slider/slider1.png'}
+                                          />
+                                      </a>
                                   </Carousel.Slide>
                               ))
                             : null}
                     </Carousel>
                 </div>
-
-                <div className={classNames('flex align-center justify-center flex-column', styles.products)}>
-                    <h2 className={'title'}>{T.products}</h2>
-                    <ProductsCarousel />
-                </div>
-                <div className={classNames('flex align-center justify-center flex-column', styles.projects)}>
-                    <h2 className={'title'}>{T.projects}</h2>
-                    <ProjectsCarousel />
-                </div>
-                <div className={classNames('flex align-center justify-center flex-column', styles.projects)}>
-                    <h2 className={'title'}>{T.blog}</h2>
-                    <BlogCarousel />
-                </div>
+                <ProductsCarousel />
+                <ProjectsCarousel />
+                <BlogCarousel />
                 <div className={classNames('flex align-center justify-center flex-column')}>
                     <h2 className={'title'}>{T.contact}</h2>
                     <Map />

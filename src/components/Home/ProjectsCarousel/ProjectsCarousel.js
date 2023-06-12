@@ -34,35 +34,44 @@ const ProjectsCarousel = () => {
     }, [locale]);
 
     return (
-        <div className={classNames('flex justify-center flex-column', styles.container)}>
-            <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
-                <Carousel
-                    withIndicators={currentDevice.type === DEVICE_TYPES.tablet}
-                    align={'start'}
-                    slideGap={'20px'}
-                    slideSize={'25%'}
-                    nextControlIcon={<ArrowRightIcon />}
-                    previousControlIcon={<ArrowLeftIcon />}
-                    className={styles.carousel}
-                >
-                    {projects.map(project => (
-                        <Carousel.Slide className={styles.slide} key={project.id}>
-                            <ProjectCard project={project} />
-                        </Carousel.Slide>
-                    ))}
-                </Carousel>
-            </DeviceDetector>
-            <DeviceDetector hidden={[DEVICE_TYPES.desktop]}>
-                <div className={styles.projectCardsContainer}>
-                    {currentDevice.type === DEVICE_TYPES.mobile
-                        ? projects.slice(0, 2).map(project => <ProjectCard key={project.id} project={project} />)
-                        : projects.slice(0, 3).map(project => <ProjectCard key={project.id} project={project} />)}
+        projects.length > 0 && (
+            <div className={classNames('flex align-center justify-center flex-column', styles.projects)}>
+                <h2 className={'title'}>{T.projects}</h2>
+                <div className={classNames('flex justify-center flex-column', styles.container)}>
+                    <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
+                        <Carousel
+                            withIndicators={currentDevice.type === DEVICE_TYPES.tablet}
+                            align={'start'}
+                            slideGap={'20px'}
+                            slideSize={'25%'}
+                            nextControlIcon={<ArrowRightIcon />}
+                            previousControlIcon={<ArrowLeftIcon />}
+                            className={styles.carousel}
+                        >
+                            {projects.map(project => (
+                                <Carousel.Slide className={styles.slide} key={project.id}>
+                                    <ProjectCard project={project} />
+                                </Carousel.Slide>
+                            ))}
+                        </Carousel>
+                    </DeviceDetector>
+                    <DeviceDetector hidden={[DEVICE_TYPES.desktop]}>
+                        <div className={styles.projectCardsContainer}>
+                            {currentDevice.type === DEVICE_TYPES.mobile
+                                ? projects
+                                      .slice(0, 2)
+                                      .map(project => <ProjectCard key={project.id} project={project} />)
+                                : projects
+                                      .slice(0, 3)
+                                      .map(project => <ProjectCard key={project.id} project={project} />)}
+                        </div>
+                    </DeviceDetector>
+                    <Link href={'/projects?page=1'} locale={language} className={styles.showAll}>
+                        {T.show_all}
+                    </Link>
                 </div>
-            </DeviceDetector>
-            <Link href={'/projects?page=1'} locale={language} className={styles.showAll}>
-                {T.show_all}
-            </Link>
-        </div>
+            </div>
+        )
     );
 };
 

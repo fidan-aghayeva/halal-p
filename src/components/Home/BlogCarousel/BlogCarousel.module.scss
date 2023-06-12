@@ -1,5 +1,13 @@
 @import 'styles/utils/responsive';
 
+.blogs {
+    padding: 0 24px 100px 24px;
+
+    @include md {
+        padding: 0 130px 100px 130px;
+    }
+}
+
 .container {
     position: relative;
     width: 100%;

@@ -45,7 +45,14 @@ const CustomersCarousel = props => {
                                 {customerArray.map(customer => (
                                     <div className={styles.slideItem} key={customer.id}>
                                         <div className={styles.customer}>
-                                            <Image src={SERVICE_URL + customer.imagePath} alt={type} fill />
+                                            {customer.imagePath && (
+                                                <Image
+                                                    src={SERVICE_URL + customer.imagePath}
+                                                    alt={type}
+                                                    fill
+                                                    sizes='180px'
+                                                />
+                                            )}
                                         </div>
                                     </div>
                                 ))}

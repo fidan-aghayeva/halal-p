@@ -14,7 +14,7 @@ const Footer = () => {
 
     return (
         <footer className={styles.footer}>
-            {siteData && <Logo path={siteData.logoDark.path} />}
+            <Logo path={siteData?.logoDark?.path} />
             <DeviceDetector hidden={[DEVICE_TYPES.mobile]}>
                 <span>{T.all_rights_reserved}</span>
             </DeviceDetector>

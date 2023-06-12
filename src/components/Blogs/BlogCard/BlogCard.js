@@ -21,7 +21,7 @@ const BlogCard = props => {
     return (
         <div className={styles.container}>
             <div className={styles.imageContainer}>
-                <Image src={SERVICE_URL + blog.mainImage} alt={blog.title} fill />
+                {blog.mainImage && <Image src={SERVICE_URL + blog.mainImage} alt={blog.title} fill sizes='100vw' />}
             </div>
             <div className={'flex flex-row align-center'}>
                 <span className={styles.date}>{getDate(blog.publishedDate)}</span>

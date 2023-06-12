@@ -9,7 +9,14 @@ const EmployeeCard = props => {
     return (
         <div className={styles.container}>
             <div className={styles.imageContainer}>
-                <Image src={SERVICE_URL + employee.image} alt={employee.name + employee.surname} fill />
+                {employee.image && (
+                    <Image
+                        src={SERVICE_URL + employee.image}
+                        alt={employee.name + employee.surname}
+                        sizes='(max-width: 576px) 100%, (max-width: 1024px) 260px, 280px'
+                        fill
+                    />
+                )}
             </div>
             <div className={styles.name}>
                 {employee.name} {employee.surname}

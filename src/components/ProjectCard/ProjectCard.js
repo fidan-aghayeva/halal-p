@@ -18,9 +18,9 @@ const ProjectCard = props => {
     return (
         <div className={classNames(className, styles.container)}>
             <span className={styles.date}>{getDate(project.publishedDate, 'DD.MM.YYYY')}</span>
-            <div className={styles.imageContainer}>
-                <Image src={SERVICE_URL + project.mainImage} alt={project.title} fill />
-            </div>
+            {project.mainImage && (
+                <Image height={124} src={SERVICE_URL + project.mainImage} alt={project.title} width={183} />
+            )}
             <span className={styles.title}>{project.title}</span>
             <Link href={`/projects/${project.slug}-${project.id}`} className={styles.readMore} locale={language}>
                 {T.read_more} <ArrowRightLongIcon />

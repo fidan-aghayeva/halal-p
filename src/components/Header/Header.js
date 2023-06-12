@@ -95,7 +95,7 @@ const Header = props => {
                 <Search />
             ) : (
                 <>
-                    {siteData && <Logo path={isHomePage ? siteData.logoDark.path : siteData.logoLight.path} />}
+                    <Logo path={isHomePage ? siteData?.logoDark?.path : siteData?.logoLight?.path} />
                     <div className={styles.content}>
                         <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
                             <nav>

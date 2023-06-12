@@ -1,5 +1,13 @@
 @import 'styles/utils/responsive';
 
+.products {
+    padding: 100px 24px;
+
+    @include md {
+        padding: 100px 130px;
+    }
+}
+
 .container {
     align-items: center;
     display: flex;
