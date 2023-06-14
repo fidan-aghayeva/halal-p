@@ -37,6 +37,12 @@ const Filter = props => {
         }
     };
 
+    const onLinkClick = (e, id) => {
+        if (accordionItems[id]) {
+            e.stopPropagation();
+        }
+    };
+
     useEffect(() => {
         if (type === PRODUCTS_FILTER_TYPES.category) {
             const selectedCategory = categories.find(
@@ -57,11 +63,19 @@ const Filter = props => {
 
     return sections.map(section => (
         <div key={section.id} className={styles.accordionItem}>
-            <div className={classNames(styles.accordionHeader, { expanded: accordionItems[section.id] })}>
-                <Link href={`/products/${section.slug}/${section.id}?page=1`} scroll={false} locale={language}>
+            <div
+                className={classNames(styles.accordionHeader, { expanded: accordionItems[section.id] })}
+                onClick={() => onSectionClick(section.id)}
+            >
+                <Link
+                    href={`/products/${section.slug}/${section.id}?page=1`}
+                    scroll={false}
+                    locale={language}
+                    onClick={e => onLinkClick(e, section.id)}
+                >
                     {section.name}
                 </Link>
-                <ArrowDownIcon onClick={() => onSectionClick(section.id)} />
+                <ArrowDownIcon />
             </div>
             {accordionItems[section.id] && (
                 <div className={styles.accordionPanel}>

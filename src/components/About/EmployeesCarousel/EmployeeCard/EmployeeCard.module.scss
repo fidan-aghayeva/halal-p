@@ -3,6 +3,11 @@
 .container {
     display: flex;
     flex-direction: column;
+    width: 100%;
+
+    @include xl {
+        max-width: 280px;
+    }
 }
 
 .imageContainer {
@@ -12,10 +17,6 @@
 
     @include s {
         height: 260px;
-    }
-
-    @include md {
-        width: 280px;
     }
 }
 
