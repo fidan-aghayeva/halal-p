@@ -3,6 +3,7 @@
 .selectContainer {
     margin-left: 12px;
     max-width: 60px;
+    width: 60px;
 
     & :global {
         & .mantine-Select-input {
@@ -25,6 +26,7 @@
         & .mantine-Input-rightSection {
             color: var(--primary-color);
             z-index: -1;
+            align-self: flex-end;
             width: auto;
 
             svg {
@@ -53,6 +55,11 @@
                 background-color: var(--primary-color);
                 color: var(--color-text-tertiary);
             }
+        }
+
+        & .mantine-Select-wrapper {
+             display: flex;
+            flex-direction: row;
         }
     }
 
