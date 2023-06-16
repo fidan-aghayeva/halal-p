@@ -46,7 +46,8 @@ const Filter = props => {
     useEffect(() => {
         if (type === PRODUCTS_FILTER_TYPES.category) {
             const selectedCategory = categories.find(
-                category => category.id === id || category.subCategories.some(subCategory => subCategory.id === id)
+                category =>
+                    category.id === Number(id) || category.subCategories.some(subCategory => subCategory.id === id)
             );
 
             if (selectedCategory) {
