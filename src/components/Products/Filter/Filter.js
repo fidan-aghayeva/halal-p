@@ -21,84 +21,95 @@ const Filter = props => {
 
     const { sections, categories, language } = useSelector(state => state.global);
 
-    const [accordionItems, setAccordionItems] = useState({ [id]: true });
+    const [activeSection, setActiveSection] = useState(null);
+    const [activeCategory, setActiveCategory] = useState(null);
+    const [activeSubCategory, setActiveSubCategory] = useState(null);
 
     const onSubCategoryChange = value => {
         const [slug, id] = value.split('&');
+
+        setActiveSubCategory(Number(id));
 
         router.push(`/products/${slug}/${id}?page=1`, undefined, { scroll: false, locale: language });
     };
 
     const onSectionClick = id => {
-        if (accordionItems[id]) {
-            setAccordionItems(prevState => ({ ...prevState, [id]: !prevState[id] }));
-        } else {
-            setAccordionItems(prevState => ({ ...prevState, [id]: true }));
-        }
+        setActiveSection(prevState => (prevState === id && !activeCategory ? 'close' : id));
+
+        setActiveCategory(null);
+        setActiveSubCategory(null);
     };
 
-    const onLinkClick = (e, id) => {
-        if (accordionItems[id]) {
-            e.stopPropagation();
-        }
+    const onCategoryClick = id => {
+        setActiveCategory(prevState => (prevState === id && !activeSubCategory ? 'close' : id));
+
+        setActiveSubCategory(null);
     };
 
     useEffect(() => {
-        if (type === PRODUCTS_FILTER_TYPES.category) {
-            const selectedCategory = categories.find(
-                category =>
-                    category.id === Number(id) || category.subCategories.some(subCategory => subCategory.id === id)
-            );
+        switch (type) {
+            case PRODUCTS_FILTER_TYPES.section: {
+                setActiveSection(Number(id));
 
-            if (selectedCategory) {
-                const selectedCategorySection = sections.find(section => section.id === selectedCategory.sectionId)?.id;
+                break;
+            }
+            case PRODUCTS_FILTER_TYPES.category: {
+                const selectedCategory = categories.find(cat => cat.id === Number(id));
 
-                setAccordionItems(prevState => ({
-                    ...prevState,
-                    [selectedCategorySection]: true,
-                    [selectedCategory.id]: true,
-                }));
+                setActiveSection(selectedCategory?.sectionId);
+                setActiveCategory(Number(id));
+
+                break;
+            }
+            default: {
+                const selectedSubCategory = categories
+                    .flatMap(cat => cat.subCategories)
+                    .find(cat => cat.id === Number(id));
+
+                setActiveSection(selectedSubCategory?.sectionId);
+                setActiveCategory(selectedSubCategory?.parentId);
+                setActiveSubCategory(Number(id));
             }
         }
-    }, [id, sections, categories]);
+    }, [sections, categories]);
+
+    useEffect(() => {
+        console.log({ activeSection, activeCategory, activeSubCategory });
+    }, [activeSection, activeCategory, activeSubCategory]);
 
     return sections.map(section => (
         <div key={section.id} className={styles.accordionItem}>
-            <div
-                className={classNames(styles.accordionHeader, { expanded: accordionItems[section.id] })}
+            <Link
+                className={classNames(styles.accordionHeader, {
+                    expanded: activeSection === section.id,
+                })}
                 onClick={() => onSectionClick(section.id)}
+                href={`/products/${section.slug}/${section.id}?page=1`}
+                scroll={false}
+                locale={language}
             >
-                <Link
-                    href={`/products/${section.slug}/${section.id}?page=1`}
-                    scroll={false}
-                    locale={language}
-                    onClick={e => onLinkClick(e, section.id)}
-                >
-                    {section.name}
-                </Link>
+                {section.name}
                 <ArrowDownIcon />
-            </div>
-            {accordionItems[section.id] && (
+            </Link>
+            {activeSection === section.id && (
                 <div className={styles.accordionPanel}>
                     {categories
                         .filter(category => category.sectionId === section.id)
                         ?.map(category => (
                             <div key={category.id} className={styles.categoryAccordionItem}>
-                                <div
+                                <Link
                                     className={classNames(styles.categoryAccordionHeader, styles.accordionHeader, {
-                                        expanded: accordionItems[category.id],
+                                        expanded: activeCategory === category.id,
                                     })}
+                                    href={`/products/${category.slug}/${category.id}?page=1`}
+                                    scroll={false}
+                                    locale={language}
+                                    onClick={() => onCategoryClick(category.id)}
                                 >
-                                    <Link
-                                        href={`/products/${category.slug}/${category.id}?page=1`}
-                                        scroll={false}
-                                        locale={language}
-                                    >
-                                        {category.name}
-                                    </Link>
-                                    <PlusIcon onClick={() => onSectionClick(category.id)} />
-                                </div>
-                                {accordionItems[category.id] && (
+                                    {category.name}
+                                    <PlusIcon />
+                                </Link>
+                                {activeCategory === category.id && (
                                     <div className={styles.categoryAccordionPanel}>
                                         {category.subCategories.map(subCategory => (
                                             <Radio
@@ -106,7 +117,7 @@ const Filter = props => {
                                                 value={`${subCategory.slug}&${subCategory.id}`}
                                                 label={subCategory.name}
                                                 name={'subCategory'}
-                                                checked={id === subCategory.id}
+                                                checked={activeSubCategory === subCategory.id}
                                                 onChange={value => onSubCategoryChange(value.target.value)}
                                             />
                                         ))}
