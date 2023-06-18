@@ -69,7 +69,7 @@ const Home = props => {
                                           href={slider.redirectUrl}
                                           target={'blank'}
                                           className={styles.slider}
-                                          name={'Product shopping link'}
+                                          aria-label={'Product shopping link'}
                                       >
                                           <Image
                                               src={SERVICE_URL + slider.imagePath}

@@ -55,7 +55,7 @@ const ProductDetail = props => {
                         download
                         className={styles.brochure}
                         target={'blank'}
-                        name={'Brochure for product'}
+                        aria-label={'Brochure for product'}
                     >
                         <PDFIcon /> {T.brochure}
                     </a>

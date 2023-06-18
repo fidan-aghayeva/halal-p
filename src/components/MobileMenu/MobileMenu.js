@@ -116,19 +116,19 @@ const MobileMenu = () => {
                     href={siteData?.shopUrl}
                     target={'blank'}
                     className={styles.eShopping}
-                    name={"Company's online shop link"}
+                    aria-label={"Company's online shop link"}
                 >
                     {T.go_to_eShop}
                 </a>
             </div>
             <div className={styles.socialMediaLinks}>
-                <a className={styles.icon} href={contact?.Facebook} target={'blank'} name={'Facebook link'}>
+                <a className={styles.icon} href={contact?.Facebook} target={'blank'} aria-label={'Facebook link'}>
                     <FacebookIcon />
                 </a>
-                <a className={styles.icon} href={contact?.Instagram} target={'blank'} name={'Instagram link'}>
+                <a className={styles.icon} href={contact?.Instagram} target={'blank'} aria-label={'Instagram link'}>
                     <InstagramIcon />
                 </a>
-                <a className={styles.icon} href={contact?.Linkedin} target={'blank'} name={'Linkedin link'}>
+                <a className={styles.icon} href={contact?.Linkedin} target={'blank'} aria-label={'Linkedin link'}>
                     <LinkedinIcon />
                 </a>
             </div>

@@ -19,13 +19,13 @@ const Footer = () => {
                 <span>{T.all_rights_reserved}</span>
             </DeviceDetector>
             <div className={styles.socialMediaLinks}>
-                <a className={styles.icon} href={contact?.Facebook} target={'blank'} name={'Facebook link'}>
+                <a className={styles.icon} href={contact?.Facebook} target={'blank'} aria-label={'Facebook link'}>
                     <FacebookIcon />
                 </a>
-                <a className={styles.icon} href={contact?.Instagram} target={'blank'} name={'Instagram Link'}>
+                <a className={styles.icon} href={contact?.Instagram} target={'blank'} aria-label={'Instagram Link'}>
                     <InstagramIcon />
                 </a>
-                <a className={styles.icon} href={contact?.Linkedin} target={'blank'} name={'Linkedin link'}>
+                <a className={styles.icon} href={contact?.Linkedin} target={'blank'} aria-label={'Linkedin link'}>
                     <LinkedinIcon />
                 </a>
             </div>

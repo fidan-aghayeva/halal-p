@@ -145,7 +145,7 @@ const Header = props => {
                                 href={siteData?.shopUrl}
                                 target={'blank'}
                                 className={classNames(styles.eShopping, { homePage: isHomePage })}
-                                name={"Company's online shop link"}
+                                aria-label={"Company's online shop link"}
                             >
                                 {T.go_to_eShop}
                             </a>
