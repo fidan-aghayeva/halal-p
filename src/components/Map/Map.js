@@ -38,13 +38,13 @@ const Map = () => {
                         {contact.Email}
                     </div>
                     <div className={styles.socialMediaLinks}>
-                        <a className={styles.icon} href={contact.Facebook} target={'blank'}>
+                        <a className={styles.icon} href={contact.Facebook} target={'blank'} name={'Facebook link'}>
                             <FacebookIcon />
                         </a>
-                        <a className={styles.icon} href={contact.Instagram} target={'blank'}>
+                        <a className={styles.icon} href={contact.Instagram} target={'blank'} name={'Instagram link'}>
                             <InstagramIcon />
                         </a>
-                        <a className={styles.icon} href={contact.Linkedin} target={'blank'}>
+                        <a className={styles.icon} href={contact.Linkedin} target={'blank'} name={'Linkedin link'}>
                             <LinkedinIcon />
                         </a>
                     </div>
@@ -56,6 +56,7 @@ const Map = () => {
                     allowFullScreen=''
                     loading='lazy'
                     referrerPolicy='no-referrer-when-downgrade'
+                    title={'Company address in google map'}
                 />
             </div>
         )

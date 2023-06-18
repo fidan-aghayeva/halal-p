@@ -112,18 +112,23 @@ const MobileMenu = () => {
                         <span>{T.menu_item_5}</span>
                     </Link>
                 </nav>
-                <a href={siteData?.shopUrl} target={'blank'} className={styles.eShopping}>
+                <a
+                    href={siteData?.shopUrl}
+                    target={'blank'}
+                    className={styles.eShopping}
+                    name={"Company's online shop link"}
+                >
                     {T.go_to_eShop}
                 </a>
             </div>
             <div className={styles.socialMediaLinks}>
-                <a className={styles.icon} href={contact?.Facebook} target={'blank'}>
+                <a className={styles.icon} href={contact?.Facebook} target={'blank'} name={'Facebook link'}>
                     <FacebookIcon />
                 </a>
-                <a className={styles.icon} href={contact?.Instagram} target={'blank'}>
+                <a className={styles.icon} href={contact?.Instagram} target={'blank'} name={'Instagram link'}>
                     <InstagramIcon />
                 </a>
-                <a className={styles.icon} href={contact?.Linkedin} target={'blank'}>
+                <a className={styles.icon} href={contact?.Linkedin} target={'blank'} name={'Linkedin link'}>
                     <LinkedinIcon />
                 </a>
             </div>

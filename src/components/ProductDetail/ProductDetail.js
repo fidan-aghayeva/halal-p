@@ -31,7 +31,10 @@ const ProductDetail = props => {
                     )}
                     <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
                         <div className={styles.frame}>
-                            <iframe src={product.youtubeLink}></iframe>
+                            <iframe
+                                title={'This youtube video is about the product'}
+                                src={product.youtubeLink}
+                            ></iframe>
                         </div>
                     </DeviceDetector>
                 </div>
@@ -47,13 +50,19 @@ const ProductDetail = props => {
                             </div>
                         ))}
                     </div>
-                    <a href={SERVICE_URL + product.extraFile} download className={styles.brochure} target={'blank'}>
+                    <a
+                        href={SERVICE_URL + product.extraFile}
+                        download
+                        className={styles.brochure}
+                        target={'blank'}
+                        name={'Brochure for product'}
+                    >
                         <PDFIcon /> {T.brochure}
                     </a>
                 </div>
                 <DeviceDetector hidden={[DEVICE_TYPES.desktop]}>
                     <div className={styles.frame}>
-                        <iframe src={product.youtubeLink}></iframe>
+                        <iframe title={'This youtube video is about the product'} src={product.youtubeLink}></iframe>
                     </div>
                 </DeviceDetector>
             </div>

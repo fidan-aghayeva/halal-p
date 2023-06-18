@@ -20,7 +20,7 @@ const EventCard = props => {
     return (
         <div className={styles.container}>
             <div className={styles.imageContainer}>
-                {event.mainImage && <Image src={SERVICE_URL + event.mainImage} alt={event.title} fill sizes='100vw' />}
+                {event.mainImage && <Image src={SERVICE_URL + event.mainImage} alt={event.title} fill sizes='100%' />}
             </div>
             <div className={'flex flex-row align-center'}>
                 <span className={styles.date}>{getDate(event.publishedDate)}</span>

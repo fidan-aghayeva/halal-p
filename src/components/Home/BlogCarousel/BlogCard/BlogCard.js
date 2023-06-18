@@ -30,7 +30,7 @@ const BlogCard = props => {
             </div>
             <div className={styles.content}>
                 <div>
-                    <h4 className={styles.title}>{blog.title}</h4>
+                    <h3 className={styles.title}>{blog.title}</h3>
                     <div className={styles.text} dangerouslySetInnerHTML={{ __html: sanitizer(blog.content) }} />
                 </div>
                 <div className={styles.actions}>

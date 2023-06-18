@@ -65,12 +65,17 @@ const Home = props => {
                         {sliderData.length
                             ? sliderData.map(slider => (
                                   <Carousel.Slide key={slider.id}>
-                                      <a href={slider.redirectUrl} target={'blank'} className={styles.slider}>
+                                      <a
+                                          href={slider.redirectUrl}
+                                          target={'blank'}
+                                          className={styles.slider}
+                                          name={'Product shopping link'}
+                                      >
                                           <Image
                                               src={SERVICE_URL + slider.imagePath}
                                               alt={'Slider'}
                                               fill
-                                              sizes='100vw'
+                                              sizes='100%'
                                               placeholder={'blur'}
                                               blurDataURL={'/images/slider/slider1.png'}
                                           />
