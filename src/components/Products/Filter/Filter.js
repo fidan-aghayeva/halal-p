@@ -71,11 +71,7 @@ const Filter = props => {
                 setActiveSubCategory(Number(id));
             }
         }
-    }, [sections, categories]);
-
-    useEffect(() => {
-        console.log({ activeSection, activeCategory, activeSubCategory });
-    }, [activeSection, activeCategory, activeSubCategory]);
+    }, [type, id, sections, categories]);
 
     return sections.map(section => (
         <div key={section.id} className={styles.accordionItem}>
