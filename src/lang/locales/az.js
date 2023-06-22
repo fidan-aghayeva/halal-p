@@ -32,4 +32,5 @@ module.exports = {
     product: 'məhsul',
     address: 'S.S.Axundov 5f küç., 2-ci mərtəbə',
     attributes: 'Xüsusiyyətlər',
+    soon: 'Tezliklə...',
 };

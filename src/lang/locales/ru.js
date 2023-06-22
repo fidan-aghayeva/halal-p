@@ -32,4 +32,5 @@ module.exports = {
     contact: 'Контакты',
     address: 'Ул. С.С.Ахундова 5ф',
     attributes: 'Функции',
+    soon: 'Скоро...',
 };

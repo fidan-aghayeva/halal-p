@@ -32,4 +32,5 @@ module.exports = {
     product: 'product',
     address: 'St. S.S.Akhundova 5f',
     attributes: 'Attributes',
+    soon: 'Soon...',
 };

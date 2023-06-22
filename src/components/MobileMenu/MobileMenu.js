@@ -76,14 +76,14 @@ const MobileMenu = () => {
                             >
                                 {T.sub_menu_item_3}
                             </Link>
-                            <Link
-                                href={'/vacancies'}
-                                className={styles.subLinkItem}
-                                onClick={onClose}
-                                locale={language}
-                            >
-                                {T.sub_menu_item_4}
-                            </Link>
+                            {/*<Link*/}
+                            {/*    href={'/vacancies'}*/}
+                            {/*    className={styles.subLinkItem}*/}
+                            {/*    onClick={onClose}*/}
+                            {/*    locale={language}*/}
+                            {/*>*/}
+                            {/*    {T.sub_menu_item_4}*/}
+                            {/*</Link>*/}
                         </>
                     )}
                     <span className={styles.linkItem}>
