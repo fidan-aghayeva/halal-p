@@ -26,7 +26,7 @@ export const PAGE_TYPES = {
     projects: 'Project',
     events: 'Event',
     blog: 'Blog',
-    vacancy: 'Vacancy',
+    vacancies: 'Vacancy',
 };
 
 export const PRODUCTS_FILTER_TYPES = {

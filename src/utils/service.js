@@ -132,3 +132,14 @@ export const getOurAdvantages = async lang => {
         return error;
     }
 };
+
+export const getVacancies = async lang => {
+    try {
+        const data = await axios.get(`${SERVICE_URL}/${lang}/vacancies`);
+
+        return data.data;
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};

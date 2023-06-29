@@ -14,7 +14,7 @@ const PageLayout = props => {
 
     const router = useRouter();
     const { locale, pathname } = router;
-    const pageType = pathname.split('/')[1];
+    const pageType = pathname === '/vacancies' ? pathname.slice(1) : pathname.split('/')[1];
 
     const sanitizer = dompurify.sanitize;
 

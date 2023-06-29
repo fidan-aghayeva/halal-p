@@ -20,9 +20,9 @@ const AboutSubMenu = () => {
             <Link href={'/events?page=1'} className={styles.category} locale={language}>
                 {T.sub_menu_item_3}
             </Link>
-            {/*<Link href={'/vacancies'} className={styles.category} locale={language}>*/}
-            {/*    {T.sub_menu_item_4}*/}
-            {/*</Link>*/}
+            <Link href={'/vacancies'} className={styles.category} locale={language}>
+                {T.sub_menu_item_4}
+            </Link>
         </div>
     );
 };
