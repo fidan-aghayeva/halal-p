@@ -62,7 +62,7 @@ const Products = props => {
     useEffect(() => {
         const params = {
             lang: locale,
-            type: serverData.type,
+            type: serverData?.type,
             page,
             filterData: id,
             isOld: pathname.includes('hardware'),
@@ -75,15 +75,15 @@ const Products = props => {
     return (
         <>
             <Head>
-                <title>{serverData.seo?.title}</title>
-                <meta name='description' content={serverData.seo?.description} />
-                <meta name='keywords' content={serverData.seo?.keyword} />
+                <title>{serverData?.seo?.title}</title>
+                <meta name='description' content={serverData?.seo?.description} />
+                <meta name='keywords' content={serverData?.seo?.keyword} />
             </Head>
             <div className={styles.container}>
                 <h1 className={'title'}>{T.products}</h1>
                 <div className={styles.content}>
                     <div className={styles.filter}>
-                        <Filter type={serverData.type} />
+                        <Filter type={serverData?.type} />
                     </div>
                     <div className={styles.productsContainer}>
                         {isFetching ? (

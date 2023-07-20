@@ -19,7 +19,7 @@ import useTranslations from 'hooks/use-translations';
 import styles from './Home.module.scss';
 
 const Home = props => {
-    const { data = {} } = props;
+    const { data } = props;
 
     const { seo = {} } = data;
 
@@ -46,9 +46,9 @@ const Home = props => {
     return (
         <>
             <Head>
-                <title>{seo.title}</title>
-                <meta name='description' content={seo.description} />
-                <meta name='keywords' content={seo.keyword} />
+                <title>{seo?.title}</title>
+                <meta name='description' content={seo?.description} />
+                <meta name='keywords' content={seo?.keyword} />
             </Head>
             <div className={styles.container}>
                 <div className={styles.carouselContainer}>

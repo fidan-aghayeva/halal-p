@@ -29,11 +29,11 @@ const DetailPageLayout = props => {
     return (
         <>
             <Head>
-                <title>{seo.title}</title>
-                <meta name='description' content={seo.description} />
-                <meta name='keywords' content={seo.keyword} />
-                <meta property='og:title' content={seo.title} />
-                <meta property='og:description' content={seo.description} />
+                <title>{seo?.title}</title>
+                <meta name='description' content={seo?.description} />
+                <meta name='keywords' content={seo?.keyword} />
+                <meta property='og:title' content={seo?.title} />
+                <meta property='og:description' content={seo?.description} />
                 <meta property='og:image' content={mainImage} />
             </Head>
             <div className={styles.container}>

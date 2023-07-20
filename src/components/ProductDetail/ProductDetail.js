@@ -17,11 +17,11 @@ const ProductDetail = props => {
     return (
         <>
             <Head>
-                <title>{product.seo.title}</title>
-                <meta name='description' content={product.seo.description} />
-                <meta name='keywords' content={product.seo.keyword} />
-                <meta property='og:title' content={product.seo.title} />
-                <meta property='og:description' content={product.seo.description} />
+                <title>{product.seo?.title}</title>
+                <meta name='description' content={product.seo?.description} />
+                <meta name='keywords' content={product.seo?.keyword} />
+                <meta property='og:title' content={product.seo?.title} />
+                <meta property='og:description' content={product.seo?.description} />
                 <meta property='og:image' content={SERVICE_URL + product.mainImage} />
             </Head>
             <div className={styles.container}>

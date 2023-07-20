@@ -5,7 +5,7 @@ import { SERVICE_URL } from 'utils/constants';
 const AboutPage = props => {
     const { data } = props;
 
-    return <About data={data} />;
+    return <About data={data || {}} />;
 };
 
 export const getServerSideProps = async context => {
@@ -18,7 +18,7 @@ export const getServerSideProps = async context => {
         return { props: { data: {} } };
     }
 
-    return { props: { data } };
+    return { props: { data: { data } } };
 };
 
 AboutPage.getLayout = page => {

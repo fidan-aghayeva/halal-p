@@ -10,7 +10,7 @@ import useTranslations from 'hooks/use-translations';
 import styles from './About.module.scss';
 
 const About = props => {
-    const { data = {} } = props;
+    const { data } = props;
     const { seo = {} } = data;
 
     const T = useTranslations();
@@ -18,9 +18,9 @@ const About = props => {
     return (
         <>
             <Head>
-                <title>{seo.title}</title>
-                <meta name='description' content={seo.description} />
-                <meta name='keywords' content={seo.keyword} />
+                <title>{seo?.title}</title>
+                <meta name='description' content={seo?.description} />
+                <meta name='keywords' content={seo?.keyword} />
             </Head>
             <PageLayout title={T.about_company}>
                 <div className={classNames('flex align-center justify-center flex-column', styles.container)}>

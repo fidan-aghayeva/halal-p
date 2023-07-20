@@ -5,7 +5,7 @@ import { SERVICE_URL } from 'utils/constants';
 const HomePage = props => {
     const { data } = props;
 
-    return <Home data={data} />;
+    return <Home data={data || {}} />;
 };
 
 export const getServerSideProps = async context => {
