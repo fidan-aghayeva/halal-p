@@ -21,7 +21,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'halal-p.azurewebsites.net',
+                hostname: process.env.NEXT_PUBLIC_SERVICE_HOSTNAME,
             },
         ],
     },
