@@ -5,29 +5,31 @@
     display: flex;
     flex-direction: column;
     padding: 50px 16px 100px 16px;
+    max-width: 784px;
+    margin: 0 auto;
 
     @include s {
         padding: 50px 24px 100px 24px;
     }
 
     @include md {
-        padding: 100px 300px;
+        padding: 100px 0;
     }
 }
 
 .title {
-    font-size: 4rem;
+    font-size: 40px;
     font-weight: 700;
     margin-bottom: 12px;
     margin-top: 0;
 
     @include s {
-        font-size: 5.6rem;
+        font-size: 56px;
         margin-bottom: 16px;
     }
 
     @include md {
-        font-size: 7.2rem;
+        font-size: 72px;
     }
 }
 
@@ -39,11 +41,11 @@
 
 .date {
     color: var(--color-text-secondary);
-    font-size: 1.4rem;
+    font-size: 14px;
     font-weight: 400;
 
     @include md {
-        font-size: 1.8rem;
+        font-size: 18px;
     }
 }
 
@@ -52,7 +54,7 @@
     background-color: #f1f1f1;
     color: var(--color-text-secondary);
     display: flex;
-    font-size: 1.2rem;
+    font-size: 12px;
     font-weight: 500;
     justify-content: center;
     margin-left: 12px;
@@ -63,6 +65,7 @@
     height: 200px;
     margin: 24px 0;
     max-width: 100%;
+    max-height: 380px;
     position: relative;
     width: 100%;
 
@@ -72,7 +75,7 @@
 }
 
 .content {
-    font-size: 1.6rem;
+    font-size: 16px;
     font-weight: 500;
     line-height: 28px;
 
@@ -93,7 +96,7 @@
     }
 
     @include s {
-        font-size: 2rem;
+        font-size: 20px;
         line-height: 34px;
     }
 }

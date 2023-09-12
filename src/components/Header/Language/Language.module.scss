@@ -9,7 +9,7 @@
         & .mantine-Select-input {
             background-color: transparent;
             border: none;
-            font-size: 1.6rem;
+            font-size: 16px;
             font-weight: 600;
             height: auto;
             padding-left: 10px;
@@ -17,7 +17,7 @@
 
             &::placeholder {
                 color: var(--primary-color);
-                font-size: 1.6rem;
+                font-size: 16px;
                 font-weight: 600;
                 text-transform: uppercase;
             }
@@ -47,7 +47,7 @@
         & .mantine-Select-item {
             color: var(--color-text-primary);
             border-radius: 0;
-            font-size: 1.6rem;
+            font-size: 16px;
             font-weight: 600;
             padding: 10px;
 
@@ -93,7 +93,7 @@
 
 .language {
     color: var(--color-text-primary);
-    font-size: 1.6rem;
+    font-size: 16px;
     font-weight: 600;
 
     &:first-child {

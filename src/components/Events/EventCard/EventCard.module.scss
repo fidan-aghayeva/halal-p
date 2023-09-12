@@ -3,7 +3,7 @@
 .container {
     color: var(--color-text-primary);
     display: flex;
-    font-size: 1.6rem;
+    font-size: 16px;
     font-weight: 400;
     flex-direction: column;
     justify-content: space-between;
@@ -24,7 +24,7 @@
 
 .date {
     color: #797979;
-    font-size: 1.4rem;
+    font-size: 14px;
     margin-right: 12px;
 }
 
@@ -33,14 +33,14 @@
     background-color: #f1f1f1;
     color: #797979;
     display: inline-flex;
-    font-size: 1.2rem;
+    font-size: 12px;
     font-weight: 500;
     justify-content: center;
     padding: 8px 10px;
 }
 
 .title {
-    font-size: 2.4rem;
+    font-size: 24px;
     font-weight: 700;
     line-height: 23px;
     max-height: 48px;
@@ -74,7 +74,7 @@
     color: var(--primary-color);
     display: flex;
     flex-direction: row;
-    font-size: 1.8rem;
+    font-size: 18px;
     font-weight: 600;
     margin-top: 16px;
 

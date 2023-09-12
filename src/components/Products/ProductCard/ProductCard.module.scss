@@ -43,10 +43,10 @@
 
 .name {
     color: var(--color-text-primary);
-    font-size: 1.8rem;
+    font-size: 18px;
     font-weight: 700;
 
     @include s {
-        font-size: 2rem;
+        font-size: 20px;
     }
 }

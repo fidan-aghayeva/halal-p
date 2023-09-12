@@ -11,7 +11,7 @@
     color: #fff;
     cursor: pointer;
     display: flex;
-    font-size: 2rem;
+    font-size: 20px;
     font-weight: 700;
     justify-content: space-between;
     padding: 12px 18px 12px 24px;
@@ -44,7 +44,7 @@
     :global {
         .mantine-Radio-label {
             font-family: 'Maven Pro', sans-serif;
-            font-size: 1.6rem;
+            font-size: 16px;
             font-weight: 500;
         }
 
@@ -76,7 +76,7 @@
 .categoryAccordionHeader {
     background-color: #fff;
     color: var(--color-text-primary);
-    font-size: 1.8rem;
+    font-size: 18px;
     font-weight: 700;
     padding: 12px 18px 12px 24px;
 

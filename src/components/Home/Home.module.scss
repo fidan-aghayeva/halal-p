@@ -33,7 +33,7 @@
 
     & :global {
         & .mantine-Carousel-control {
-            background-color: #f1f1f1;
+            background-color: transparent;
             border: none;
             border-radius: 0;
             box-shadow: none;
@@ -45,11 +45,6 @@
             svg {
                 height: 20px;
                 width: 30px;
-            }
-
-            &:hover {
-                color: var(--color-text-tertiary);
-                background-color: var(--primary-color);
             }
         }
     }
