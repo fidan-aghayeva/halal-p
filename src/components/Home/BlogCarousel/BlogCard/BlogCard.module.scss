@@ -25,6 +25,10 @@
     overflow: hidden;
     width: 100%;
 
+    img {
+        object-fit: fill;
+    }
+
     @include sm {
         height: 350px;
         width: 50%;

@@ -69,6 +69,10 @@
     position: relative;
     width: 100%;
 
+    img {
+        object-fit: contain;
+    }
+
     @include s {
         height: 380px;
     }
