@@ -54,6 +54,10 @@
     position: relative;
     width: 100%;
 
+    img {
+        object-fit: cover;
+    }
+
     @include md {
         height: 230px;
     }
