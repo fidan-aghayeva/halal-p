@@ -69,4 +69,8 @@
     min-width: 140px;
     position: relative;
     width: 100%;
+
+    img {
+        object-fit: contain;
+    }
 }

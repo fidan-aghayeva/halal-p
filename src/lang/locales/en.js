@@ -21,7 +21,7 @@ module.exports = {
     about_company: 'About Company',
     our_advantages: 'Our advantages',
     they_chose_us: 'They chose us',
-    management: 'Management',
+    management: 'Management Board',
     our_partners: 'Our partners',
     forward: 'More',
     vacancies: 'Vacancies',

@@ -21,7 +21,7 @@ module.exports = {
     about_company: 'Şirkət haqqında',
     our_advantages: 'Fərqimiz',
     they_chose_us: 'Bizi seçənlər',
-    management: 'Biz',
+    management: 'İdarə Heyəti',
     our_partners: 'Partnyorlarımız',
     forward: 'İrəli',
     vacancies: 'Vakansiyalar',
