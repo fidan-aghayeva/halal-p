@@ -35,6 +35,10 @@
     position: relative;
     width: 90%;
 
+    img {
+        object-fit: cover;
+    }
+
     @include sm {
         height: 204px;
         margin-bottom: 35px;
