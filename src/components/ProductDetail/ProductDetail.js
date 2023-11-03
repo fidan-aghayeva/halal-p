@@ -29,14 +29,16 @@ const ProductDetail = props => {
                     {product.otherImages.length > 0 && (
                         <ImageGallery images={[{ path: product.mainImage }, ...product.otherImages]} />
                     )}
-                    <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
-                        <div className={styles.frame}>
-                            <iframe
-                                title={'This youtube video is about the product'}
-                                src={product.youtubeLink}
-                            ></iframe>
-                        </div>
-                    </DeviceDetector>
+                    {product.youtubeLink && (
+                        <DeviceDetector visible={[DEVICE_TYPES.desktop]}>
+                            <div className={styles.frame}>
+                                <iframe
+                                    title={'This youtube video is about the product'}
+                                    src={product.youtubeLink}
+                                ></iframe>
+                            </div>
+                        </DeviceDetector>
+                    )}
                 </div>
                 <div className={styles.productDetails}>
                     <h2 className={classNames('title', styles.name)}>{product.name}</h2>
@@ -60,11 +62,16 @@ const ProductDetail = props => {
                         <PDFIcon /> {T.brochure}
                     </a>
                 </div>
-                <DeviceDetector hidden={[DEVICE_TYPES.desktop]}>
-                    <div className={styles.frame}>
-                        <iframe title={'This youtube video is about the product'} src={product.youtubeLink}></iframe>
-                    </div>
-                </DeviceDetector>
+                {product.youtubeLink && (
+                    <DeviceDetector hidden={[DEVICE_TYPES.desktop]}>
+                        <div className={styles.frame}>
+                            <iframe
+                                title={'This youtube video is about the product'}
+                                src={product.youtubeLink}
+                            ></iframe>
+                        </div>
+                    </DeviceDetector>
+                )}
             </div>
         </>
     );
