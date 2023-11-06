@@ -35,6 +35,7 @@ const ProductDetail = props => {
                                 <iframe
                                     title={'This youtube video is about the product'}
                                     src={product.youtubeLink}
+                                    allowFullScreen
                                 ></iframe>
                             </div>
                         </DeviceDetector>
@@ -68,6 +69,7 @@ const ProductDetail = props => {
                             <iframe
                                 title={'This youtube video is about the product'}
                                 src={product.youtubeLink}
+                                allowFullScreen
                             ></iframe>
                         </div>
                     </DeviceDetector>

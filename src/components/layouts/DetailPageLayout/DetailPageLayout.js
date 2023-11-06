@@ -60,7 +60,6 @@ const DetailPageLayout = props => {
                 {pageType !== 'blog' && otherImages.length > 0 && (
                     <ImageGallery
                         images={otherImages}
-                        showFullscreenButton={type !== DEVICE_TYPES.mobile}
                         showThumbnails={type !== DEVICE_TYPES.mobile}
                     />
                 )}
