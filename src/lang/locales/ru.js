@@ -16,7 +16,7 @@ module.exports = {
     show_more: 'Показать больше',
     blog: 'Блог',
     read: 'Читать',
-    all_rights_reserved: '© 2022 Все права защищены',
+    all_rights_reserved: 'Все права защищены',
     about_company: 'О компании',
     our_advantages: 'Наши преимущества',
     they_chose_us: 'Нас выбрали',

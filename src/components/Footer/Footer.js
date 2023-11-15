@@ -12,11 +12,14 @@ const Footer = () => {
 
     const { siteData, contact } = useSelector(state => state.global);
 
+    const year=new Date().getFullYear()
+
+
     return (
         <footer className={styles.footer}>
             <Logo path={siteData?.logoDark?.path} />
             <DeviceDetector hidden={[DEVICE_TYPES.mobile]}>
-                <span>{T.all_rights_reserved}</span>
+                <span>© {year} {T.all_rights_reserved}</span>
             </DeviceDetector>
             <div className={styles.socialMediaLinks}>
                 <a className={styles.icon} href={contact?.Facebook} target={'blank'} aria-label={'Facebook link'}>

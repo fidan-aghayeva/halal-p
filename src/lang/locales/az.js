@@ -17,7 +17,7 @@ module.exports = {
     blog: 'Bloq',
     read: 'Oxumaq',
     contact: 'Əlaqə',
-    all_rights_reserved: '© 2022 Bütün hüquqlar qorunur',
+    all_rights_reserved: 'Bütün hüquqlar qorunur',
     about_company: 'Şirkət haqqında',
     our_advantages: 'Fərqimiz',
     they_chose_us: 'Bizi seçənlər',

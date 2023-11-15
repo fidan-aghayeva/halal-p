@@ -17,7 +17,7 @@ module.exports = {
     blog: 'Blog',
     read: 'Read',
     contact: 'Contacts',
-    all_rights_reserved: '© 2022 All Rights Reserved',
+    all_rights_reserved: 'All Rights Reserved',
     about_company: 'About Company',
     our_advantages: 'Our advantages',
     they_chose_us: 'They chose us',
