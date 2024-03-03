@@ -26,7 +26,6 @@
         & .mantine-Input-rightSection {
             color: var(--primary-color);
             z-index: -1;
-            align-self: flex-end;
             width: auto;
 
             svg {
@@ -58,7 +57,7 @@
         }
 
         & .mantine-Select-wrapper {
-             display: flex;
+            display: flex;
             flex-direction: row;
         }
     }
