@@ -1,34 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Business, blog website of [Halal-P](https://halal.az/) company
+<img src='/halal-p-screenshot.png' alt='halal-p' />
 
-## Getting Started
+## *"Halal-P" company was founded in 1996 and today it is considered one of the largest suppliers of equipment and solutions for printing, banking, corporate and archives in the country.*
 
-First, run the development server:
+### This project is a business and blog-type website developed using Next.js. The state management is handled with Redux Toolkit, and the UI components are built with the Mantine library. Additionally, the website supports multilingual functionality through i18n.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 1. Business and Blog Functionality
 
-You can start editing the page by modifying `pages/[[...tag]].js`. The page auto-updates as you edit the file.
+The Halal-P Company website provides a combination of business and blog functionality, catering to both informative content and company-related updates.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### 2. Efficient Server-Side Rendering with Next.js
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The project leverages Next.js for efficient server-side rendering, ensuring optimal performance and a seamless user experience.
 
-## Learn More
+### 3. State Management with Redux Toolkit
 
-To learn more about Next.js, take a look at the following resources:
+Redux Toolkit is employed for state management, offering a robust and organized solution for handling the application's state.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Sleek and Responsive UI with Mantine
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The UI components are built using Mantine, a modern and responsive React component library. This choice ensures a visually appealing and user-friendly interface.
 
-## Deploy on Vercel
+### 5. Multilingual Support using i18n
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The website supports multiple languages, thanks to the implementation of i18n. Users can enjoy a seamless experience in their preferred language.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 6. Events Section
+
+Stay updated on company events through the dedicated events section. Browse through upcoming and past events, complete with details and relevant information.
+
+### 7. Projects Section
+
+Explore the diverse projects undertaken by Halal-P Company. Detailed project descriptions, milestones, and achievements are showcased to provide insights into the company's work.
+
+### 8. Vacancies Section
+
+Discover exciting career opportunities with Halal-P Company. The vacancies section lists job openings, complete with job descriptions and application details, making it easy for potential candidates to apply.
+
+
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=git,nextjs,js,css" />
+  </a>
+</p>
